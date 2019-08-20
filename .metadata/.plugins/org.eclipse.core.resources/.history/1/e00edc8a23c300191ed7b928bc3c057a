@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 회원가입 </title>
+</head>
+<body>
+ <table>
+  <tr>
+   <th> 이름  </th>
+   <th> <input type = "text" size = 20 placeholder = "이름 입력"> </th>
+  </tr>
+  
+	
+ </table>
+
+</body>
+</html>

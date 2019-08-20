@@ -1,0 +1,185 @@
+package bitProject.cafe.view;
+
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.EOFException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+
+import bitProject.cafe.dto.OrderDTO;
+import javax.swing.JButton;
+
+
+public class OrderDisp extends JPanel implements ActionListener, Runnable {
+	private JTable table;
+	private DefaultTableModel model;
+	
+	private Socket socket;
+	private ObjectInputStream ois;
+	private ObjectOutputStream oos;
+	
+	private JButton btnUpdate;
+
+	public OrderDisp() {
+		setLayout(null);
+
+		JLabel lblOrderDisp = new JLabel("주문내역 확인");
+		lblOrderDisp.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		lblOrderDisp.setBounds(28, 28, 178, 36);
+		add(lblOrderDisp);
+
+		String[] colName = { "주문자", "주문 메뉴", "수량", "단가", "금액"}; //주문시간, 총액		
+		model = new DefaultTableModel(colName, 0) {
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		table = new JTable(model);
+		table.getTableHeader().setReorderingAllowed(false); // 이동 불가 
+		table.getTableHeader().setResizingAllowed(false); // 크기 조절 불가
+		setAlignmentCenter(table);
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+		scroll.setBounds(28, 107, 823, 363);
+		add(scroll);
+		
+		btnUpdate = new JButton("갱신");
+		btnUpdate.setBounds(28, 74, 97, 23);
+		add(btnUpdate);
+		
+		btnUpdate.addActionListener(this);
+		
+		
+	} // 생성자
+
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	if(e.getSource() == btnUpdate) {
+		
+		OrderDTO order = new OrderDTO();
+		order.setStatus(Message.ORDERDISP);
+		order.setStaff(true);
+		
+		service();
+		try {
+			oos.writeObject(order);
+			oos.flush();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		
+		Thread t = new Thread(this);
+		t.start();
+	}
+	
+}
+
+	
+// 임시 socket ========================================================================================================================
+	public void service() {
+		String serverIP = null;
+		try {
+			serverIP = InetAddress.getLocalHost().getHostAddress();
+			socket = new Socket(serverIP, 10200);
+			
+			oos = new ObjectOutputStream(socket.getOutputStream());
+			ois = new ObjectInputStream(socket.getInputStream());
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+
+@Override
+public void run() {
+	while (true) {
+		try {
+			Object temp = null;
+			temp = ois.readObject();
+		
+			if (temp instanceof OrderDTO) {		
+				System.out.println("들어옴?");
+				OrderDTO order = (OrderDTO) temp;
+				if (order.getStatus() == Message.ORDERDISP) {
+					System.out.println(order.getStatus());
+					order.getId();
+					order.getMenuName();
+					order.getMenuPrice();
+					
+					ArrayList<OrderDTO> list = new ArrayList<OrderDTO>();
+					list.add(order);
+					int totPrice = 0;
+					for (OrderDTO order1 : list) {
+						totPrice += order1.getAmount() * order1.getMenuPrice();
+					}
+					order.setTotPrice(totPrice);
+					
+					Vector<Object> vec = new Vector<Object>();
+					vec.addElement(order.getId());
+					vec.addElement(order.getMenuName());
+					vec.addElement(order.getAmount());
+					vec.addElement(order.getMenuPrice());
+					
+					model.addRow(vec);					
+				}
+			}
+			while(true) {}
+	
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		} finally {
+			try {
+				ois.close();
+				oos.close();
+				socket.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+}
+	
+public void setAlignmentCenter(JTable table) { // JTable의 내용 가운데 정렬
+	DefaultTableCellRenderer dtcr = new DefaultTableCellRenderer();
+	dtcr.setHorizontalAlignment(SwingConstants.CENTER);
+	TableColumnModel tcm = table.getColumnModel();
+	for (int i = 0; i < tcm.getColumnCount(); i++) {
+		tcm.getColumn(i).setCellRenderer(dtcr);
+	}
+}
+// 임시 main =========================================================================================================================	
+	public static void main(String[] args) {
+		JFrame f = new JFrame();
+		OrderDisp orderDisp = new OrderDisp();
+		f.getContentPane().add(orderDisp);
+		f.setBounds(700, 100, 1300, 600);
+		f.setVisible(true);
+	}
+	
+}
