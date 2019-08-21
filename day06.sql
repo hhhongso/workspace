@@ -35,3 +35,16 @@ select employee_id, last_name from employees_role;
 --Q01
 select last_name as 사원명, job_id as 업무ID, department_id as 부서ID from employees where department_id = 10 union
 select last_name, job_id, department_id from employees_role where job_id = 'IT_PROG';
+
+--ex05
+select last_name, job_title from employees join jobs using (job_id)
+where job_title in ('Stock Manager', 'Programmer') order by 1;
+
+select last_name, job_title from employees join jobs using (job_id) where job_title = 'Stock Manager'
+union
+select last_name, job_title from employees join jobs using (job_id) where job_title = 'Programmer';
+
+--ex09
+select last_name, employee_id, hire_date from employees where department_id = 20
+union
+select department_name, department_id, null from departments where department_id = 20;

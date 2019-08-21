@@ -29,7 +29,7 @@ import javax.swing.event.ListSelectionListener;
 import friend.bean.FriendDTO;
 import friend.dao.FriendDAO;
 
-public class FriendManager extends JFrame implements ActionListener, ListSelectionListener{
+public class FriendManager_instructor extends JFrame implements ActionListener, ListSelectionListener{
 	private JLabel infoinputL, nameL, telL, sexL, hobbyL, tot_listL, infoL, dashL1, dashL2;
 	private JTextField nameT, tel2T, tel3T;
 	private JComboBox<String> tel1C;
@@ -40,7 +40,7 @@ public class FriendManager extends JFrame implements ActionListener, ListSelecti
 	private JTextArea area;
 	private JButton addB, updateB, deleteB, clearB;
 
-	public FriendManager() {
+	public FriendManager_instructor() {
 		setTitle("Friend Manager");
 		JPanel pW1 = new JPanel();
 		pW1.setBackground(Color.YELLOW);
