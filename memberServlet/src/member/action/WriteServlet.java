@@ -57,7 +57,11 @@ public class WriteServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html>");
 		out.println("<body>");
-		if(cnt == 1) out.println(cnt + "건 회원가입을 축하합니다. ");
+		if(cnt == 1) {
+			out.println(cnt + "건 회원가입을 축하합니다. ");
+			out.println("<br><br>");
+			out.println("<input type = 'button' value = '로그인' onclick = \"location.href= '/memberServlet/member/loginForm.html'\">");
+		}									
 		else out.println("회원가입 실패. 다시 작성해 주세요. ");
 		out.println("</body>");
 		out.println("</html>");

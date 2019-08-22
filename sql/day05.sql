@@ -58,3 +58,34 @@ when employee_id in(select manager_id from employees)
 then '包府磊' 
 else '流盔' 
 end as 备盒 from employees order by 3;
+
+select employee_id, last_name, '包府磊' as 备盒 from employees e
+where exists (select * from employees where manager_id = e.employee_id)
+union
+select employee_id, last_name, '荤盔' as 备盒 from employees e
+where not exists (select * from employees where manager_id = e.employee_id);
+
+--Q4
+select last_name, job_id, job_title, to_char(salary, '$9,999,99') from employees
+join jobs using (job_id)
+where (job_id, salary) in (select job_id, trunc(avg(salary), -3) from employees group by job_id)
+order by salary asc;
+
+select last_name, job_id, job_title, to_char(salary, '$9,999,99') from employees
+join jobs using (job_id)
+where (job_id, salary) = any (select job_id, trunc(avg(salary), -3) from employees group by job_id)
+order by salary asc;
+
+select job_id, trunc(avg(salary), -3) from employees group by job_id;
+
+--ex07
+select department_name, job_title, round(avg(salary), 2) from employees
+join departments using (department_id)
+join jobs using (job_id)
+group by rollup(department_name, job_title);
+
+--ex08
+select department_name, job_title, round(avg(salary), 2) from employees
+join departments using (department_id)
+join jobs using (job_id)
+group by cube(department_name, job_title);

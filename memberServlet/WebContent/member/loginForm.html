@@ -2,39 +2,39 @@
 <html>
 <head>
 <style type="text/css">
-	.tab {
-		background-color: pink;		
-	}
-	.idtab{
-		font-family: '궁서';
-		width: 100px;
-	}
+.tab {
+	background-color: pink;
+}
 
+.idtab {
+	font-family: '궁서';
+	width: 100px;
+}
 </style>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>
-   <form name = "loginForm" method = "post" action="/memberServlet/LoginServlet">
-	<table class = "tab" border = 3>
-		<tr>
-		 <th class = "idtab"> 아이디 </th>
-		 <td> <input type = "text" name = "id" size = 10>  </td>		
-		</tr>
-		
-		<tr>
-		 <th> 비밀번호 </th>
-		 <td> <input type = "password" name = "pwd" size = 20> </td>		
-		</tr>
-		
-		<tr>		 
-		 <td colspan = 2 align = "center">
-		 <input type = "button" value = "로그인" onclick = "javascript:checkLogin()">
- 		 <input type = "button" value = "회원가입" onclick = "location.href = 'writeForm.html'"> 
- 		 </td>		
-		</tr>
-	</table>
-   </form>
+	<form name="loginForm" method="post"
+		action="/memberServlet/Login">
+		<table class="tab" border=3>
+			<tr>
+				<th class="idtab">아이디</th>
+				<td><input type="text" name="id" size=10></td>
+			</tr>
+
+			<tr>
+				<th>비밀번호</th>
+				<td><input type="password" name="pwd" size=20></td>
+			</tr>
+
+			<tr>
+				<td colspan=2 align="center"><input type="button" value="로그인"
+					onclick="javascript:checkLogin()"> <input type="button"
+					value="회원가입" onclick="location.href = 'writeForm.html'"></td>
+			</tr>
+		</table>
+	</form>
 </body>
-<script src = "http://localhost:8080/memberServlet/js/login.js" type="text/javascript"></script>
+<script src="http://localhost:8080/memberServlet/js/login.js" type="text/javascript"></script>
 </html>

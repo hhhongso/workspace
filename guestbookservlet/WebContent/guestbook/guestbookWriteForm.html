@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>방명록</title>
+</head>
+<style>
+.context{
+	width: 400px; 
+	height: 200px;
+	resize: none;
+}
+
+</style>
+<body>
+	<form name="guestbookForm" method="post" action="/guestbookservlet/Guestbook">
+		<h2> 글쓰기 </h2>
+		<table border=3>
+			<tr>
+				<th width = "100px">작성자</th>
+				<td><input type="text" name="name" size=10 placeholder = "작성자 입력"></td>
+			</tr>
+
+			<tr>
+				<th>이메일</th>
+				<td><input type="text" name="email" size=20 placeholder = "이메일 입력"></td>
+			</tr>
+			
+			<tr>
+				<th>홈페이지</th>
+				<td><input type="text" name="homepage" size=20 value = "http://"></td>
+			</tr>
+			
+			<tr>
+				<th>제목</th>
+				<td><input type="text" name="subject" size=50 placeholder = "제목입력"></td>
+			</tr>
+			
+			<tr>
+				<th>내용</th>
+				<td><textarea name = "content" placeholder = "내용을 입력" class = "context"></textarea></td>
+			</tr>
+
+			<tr>
+				<td colspan=2 align="center">
+					<input type="button" value="글작성" onclick="javascript:writeSubmit()">
+					<input type = "reset" value = "다시작성"> 
+					<input type="button" value="글목록" onclick= "location.href = '/guestbookservlet/GuestbookList'"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+<script src = "../js/function.js"></script>
+
+</html>

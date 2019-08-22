@@ -83,15 +83,15 @@ public class MemberDAO {
 	public String isLogin(String id, String pwd) {
 		String name = null;
 		this.getConnection();
-		String sql = "select * from member where id = ? and pwd = ?";
+		String sql = "select name from member where id = ? and pwd = ?";
 		try {
 			pstmt = conn.prepareStatement(sql);		
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
 			
 			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				name = rs.getString(1);
+			if(rs.next()) {
+				name = rs.getString("name");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
