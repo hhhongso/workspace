@@ -13,6 +13,7 @@ addr1 varchar2(100),
 addr2 varchar2(100),
 logtime date);
 
+select name from member where id = 'a' and pwd = '123';
 select *from member;
 delete member;
 commit;
