@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.swing.JFrame"/>
 <fullyQualifiedTypeName name="java.awt.Image"/>
 <fullyQualifiedTypeName name="bitProject.cafe.Order2"/>
 <fullyQualifiedTypeName name="javax.swing.ImageIcon"/>
@@ -53,11 +52,12 @@
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="guestbook.dao.GuestbookDAO"/>
 <fullyQualifiedTypeName name="guestbook.bean.GuestbookDTO"/>
 <fullyQualifiedTypeName name="com.sun.webkit.ContextMenu.ShowContext"/>
 <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
 <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="guestbook.dao.GuestbookDAO"/>
 </qualifiedTypeNameHistroy>
