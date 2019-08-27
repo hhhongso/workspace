@@ -1,68 +1,88 @@
-	function checkWrite(){		
- 		if(document.getElementById("irum").value == "") {
- 			alert("이름을 입력하세요");
- 			document.writeForm.name.focus();
- 		} else if(document.writeForm.id.value == ""){
- 			alert("아이디를 입력하세요");
- 			document.writeForm.id.focus();	
- 		} else if(document.writeForm.pwd.value == ""){
- 			alert("패스워드를 입력하세요");
- 			document.writeForm.pwd.focus();
- 		} else if(document.writeForm.repwd.value != document.writeForm.pwd.value){
- 			alert("패스워드가 일치하지 않습니다.");
- 			document.writeForm.repwd.focus();
- 		} else {
- 			document.writeForm.submit();
- 		}
- 	}
- 	
- 	function checkPost() {
- 		new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+var ischecked= false;
 
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-             /*        // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = ''; */
-                }
- 
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById("daum_zipcode").value = data.zonecode;
-                document.getElementById("daum_addr1").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("daum_addr2").focus();
-            }
-        }).open();
+function checkWrite() {
+//	if(!ischecked){
+//		alert("중복체크하세요.");
+//		return;
+//	}
+	
+	if (document.getElementById("irum").value == "") {
+		alert("이름을 입력하세요");
+		document.writeForm.name.focus();
+	} else if (document.writeForm.id.value == "") {
+		alert("아이디를 입력하세요");
+		document.writeForm.id.focus();
+	} else if (document.writeForm.pwd.value == "") {
+		alert("패스워드를 입력하세요");
+		document.writeForm.pwd.focus();
+	} else if (document.writeForm.repwd.value != document.writeForm.pwd.value) {
+		alert("패스워드가 일치하지 않습니다.");
+		document.writeForm.repwd.focus();
+	} else if (document.writeForm.id.value != document.writeForm.sw.value) {
+		alert("중복체크하세요.");
+	} else {
+		document.writeForm.submit();
 	}
- 	
- 	
- 
+}
+
+function checkId() {
+	var sId = document.writeForm.id.value;
+	if(sId == "") {
+		alert("아이디를 먼저 입력해주세요. ");
+	} else {
+		window.open("http://localhost:8080/memberJSP/member/checkId.jsp?id="+sId, 
+				"이름 줄게 하나만 뜨렴", "width=350, height= 100 left=1200, top=500, location=no");
+		
+	}
+}
+
+function checkIdClose(id){
+	//데이터를 전달 : 자바스크립트에서는 "" or ''가 있어야 문자열로 인식
+	opener.writeForm.id.value = id;
+	opener.writeForm.sw.value = id;
+	window.close();
+	opener.writeForm.pwd.focus();
+	
+}
+
+function checkPost() {
+
+}
+
+function checkLogin() {
+	if (document.loginForm.id.value == "") {
+		alert("아이디를 입력해주세요.");
+		document.loginForm.name.focus();
+	} else if (document.loginForm.pwd.value == "") {
+		alert("비밀번호를 입력해주세요.");
+		document.loginForm.pwd.focus();
+	} else {
+		document.loginForm.submit();
+	}
+}
+
+function genderCheck(){
+	if(document.modifyForm.gender[0].value == document.modifyForm.gendersw.value) {
+		document.modifyForm.gender[0].checked = true;
+	} else{
+		document.modifyForm.gender[1].checked= true;
+	}
+}
+
+function emailCheck(email2){
+	if(document.modifyForm.email2[2].value == email2){
+		document.modifyForm.email2[2].selected = true;
+	}
+
+}
+
+function telCheck(){
+	if(document.modifyForm.tel1[0].value == document.modifyForm.tel.value){
+		document.modifyForm.tel1[0].selected =true;
+	} else if(document.modifyForm.tel1[1].value == document.modifyForm.tel.value){
+		document.modifyForm.tel1[1].selected =true;
+	} else if(document.modifyForm.tel1[2].value == document.modifyForm.tel.value){
+		document.modifyForm.tel1[2].selected =true;
+	}
+}
+

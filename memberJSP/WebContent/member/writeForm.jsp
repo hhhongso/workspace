@@ -17,7 +17,11 @@
 	  
 	  <tr>
 	   <th> 아이디 </th>
-	   <td> <input type = "text" name = "id" size = 25 placeholder = "아이디 입력"> </td>
+	   <td> 
+	   	<input type = "text" name = "id" size = 25 placeholder = "아이디 입력"> 
+	   	<input type = "button"  value = "중복체크" onclick = "checkId();"> 
+	   	<input type = "hidden" name = "sw" value = "">
+	   </td>
 	  </tr>
 	  
 	  <tr>
@@ -78,7 +82,7 @@
 	  <tr>
 	   
 	   <td colspan = 2 align = "center"> 
-	    <input type = "button" value = "회원가입" onclick = "checkWrite()">
+	    <input type = "button" name ="sign" value = "회원가입" onclick = "checkWrite()">
 	    <input type = "reset" value = "다시작성">     
 	   </td>   
 	  </tr>    
@@ -87,8 +91,7 @@
 </body>
 <!-- <form> 안에 <form>을 중첩할 수 없다 ! -->
 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src = "/memberJSP/js/member.js" type = "text/javascript"> </script>
+<script src = "/memberJSP/js/member.js?ver2" type = "text/javascript"> </script>
  				<!-- webcontent는 이클립스에서 제공하는 임시 폴더이므로 주소에 포함되지 않는다.  -->
  
 </html>

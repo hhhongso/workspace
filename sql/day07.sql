@@ -129,6 +129,36 @@ having max(salary) in (select max(salary) from employees group by (department_id
 
 select department_id, max(salary) from employees group by department_id;
 
-select last_name 이름, department_name 부서명, salary 최대급여 from employees
-join departments using(department_id)
-where (salary in (select max(salary) from employees group by (department_id))) and ;
+--ex06
+select rownum, last_name, salary from (select last_name, nvl(salary,0) as salary from employees order by 2 desc)
+where rownum <= 3;
+
+--ex07
+select rownum, last_name, salary from (select last_name, nvl(salary,0) as salary from employees order by 2 desc)
+where rownum = 1;
+--rownum 이용하여 최고급여 받는 사원 가져오기: rownum= 1외에, rownum=2와 같은 특정 행은 사용할 수 없음.
+
+--ex08
+select * from 
+(select rownum, ceil(rownum/3) as page, temp.* 
+from (select last_name, nvl(salary, 0) as salary from employees order by salary desc) temp)
+where page = 2;
+
+select *from 
+(select rownum rn, temp.* 
+from (select last_name, nvl(salary, 0) as salary from employees order by 2 desc) temp)
+where rn between 4 and 6;
+
+--Q06
+select rownum, temp.* from 
+(select last_name 사원명, department_name 부서명, to_char(salary*12+salary*12*nvl(commission_pct,0), 'L9,999,999') as "연   봉" from employees
+join departments using (department_id) order by 3 asc) temp
+where rownum <=5;
+
+select last_name 사원명, department_name 부서명, to_char(salary*12+salary*12*nvl(commission_pct,0), 'L9,999,999') as "연   봉"
+from (select rownum, temp.* 
+from (select * from employees 
+join departments using (department_id) order by salary asc) temp)
+where rownum <=5;
+
+grant all on employees to java;
