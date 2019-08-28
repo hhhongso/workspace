@@ -27,5 +27,5 @@
 		</table>
 	</form>
 </body>
-<script src = "/memberJSP/js/member.js"></script>
+<script src = "../js/member.js"></script>
 </html>

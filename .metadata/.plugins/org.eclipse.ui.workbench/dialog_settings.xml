@@ -5,13 +5,16 @@
 		<item value="14" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
-		<item value="-1" key="dialogHeight"/>
-		<item value="-1" key="dialogWidth"/>
+		<item value="942" key="dialogHeight"/>
+		<item value="858" key="dialogWidth"/>
 		<list key="textEntries">
+			<item value="0"/>
 		</list>
 		<list key="orderedElements">
+			<item value="org.eclipse.jst.jsp.core.jspsource.sourcememberJSP/WebContent/member/writeForm.jsp"/>
 		</list>
 		<list key="orderedProviders">
+			<item value="org.eclipse.ui.editors"/>
 		</list>
 		<list key="textArray">
 		</list>

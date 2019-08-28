@@ -17,3 +17,4 @@ select name from member where id = 'a' and pwd = '123';
 select *from member;
 commit;
 drop table member;
+

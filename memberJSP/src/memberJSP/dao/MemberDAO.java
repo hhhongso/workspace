@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import memberJSP.bean.MemberDTO;
+import memberJSP.bean.ZipcodeDTO;
 
 public class MemberDAO {
 	public static MemberDAO instance;
@@ -192,6 +193,81 @@ public class MemberDAO {
 		}				
 		return memberDTO;
 		
+	}
+	
+	public List<ZipcodeDTO> getZipcodeList(String sido, String sigungu, String roadname){
+		List<ZipcodeDTO> list = new ArrayList<ZipcodeDTO>();
+//		String sql = "select zipcode, sido, nvl(sigungu, ' ') as sigungu, yubmyundong, nvl(ri, ' ') as ri, roadname, buildingname from newzipcode where sido like ? and nvl(sigungu, 0) like ? and roadname like ?";		
+		String sql = "select*from newzipcode where sido like ? and nvl(sigungu,' ') like ? and roadname like ?";
+		getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+sido+"%");
+			pstmt.setString(2, "%"+sigungu+"%");
+			pstmt.setString(3, "%"+roadname+"%");
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ZipcodeDTO zipcodeDTO = new ZipcodeDTO();
+				zipcodeDTO.setZipcode(rs.getString("zipcode"));
+				zipcodeDTO.setSido(rs.getString("sido"));				
+				zipcodeDTO.setSigungu(rs.getString("sigungu") == null ? "": rs.getString("sigungu"));
+				zipcodeDTO.setYubmyundong(rs.getString("yubmyundong"));
+				zipcodeDTO.setRi(rs.getString("ri") == null ? "" :rs.getString("ri"));
+				zipcodeDTO.setRoadname(rs.getString("roadname"));
+				zipcodeDTO.setBuildingname(rs.getString("buildingname") == null ? "" :rs.getString("buildingname"));
+				
+				list.add(zipcodeDTO);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			list = null;
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
+		return list;
+	}
+	
+	public int update(MemberDTO memberDTO) {
+		int cnt = 0;
+		String sql = "update member set name=?, pwd=?, gender=?, email1=?, email2=?, tel1=?, tel2=?, tel3=?, "
+				+ "zipcode=?, addr1=?, addr2=?, logtime=sysdate where id =? ";
+		getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memberDTO.getName());
+			pstmt.setString(2, memberDTO.getPwd());
+			pstmt.setString(3, memberDTO.getGender());
+			pstmt.setString(4, memberDTO.getEmail1());
+			pstmt.setString(5, memberDTO.getEmail2());
+			pstmt.setString(6, memberDTO.getTel1());
+			pstmt.setString(7, memberDTO.getTel2());
+			pstmt.setString(8, memberDTO.getTel3());
+			pstmt.setString(9, memberDTO.getZipcode());
+			pstmt.setString(10, memberDTO.getAddr1());
+			pstmt.setString(11, memberDTO.getAddr2());
+			pstmt.setString(12, memberDTO.getId());
+			
+			cnt = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return cnt;		
 	}
 }
