@@ -1,3 +1,4 @@
+<%@page import="board.bean.BoardDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="board.dao.BoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

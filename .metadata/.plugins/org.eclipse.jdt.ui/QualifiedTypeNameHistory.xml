@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="java.awt.Font"/>
 <fullyQualifiedTypeName name="bitProject.cafe.MemberDisp"/>
 <fullyQualifiedTypeName name="bitProject.cafe.dao.MemberDAO"/>
@@ -52,12 +51,13 @@
 <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
-<fullyQualifiedTypeName name="myProject.bean.MemberDTO"/>
 <fullyQualifiedTypeName name="myProject.dao.MemberDAO"/>
 <fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="memberJSP.bean.MemberDTO"/>
-<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="memberJSP.bean.ZipcodeDTO"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="memberJSP.bean.ZipcodeDTO"/>
+<fullyQualifiedTypeName name="board.bean.BoardDTO"/>
+<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="myProject.bean.MemberDTO"/>
 </qualifiedTypeNameHistroy>

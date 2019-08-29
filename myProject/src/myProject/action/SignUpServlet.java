@@ -59,9 +59,9 @@ public class SignUpServlet extends HttpServlet {
 		out.println("<body>");
 		if(cnt == 1) {
 			
-			out.println(cnt + "건 회원가입을 축하합니다! <br>"
-					+ "창을 닫고 로그인 해 주세요.");
+			out.println(cnt + "건 회원가입을 축하합니다!");
 			out.println("<br><br>");
+			out.println("<input type=button value=로그인 onclick=location.href='myproject/signInForm.html'>");
 		}									
 		else out.println("회원가입 실패. 다시 작성해 주세요. ");
 		out.println("</body>");

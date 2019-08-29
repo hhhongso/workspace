@@ -5,7 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name = "writeForm" method = "post" action="/myProject/SignUpServlet">
+<img src="../img/ninini.JPG" onclick="location.href='mainForm.html'" style="cursor:pointer"><abbr title="홈으로 가기"></abbr>
+<form name = "signUpForm" method = "post" action="/myProject/SignUpServlet">
   <h2> 회원가입 </h2>
   <table border = 3 cellspacing = "2" cellpadding = "2">
 	  <tr>
@@ -15,7 +16,11 @@
 	  
 	  <tr>
 	   <th> 아이디 </th>
-	   <td> <input type = "text" name = "id" size = 25 placeholder = "아이디 입력"> </td>
+	   <td> 
+	   	<input type = "text" name = "id" size = 25 placeholder = "아이디 입력">
+	   	<input type = "button" value="중복체크" onclick="checkDuplicate()"> 
+	   	<input type = "hidden" name="idsw"> 
+	   </td>
 	  </tr>
 	  
 	  <tr>

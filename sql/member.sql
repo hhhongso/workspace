@@ -36,9 +36,6 @@ hit NUMBER DEFAULT 0, -- 조회수
 logtime DATE DEFAULT SYSDATE
 );
 
-insert into board (seq, id, name, email, subject, content, ref)
-values (seq_board.nextval, 'dkdlxl', '이름', 'email', '제목', '내용', seq_board.nextVal);
-
 CREATE SEQUENCE seq_board NOCACHE NOCYCLE;
 
 delete from board;

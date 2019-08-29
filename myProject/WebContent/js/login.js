@@ -1,11 +1,11 @@
 	function checkLogin() {
- 		if (document.mainForm.id.value == "") {
+ 		if (document.signInForm.id.value == "") {
  			alert("아이디를 입력해주세요.");
- 			document.mainForm.name.focus();
- 		} else if (document.mainForm.pwd.value == "") {
+ 			document.signInForm.name.focus();
+ 		} else if (document.signInForm.pwd.value == "") {
  			alert("비밀번호를 입력해주세요.");
- 			document.mainForm.pwd.focus();
+ 			document.signInForm.pwd.focus();
  		} else {
- 			document.mainForm.submit();
+ 			document.signInForm.submit();
  		}
  	}

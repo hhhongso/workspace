@@ -32,11 +32,15 @@ public class SignInServlet extends HttpServlet {
 
 		out.println("<html>");
 		out.println("<body>");
+		out.println("<form method=post action='/myProject/myproject/modifyForm.jsp'>");
 		if(name != null) {
-			out.println(name + "님, 환영합니다!");	
+			out.println(name + "님, 환영합니다! <br>");
+			out.println("<input type=hidden name=id value="+ id+ ">");
+			out.println("<input type=submit value=회원정보수정>");
 		} else {
 			out.println("아이디 혹은 비밀번호가 틀렸습니다. ");
 		}
+		out.println("</form>");
 		out.println("</body>");
 		out.println("</html>");
 		
