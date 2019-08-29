@@ -46,30 +46,22 @@ function checkPost() {
 }
 
 function checkPostClose(zipcode, address){
-	opener.document.getElementById("daum_zipcode").value = zipcode;
-	opener.document.getElementById("daum_addr1").value = address;				
-	window.close();
-	opener.document.getElementById("daum_addr2").focus();		
-	
-//	opener.parent.zipcode.value = zipcode;
-//	opener.parent.addr1.value = address;
+	//form을 관리하는 객체:forms[i] 를 이용 
+//	opener.document.forms[0].zipcode.value = zipcode;
+//	opener.document.forms[0].addr1.value = address;
 //	window.close();
-//	opener.parent.addr2.value.focus();
+//	opener.document.forms[0].addr2.value.focus();
 	
-//	if(open.writeForm){
-//		opener.writeForm.zipcode.value = zipcode;
-//		opener.writeForm.addr1.value = address;				
-//		window.close();
-//		opener.writeForm.addr2.focus();		
-//	}
+	//forms가 작동하지 않을 때: getElementById() 로 접근
+//	opener.document.getElementById("daum_zipcode").value = zipcode;
+//	opener.document.getElementById("daum_addr1").value = address;				
+//	window.close();
+//	opener.document.getElementById("daum_addr2").focus();		
 //	
-//	if(open.modifyForm){
-//		opener.modifyForm.zipcode.value = zipcode;
-//		opener.modifyForm.addr1.value = address;		
-//		
-//		window.close();
-//		opener.modifyForm.addr2.focus();
-//	}
+	opener.parent.daum_zipcode.value = zipcode;
+	opener.parent.daum_addr1.value = address;
+	window.close();
+	opener.parent.daum_addr2.value.focus();
 
 }
 
@@ -112,8 +104,7 @@ function telCheck(tel1){
 function checkModify(){
 	if(document.modifyForm.name.value == ""){
 		alert("이름을 입력해 주세요.");
-	}
-	else if(document.modifyForm.pwd.value == ""){
+	} else if(document.modifyForm.pwd.value == ""){
 		alert("수정할 비밀번호를 입력해주세요.");
 	} else if(document.modifyForm.pwd.value != document.modifyForm.repwd.value){
 		alert("비밀번호가 일치하지 않습니다.");

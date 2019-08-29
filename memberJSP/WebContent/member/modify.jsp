@@ -16,8 +16,7 @@
 	memberDTO.setTel3(request.getParameter("tel3"));
 	memberDTO.setZipcode(request.getParameter("zipcode"));
 	memberDTO.setAddr1(request.getParameter("addr1"));
-	memberDTO.setAddr2(request.getParameter("addr2"));
-	
+	memberDTO.setAddr2(request.getParameter("addr2"));	
 
 	int cnt = MemberDAO.getinstance().update(memberDTO);
 	
@@ -29,12 +28,17 @@
 <title>개인정보수정 완료</title>
 </head>
 <body>
-<%if(cnt != 0) { %>
-<%=cnt%> 건 회원 정보 업데이트 완료
-<% } else {%>
-회원정보 업데이트 실패.
-<% }%>
-<% %>
-
 </body>
+<script type="text/javascript">
+window.onload= function(){
+	if(<%=cnt%> == 1) {
+		alert("정보가 수정되었습니다.");
+		location.href = "loginForm.jsp";
+	} else {
+		alert("정보 수정 실패");
+		location.href = "modifyForm.jsp";
+	}
+	
+}
+</script>
 </html>

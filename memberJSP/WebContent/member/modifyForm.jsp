@@ -96,7 +96,7 @@
 	    <input type = "text" id = "daum_zipcode" name = "zipcode" size = 5 value="<%=zipcode%>" readonly> 
 	    <input type = "button" value = "우편번호검색" onclick = "checkPost()"> <br>
 	    <input type = "text" id = "daum_addr1" name = "addr1" size = 40 value="<%=addr1%>" readonly><br>
-	    <input type = "text" id = "daum_addr2" name = "addr2" size = 40 value="<%=addr2%>" readonly>    
+	    <input type = "text" id = "daum_addr2" name = "addr2" size = 40 value="<%=addr2%>">    
 	   </td>   
 	  </tr>  
 	
@@ -104,6 +104,8 @@
 	   
 	   <td colspan = 2 align = "center"> 
 	    <input type = "button" value = "회원정보수정" onclick = "checkModify()">   
+	    <input type = "reset" value = "다시작성">   
+	    <input type = "button" value = "회원탈퇴">   
 	   </td>   
 	  </tr>    
   </table>
