@@ -3,8 +3,8 @@
     pageEncoding="UTF-8"
     import = "memberJSP.dao.MemberDAO"%>
     
-<%
-	String id = request.getParameter("id");
+<% 
+	String id = (String)session.getAttribute("memId");
 	
 	MemberDTO memberDTO = MemberDAO.getinstance().getInfo(id);
 	String name = memberDTO.getName();

@@ -81,7 +81,4 @@
  		opener.signUpForm.pwd.focus();
  	}
  	
- 	function modify(){
- 		window.open("modify.jsp", "width=200px, height=200px, left=1200px, top=500px");
- 	}
- 
+ 	

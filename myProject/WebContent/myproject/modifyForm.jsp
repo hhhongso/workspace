@@ -44,7 +44,7 @@
 	  <tr>
 	   <th> 아이디 </th>
 	   <td> 
-	   	<input type = "text" name = "id" size = 25 value="<%=memberDTO.getId()%>">
+	   	<input type = "text" name = "id" size = 25 value="<%=memberDTO.getId()%>" readonly>
 	   </td>
 	  </tr>
 	  
@@ -108,7 +108,7 @@
 	  <tr>
 	   
 	   <td colspan = 2 align = "center"> 
-	    <input type = "button" value = "회원정보수정" onclick = "modify()">
+	    <input type = "submit" value = "회원정보수정">
 	    <input type = "reset" value = "다시작성">     
 	   </td>   
 	  </tr>    
@@ -117,6 +117,7 @@
 
 </body>
 </body>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="../js/member.js"></script>
 <script>
 window.onload = function (){

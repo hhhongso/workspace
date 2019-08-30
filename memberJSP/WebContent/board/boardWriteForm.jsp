@@ -23,7 +23,7 @@ th{ width: 100px;}
 			
 			<tr>
 				<th>내용</th>
-				<td><textarea class="text" name="content" style="height:200px;"></textarea>
+				<td><textarea class="text" name="content" style="height:200px; overflow:auto;"></textarea>
 			</tr>	
 			
 			<tr>

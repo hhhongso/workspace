@@ -21,15 +21,6 @@ public class BoardDAO {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
-	public static BoardDAO getinstance() {
-		if (instance == null) {
-			synchronized (BoardDAO.class) {
-				instance = new BoardDAO();
-			}
-		}
-		return instance;
-	}
-
 	public BoardDAO() {
 		try {
 			Class.forName(driver);
@@ -46,19 +37,21 @@ public class BoardDAO {
 		}
 	}
 	
-	public int write(BoardDTO boardDTO) {
-		int cnt = 0;
+	public void write(BoardDTO boardDTO) {
 		getConnection();
 		
 		String sql ="insert into board (seq, id, name, email, subject, content, ref) "
-				+ "values (seq_board.nextVal, 'hong', '홍길동', 'hong@gmail.com', ? , ?, seq_board.currVal)";	
-
+				+ "values (seq_board.nextVal, ?, ?, ?, ?, ?, seq_board.currVal)";	
+		//같은 SQL문장 안에서는 nextVal 이 같음. 
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, boardDTO.getSubject());
-			pstmt.setString(2, boardDTO.getContent());
+			pstmt.setString(1, boardDTO.getId());
+			pstmt.setString(2, boardDTO.getName());
+			pstmt.setString(3, boardDTO.getEmail());
+			pstmt.setString(4, boardDTO.getSubject());
+			pstmt.setString(5, boardDTO.getContent());
 			
-			cnt = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally { 
@@ -68,37 +61,62 @@ public class BoardDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}		
-		return cnt;		
+		}			
 	}
 	
-	public List<BoardDTO> getList(){
-		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		String sql = "select*from board";
+	public int getTotArticle() {
+		int totArticle = 0;
+		String sql = "select count(*) as count from board";
 		getConnection();
 		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				totArticle = rs.getInt("count");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return totArticle;
+	}
+	public List<BoardDTO> getList(int startNum, int endNum){
+		List<BoardDTO> list = new ArrayList<BoardDTO>();
+		String sql = "select seq, subject, id, logtime, hit from " + 
+				"(select rownum rn, temp.* from " + 
+				"(select *from board order by seq desc) temp) where rn between ? and ?";
+		getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, startNum);
+			pstmt.setInt(2, endNum);
+			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
 				BoardDTO boardDTO = new BoardDTO();
 				boardDTO.setSeq(rs.getInt("seq"));
-				boardDTO.setId(rs.getString("id"));
-				boardDTO.setName(rs.getString("name"));
-				boardDTO.setEmail(rs.getString("email"));
 				boardDTO.setSubject(rs.getString("subject"));
-				boardDTO.setContent(rs.getString("content"));
-				
-				boardDTO.setRef(rs.getInt("ref"));
-				boardDTO.setLev(rs.getInt("lev"));
-				boardDTO.setStep(rs.getInt("step"));
-				boardDTO.setPseq(rs.getInt("pseq"));
-				boardDTO.setReply(rs.getInt("reply"));
-				
+				boardDTO.setId(rs.getString("id"));
+				boardDTO.setLogtime(rs.getDate("logtime"));
 				boardDTO.setHit(rs.getInt("hit"));
-				boardDTO.setLogtime(rs.getString("logtime"));
-				
+			
+//				boardDTO.setContent(rs.getString("content"));			
+//				boardDTO.setRef(rs.getInt("ref"));
+//				boardDTO.setLev(rs.getInt("lev"));
+//				boardDTO.setStep(rs.getInt("step"));
+//				boardDTO.setPseq(rs.getInt("pseq"));
+//				boardDTO.setReply(rs.getInt("reply"));
+//				
+
 				list.add(boardDTO);
 				
 			}
