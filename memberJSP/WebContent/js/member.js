@@ -25,7 +25,7 @@ function checkId() {
 	if(sId == "") {
 		alert("아이디를 먼저 입력해주세요. ");
 	} else {
-		window.open("http://localhost:8080/memberJSP/member/checkId.jsp?id="+sId, 
+		window.open("../member/checkId.jsp?id="+sId, 
 				"이름 줄게 하나만 뜨렴", "width=350, height= 100 left=1200, top=500, location=no");
 		
 	}
@@ -112,4 +112,5 @@ function checkModify(){
 		document.modifyForm.submit();
 	}
 }
+
 

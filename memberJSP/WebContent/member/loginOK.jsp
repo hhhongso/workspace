@@ -18,7 +18,6 @@ if(arr != null){ //3초 뒤 쿠키는 삭제되니까
 name = (String)session.getAttribute("memName");
 id = (String)session.getAttribute("memId");
 email = (String)session.getAttribute("memEmail");
-System.out.println(email);
 // post 방식
 // request.setCharacterEncoding("UTF-8");
 // String name = (String)request.getSession().getAttribute("name");

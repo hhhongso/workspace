@@ -91,7 +91,7 @@
 </body>
 <!-- <form> 안에 <form>을 중첩할 수 없다 ! -->
 
-<script src = "/memberJSP/js/member.js?ver2" type = "text/javascript"> </script>
+<script src = "../js/member.js?ver2" type = "text/javascript"> </script>
  				<!-- webcontent는 이클립스에서 제공하는 임시 폴더이므로 주소에 포함되지 않는다.  -->
  
 </html>

@@ -20,6 +20,8 @@ public class BoardDAO {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	
+	private int hit;
 
 	public BoardDAO() {
 		try {
@@ -90,9 +92,9 @@ public class BoardDAO {
 	}
 	public List<BoardDTO> getList(int startNum, int endNum){
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
-		String sql = "select seq, subject, id, logtime, hit from " + 
+		String sql = "select * from " + 
 				"(select rownum rn, temp.* from " + 
-				"(select *from board order by seq desc) temp) where rn between ? and ?";
+				"(select *from board order by ref desc, step asc) temp) where rn between ? and ?";
 		getConnection();
 		
 		try {
@@ -104,21 +106,65 @@ public class BoardDAO {
 			while(rs.next()){
 				BoardDTO boardDTO = new BoardDTO();
 				boardDTO.setSeq(rs.getInt("seq"));
-				boardDTO.setSubject(rs.getString("subject"));
 				boardDTO.setId(rs.getString("id"));
-				boardDTO.setLogtime(rs.getDate("logtime"));
-				boardDTO.setHit(rs.getInt("hit"));
+				boardDTO.setName(rs.getString("name"));
+				boardDTO.setEmail(rs.getString("email"));
+				boardDTO.setSubject(rs.getString("subject"));
+				boardDTO.setContent(rs.getString("content"));			
 			
-//				boardDTO.setContent(rs.getString("content"));			
-//				boardDTO.setRef(rs.getInt("ref"));
-//				boardDTO.setLev(rs.getInt("lev"));
-//				boardDTO.setStep(rs.getInt("step"));
-//				boardDTO.setPseq(rs.getInt("pseq"));
-//				boardDTO.setReply(rs.getInt("reply"));
-//				
+				boardDTO.setRef(rs.getInt("ref"));
+				boardDTO.setLev(rs.getInt("lev"));
+				boardDTO.setStep(rs.getInt("step"));
+				boardDTO.setPseq(rs.getInt("pseq"));
+				boardDTO.setReply(rs.getInt("reply"));
+
+				boardDTO.setHit(rs.getInt("hit"));
+				boardDTO.setLogtime(rs.getDate("logtime"));
 
 				list.add(boardDTO);
 				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			list = null;
+		} finally { 
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}	
+		return list;
+	}
+	
+	public BoardDTO getBoardView(int seq) {
+		BoardDTO boardDTO = null;
+		String sql ="select*from board where seq =?";
+		getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, seq);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				boardDTO = new BoardDTO();
+				boardDTO.setSeq(rs.getInt("seq"));
+				boardDTO.setId(rs.getString("id"));
+				boardDTO.setName(rs.getString("name"));
+				boardDTO.setEmail(rs.getString("email"));
+				boardDTO.setSubject(rs.getString("subject"));
+				boardDTO.setContent(rs.getString("content"));			
+			
+				boardDTO.setRef(rs.getInt("ref"));
+				boardDTO.setLev(rs.getInt("lev"));
+				boardDTO.setStep(rs.getInt("step"));
+				boardDTO.setPseq(rs.getInt("pseq"));
+				boardDTO.setReply(rs.getInt("reply"));
+			
+				boardDTO.setHit(rs.getInt("hit"));
+				boardDTO.setLogtime(rs.getDate("logtime"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,7 +176,26 @@ public class BoardDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}	
-		return list;
+		}
+		return boardDTO;
+	}
+	
+	public void updateHit(int seq) {
+		String sql = "update board set hit=hit+1 where seq =?";
+		getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, seq);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally { 
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

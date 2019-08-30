@@ -38,6 +38,13 @@ logtime DATE DEFAULT SYSDATE
 
 CREATE SEQUENCE seq_board NOCACHE NOCYCLE;
 
-delete from board;
+delete from board where email is null;
 commit;
-select*from board;
+select *from board order by ref desc, step asc;
+ 
+select count(*) as count from board;
+
+select seq, subject, id, logtime, hit from 
+(select rownum rn, temp.* from 
+(select *from board order by ref desc, step asc) temp) 
+where rn between 1 and 5 ;
