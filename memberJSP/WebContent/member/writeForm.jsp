@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,9 +7,9 @@
 <title> 회원가입 </title>
 </head>
 <body>
- <form name = "writeForm">
-  <label> <font size = 100><strong>회원가입</strong></font></label>
-  <table border = 3>
+ <form name = "writeForm" method = "post" action = "write.jsp">
+  <h2> 회원가입 </h2>
+  <table border = 3 cellspacing = "2" cellpadding = "2">
 	  <tr>
 	   <th width = 120> 이름  </th>
 	   <td> <input type = "text" id = "irum" name = "name" size = 20 placeholder = "이름 입력"> </td>
@@ -15,7 +17,11 @@
 	  
 	  <tr>
 	   <th> 아이디 </th>
-	   <td> <input type = "text" name = "id" size = 25 placeholder = "아이디 입력"> </td>
+	   <td> 
+	   	<input type = "text" name = "id" size = 25 placeholder = "아이디 입력"> 
+	   	<input type = "button"  value = "중복체크" onclick = "checkId();"> 
+	   	<input type = "hidden" name = "sw" value = "">
+	   </td>
 	  </tr>
 	  
 	  <tr>
@@ -31,8 +37,8 @@
 	  <tr>
 	   <th> 성별  </th>
 	   <td> 
-	    <input type = "radio" name = "gender" value = "여성" checked = "checked"> 여성
-	    <input type = "radio" name = "gender" value = "남성"> 남성
+	    <input type = "radio" name = "gender" value = "0" checked = "checked"> 여성
+	    <input type = "radio" name = "gender" value = "1"> 남성
 	   </td>   
 	  </tr>
 	
@@ -66,36 +72,26 @@
 	  <tr>
 	   <th> 주소  </th>
 	   <td> 
-	    <input type = "text" name = "zipcode" size = 5> <input type = "button" value = "우편번호검색"> <br>
-	    <input type = "text" name = "addr1" size = 40 placeholder = "주소 "><br>
-	    <input type = "text" name = "addr2" size = 40 placeholder = "상세 주소 ">    
+	    <input type = "text" id = "daum_zipcode" name = "zipcode" size = 5 readonly> 
+	    <input type = "button" value = "우편번호검색" onclick = "checkPost()"> <br>
+	    <input type = "text" id = "daum_addr1" name = "addr1" size = 40 placeholder = "주소 " readonly><br>
+	    <input type = "text" id = "daum_addr2" name = "addr2" size = 40 placeholder = "상세 주소 ">    
 	   </td>   
 	  </tr>  
 	
 	  <tr>
 	   
 	   <td colspan = 2 align = "center"> 
-	    <input type = "button" value = "회원가입" onclick = "javascript:checkWrite()">
+	    <input type = "button" name ="sign" value = "회원가입" onclick = "checkWrite()">
 	    <input type = "reset" value = "다시작성">     
 	   </td>   
 	  </tr>    
   </table>
  </form>
 </body>
- <script>
- 	function checkWrite(){		
- 		if(document.getElementById("irum").value == "") {
- 			alert("이름을 입력하세요");
- 			document.writeForm.name.focus();
- 		} else if(document.writeForm.id.vale == ""){
- 			alert("아이디를 입력하세요");
- 			document.writeForm.id.focus();	
- 		} else if(document.writeForm.pwd.vale == ""){
- 			alert("패스워드를 입력하세요");
- 			document.writeForm.pwd.focus();
- 		}
- 		
- 	}
- </script>
+<!-- <form> 안에 <form>을 중첩할 수 없다 ! -->
+
+<script src = "../js/member.js?ver2" type = "text/javascript"> </script>
+ 				<!-- webcontent는 이클립스에서 제공하는 임시 폴더이므로 주소에 포함되지 않는다.  -->
  
 </html>
