@@ -1,3 +1,5 @@
+<%@page import="board.bean.BoardPaging"%>
+<%@page import="memberJSP.bean.MemberDTO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="board.bean.BoardDTO"%>
@@ -6,17 +8,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:useBean id="boardDAO" class="board.dao.BoardDAO"></jsp:useBean>
-<% %>
+
 <%
 	//1페이지당 5개씩.
 	int pg = Integer.parseInt(request.getParameter("pg"));
 	int endNum = pg * 5;
 	int startNum = endNum - 4;
-	int totArticle = boardDAO.getTotArticle();
-	int totPg = (totArticle + 4) / 5;
 	List<BoardDTO> list = boardDAO.getList(startNum, endNum);
-
+	
+	BoardPaging boardPaging = new BoardPaging();
+	int totalArticle = boardDAO.getTotArticle();
+	boardPaging.setCurrentPage(pg);
+	boardPaging.setPageBlock(3);
+	boardPaging.setPageSize(5);
+	boardPaging.setTotalArticle(totalArticle);	
+	boardPaging.makePagingHTML();
 	SimpleDateFormat sdf = new SimpleDateFormat("YYYY.MM.dd");
+	
+	Cookie[] arr = request.getCookies();
+	if(arr !=null) {
+		for(int i =0; i < arr.length; i++){
+			if(arr[i].getName().equals("board")){
+				arr[i].setMaxAge(0); //쿠키 삭제
+				response.addCookie(arr[i]);				
+			}
+		}
+	}
 %>
 
 <!DOCTYPE html>
@@ -24,35 +41,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="">
-a:link{ color: black; text-decoration:none; font-weight:bold;}
-a.currPg{
-	color:red;
-	text-decoration:underline;
-}
-a.subject{
- 	cursor:pointer; 
-}
-a.subject:hover{
-	color:green;
-	text-decoration: underline;
-}
-table{
-	width: 100%;
-/* 	border-top: 1px solid;
-	border-collapse: collapse; */
-	text-align: center;
-}
-
-th, td{
-	border-bottom:1px solid;
-	padding: 10px;
-}
-
-td.subject{
-	text-align:left;
-}
-</style>
+<link rel="stylesheet" href="../css/board.css">
 </head>
 <body>
 	<form name ="boardListForm" action="">
@@ -70,7 +59,8 @@ td.subject{
 			<tr>
 				<td width=100px><%=boardDTO.getSeq()%></td>
 				
-				<td width=200px class= subject><a class="subject" onclick="isLogin('<%=(String)session.getAttribute("memId")%>', <%=boardDTO.getSeq()%>)"><%=boardDTO.getSubject()%></a></td>
+				<td width=200px class= subject>
+				<a href="javascript:void(0)" class="subject" onclick="isLogin('<%=(MemberDTO)session.getAttribute("memDTO")%>', <%=boardDTO.getSeq()%>, <%=pg%>)"><%=boardDTO.getSubject()%></a></td>
 				<td width=100px><%=boardDTO.getId()%></td>
 				<td width=100px><%=sdf.format(boardDTO.getLogtime())%> </td>
 				<td width=100px><%=boardDTO.getHit()%> </td>
@@ -79,16 +69,10 @@ td.subject{
 		</table>
 	<% } %>
 		
-		<%for(int i = 1; i <= totPg; i++) { %>
-			<%if(i == pg){ %>
-			<a class="currPg" href="boardList.jsp?pg=<%=i%>">[ <%=i%> ]</a>
-			<%} else { %>
-			<a href="boardList.jsp?pg=<%=i%>">[ <%=i%> ]</a>
-			<%} %>
-		<%} %>
-		<br>
-		<img src="../image/ni.PNG" width=80 height=80 onclick ="location.href='../main/index.jsp'" style= "cursor:pointer;">메인으로 가기<br>
+		<div style="float:left; "><img src="../image/ninini.JPG" width=120 height=100 onclick ="location.href='../main/index.jsp'" style= "cursor:pointer;"></div>
+		<div style="float:left; width: 80%; text-align: center; "> <%=boardPaging.getPagingHTML()%></div>
 	</form>
 </body>
 <script src = "../js/board.js"></script>
+
 </html>

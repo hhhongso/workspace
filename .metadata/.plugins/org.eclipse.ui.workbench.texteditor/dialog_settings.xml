@@ -2,27 +2,27 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="" key="selection"/>
+		<item value="System." key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="system."/>
+			<item value="coo"/>
+			<item value="update"/>
+			<item value="modify"/>
+			<item value="getboa"/>
+			<item value="getboard"/>
+			<item value="get"/>
+			<item value="islog"/>
+			<item value="pre"/>
+			<item value="select"/>
+			<item value="islogin"/>
+			<item value="getinfo"/>
+			<item value="getmember"/>
 			<item value="src"/>
 			<item value="checkpost"/>
-			<item value="return"/>
-			<item value="dup"/>
-			<item value="gender"/>
-			<item value="list"/>
-			<item value="confirm"/>
-			<item value="insert"/>
-			<item value="subseq"/>
-			<item value="_temp"/>
-			<item value="insert_t"/>
-			<item value="insert_t&apos;"/>
-			<item value="insert_sales"/>
-			<item value="delete"/>
-			<item value="inwert"/>
 		</list>
 		<list key="replacehistory">
 			<item value="sex"/>

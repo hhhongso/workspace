@@ -22,7 +22,7 @@ email = (String)session.getAttribute("memEmail");
 // request.setCharacterEncoding("UTF-8");
 // String name = (String)request.getSession().getAttribute("name");
 %>
-<img src="../image/ni.PNG" width=80 height=80 onclick ="location.href='../main/index.jsp'" style= "cursor:pointer;">
+<img src="../image/clap.gif" width=200 height=200 onclick ="location.href='../main/index.jsp'" style= "cursor:pointer;"><br>
 <%=name%> 님 로그인 
 <br><br>
 <input type = "button" value = "로그아웃" onclick="location.href='logout.jsp'">

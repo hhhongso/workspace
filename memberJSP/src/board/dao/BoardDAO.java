@@ -1,51 +1,44 @@
 package board.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import board.bean.BoardDTO;
 
 public class BoardDAO {
 	public static BoardDAO instance;
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "java";
-	private String password = "dkdlxl";
+	private DataSource ds;
 
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	private int hit;
-
 	public BoardDAO() {
 		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
+			Context ctx = new InitialContext();
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
+		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public void getConnection() {
-		try {
-			conn = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public void write(BoardDTO boardDTO) {
-		getConnection();
 		
 		String sql ="insert into board (seq, id, name, email, subject, content, ref) "
 				+ "values (seq_board.nextVal, ?, ?, ?, ?, ?, seq_board.currVal)";	
 		//같은 SQL문장 안에서는 nextVal 이 같음. 
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, boardDTO.getId());
 			pstmt.setString(2, boardDTO.getName());
@@ -69,9 +62,9 @@ public class BoardDAO {
 	public int getTotArticle() {
 		int totArticle = 0;
 		String sql = "select count(*) as count from board";
-		getConnection();
 		
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -95,9 +88,9 @@ public class BoardDAO {
 		String sql = "select * from " + 
 				"(select rownum rn, temp.* from " + 
 				"(select *from board order by ref desc, step asc) temp) where rn between ? and ?";
-		getConnection();
 		
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, startNum);
 			pstmt.setInt(2, endNum);
@@ -142,8 +135,9 @@ public class BoardDAO {
 	public BoardDTO getBoardView(int seq) {
 		BoardDTO boardDTO = null;
 		String sql ="select*from board where seq =?";
-		getConnection();
+	
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, seq);
 			rs = pstmt.executeQuery();
@@ -182,8 +176,9 @@ public class BoardDAO {
 	
 	public void updateHit(int seq) {
 		String sql = "update board set hit=hit+1 where seq =?";
-		getConnection();
+		
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, seq);
 			pstmt.executeUpdate();
@@ -197,5 +192,28 @@ public class BoardDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void updateBoard(String subject, String content, int seq) {
+		String sql = "update board set subject = ?, content = ? where seq = ?";
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, subject);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, seq);
+			
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 }

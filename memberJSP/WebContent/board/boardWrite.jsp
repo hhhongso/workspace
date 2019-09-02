@@ -34,9 +34,9 @@
 	<script>
 		window.onload = function() {
 			alert("글쓰기 성공!");
+			location.href="boardList.jsp?pg=1";
 		}
 	</script>
-	<img src="../image/ninini.JPG" onclick="location.href='../board/boardList.jsp?pg=1'" style="cursor:pointer"><br>
-	게시글을 작성 하였습니다. 
+
 </body>
 </html>

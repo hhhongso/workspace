@@ -10,7 +10,7 @@
 </head>
 <body>
 <h3> *** 메인 화면 ***</h3>
-<a href="#" style="cursor:pointer;"><abbr title="타이틀"> <img src="../image/nini.gif"></abbr></a><br>
+<a href="#" style="cursor:pointer;"><abbr title="타이틀"> <img src="../image/main.gif"></abbr></a><br>
 <%if(id == null) { %>
 	<a href="../member/writeForm.jsp"> 회원가입 </a> <br>
 	<a href="../member/loginForm.jsp"> 로그인 </a> <br>

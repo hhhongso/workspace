@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,12 +20,12 @@ th{ width: 100px;}
 		<table border="10">
 			<tr>
 				<th>제목</th>
-				<td><input type="text" class="text" name="subject" size="20"></td>
+				<td><input type="text" class="text" id ="subject" name="subject" size="20"></td>
 			</tr>
 			
 			<tr>
 				<th>내용</th>
-				<td><textarea class="text" name="content" style="height:200px; overflow:auto;"></textarea>
+				<td><textarea class="text" id="content" name="content" style="height:200px; overflow:auto;"></textarea>
 			</tr>	
 			
 			<tr>

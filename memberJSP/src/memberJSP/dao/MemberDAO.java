@@ -1,23 +1,24 @@
 package memberJSP.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 import memberJSP.bean.MemberDTO;
 import memberJSP.bean.ZipcodeDTO;
 
 public class MemberDAO {
 	public static MemberDAO instance;
-	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "java";
-	private String password = "dkdlxl";
-
+	private DataSource ds;
+	
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -33,26 +34,20 @@ public class MemberDAO {
 
 	public MemberDAO() {
 		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
+			Context ctx = new InitialContext();// Context는 인터페이스.
+			//NamingService: 이름으로 서비스 제공. 
+			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle"); // Tomcat의 경우 java:comp/env/ 까지 붙여주어야 함. 
+		} catch (NamingException e) {
 			e.printStackTrace();
-		}
-	}
-
-	public void getConnection() {
-		try {
-			conn = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public int insert(MemberDTO memberDTO) {
-		getConnection();
 		int cnt = 0;
 		String sql = "insert into member values (?,?,?,?,?,?,?,?,?,?,?,?,sysdate)";
 
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getName());
 			pstmt.setString(2, memberDTO.getId());
@@ -87,9 +82,9 @@ public class MemberDAO {
 	public boolean isDuplicate(String id) {
 		boolean isDup = false;
 		String sql = "select * from member where id = ?";
-		getConnection();
 
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 
@@ -116,9 +111,9 @@ public class MemberDAO {
 	public MemberDTO isLogin(String id, String pwd) {
 		MemberDTO memberDTO = null;
 		String sql = "select * from member where id = ? and pwd = ?";
-		getConnection();
 		
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);		
 			pstmt.setString(1, id);
 			pstmt.setString(2, pwd);
@@ -148,8 +143,9 @@ public class MemberDAO {
 	public MemberDTO getInfo(String id) {
 		MemberDTO memberDTO = new MemberDTO();
 		String sql = "select * from member where id = ?";
-		getConnection();
+		
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);		
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -198,8 +194,9 @@ public class MemberDAO {
 		List<ZipcodeDTO> list = new ArrayList<ZipcodeDTO>();
 //		String sql = "select zipcode, sido, nvl(sigungu, ' ') as sigungu, yubmyundong, nvl(ri, ' ') as ri, roadname, buildingname from newzipcode where sido like ? and nvl(sigungu, 0) like ? and roadname like ?";		
 		String sql = "select*from newzipcode where sido like ? and nvl(sigungu,' ') like ? and roadname like ?";
-		getConnection();
+		
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+sido+"%");
 			pstmt.setString(2, "%"+sigungu+"%");
@@ -238,9 +235,9 @@ public class MemberDAO {
 		int cnt = 0;
 		String sql = "update member set name=?, pwd=?, gender=?, email1=?, email2=?, tel1=?, tel2=?, tel3=?, "
 				+ "zipcode=?, addr1=?, addr2=?, logtime=sysdate where id =? ";
-		getConnection();
 		
 		try {
+			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memberDTO.getName());
 			pstmt.setString(2, memberDTO.getPwd());

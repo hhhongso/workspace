@@ -5,15 +5,14 @@
     import ="memberJSP.dao.MemberDAO"
     import = "memberJSP.bean.MemberDTO"%>
 
-<jsp:useBean id="memberDTO" class="memberJSP.bean.MemberDTO"/>
-<jsp:setProperty property="id" name="memberDTO"/>
-<jsp:setProperty property="pwd" name="memberDTO"/>
-<% memberDTO = MemberDAO.getinstance().isLogin(memberDTO.getId(), memberDTO.getPwd());%>
+<% 
+String id = request.getParameter("id");
+String pwd = request.getParameter("pwd");
+
+MemberDTO memberDTO = MemberDAO.getinstance().isLogin(id, pwd);
+
+%>
 <!--  Map<String, String> 에 key, value 값을 받아올 수도 있음. -->
-<jsp:getProperty property="id" name="memberDTO"/>
-<jsp:getProperty property="name" name="memberDTO"/>
-<jsp:getProperty property="email1" name="memberDTO"/>
-<jsp:getProperty property="email2" name="memberDTO"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,10 +21,8 @@
 </head>
 <body>
 <form method="post" action="modifyForm.jsp">
-<input type = "hidden" name ="id" value="<%=memberDTO.getId()%>">
-<%	
-	request.setCharacterEncoding("UTF-8");
-	if(memberDTO != null) { 
+<input type = "hidden" name ="id" value="<%=id%>">
+<%	if(memberDTO != null) { 
 	//1. get방식: 주소에 값을 태워보낼 때, 한글: UTF-8 으로 인코딩 해주어야 한다. 
 		//response.sendRedirect("loginOK.jsp?name="+URLEncoder.encode(memberDTO.getName(), "UTF-8"));
 		
@@ -44,12 +41,12 @@
 		session.setAttribute("memName", memberDTO.getName());
 		session.setAttribute("memId", memberDTO.getId());
 		session.setAttribute("memEmail", memberDTO.getEmail1()+"@"+memberDTO.getEmail2());
-		
 		session.setAttribute("memDTO", memberDTO); //DTO객체의 모든 값을 담기
+		
 		response.sendRedirect("loginOK.jsp");
 //		request.getSession().setAttribute("id", memberDTO.getId());
 //		request.getSession().setAttribute("name", memberDTO.getName());
-	} else { 
+	} else {
 		response.sendRedirect("loginFail.jsp");
 	}
 %>

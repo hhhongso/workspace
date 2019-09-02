@@ -149,7 +149,10 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="C:\java_ee\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\java_ee\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\memberJSP" path="/memberJSP" reloadable="true" source="org.eclipse.jst.jee.server:memberJSP"/><Context docBase="C:\java_ee\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\myProject" path="/myProject" reloadable="true" source="org.eclipse.jst.jee.server:myProject"/></Host>
+      <Context docBase="C:\java_ee\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\java_ee\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\memberJSP" path="/memberJSP" reloadable="true" source="org.eclipse.jst.jee.server:memberJSP">
+ <Resource driverClassName="oracle.jdbc.driver.OracleDriver" maxActive="20" maxIdle="3" name="jdbc/oracle" password="dkdlxl" removeAbandoned="true" type="javax.sql.DataSource" url="jdbc:oracle:thin:@localhost:1521:xe" username="java"/>
+ 
+ </Context><Context docBase="C:\java_ee\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\myProject" path="/myProject" reloadable="true" source="org.eclipse.jst.jee.server:myProject"/></Host>
     </Engine>
   </Service>
 </Server>
