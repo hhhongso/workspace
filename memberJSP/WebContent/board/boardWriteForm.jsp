@@ -30,7 +30,7 @@ th{ width: 100px;}
 			
 			<tr>
 				<td colspan=2 align="center">
-					<input type="button" value="글쓰기" onclick="checkBoardWrite()">
+					<input type="button" value="글쓰기" onclick="checkBoard()">
 					<input type="reset" value="다시작성">
 				</td>
 			</tr>

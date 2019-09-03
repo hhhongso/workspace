@@ -25,15 +25,14 @@
 	boardPaging.makePagingHTML();
 	SimpleDateFormat sdf = new SimpleDateFormat("YYYY.MM.dd");
 	
-	Cookie[] arr = request.getCookies();
-	if(arr !=null) {
-		for(int i =0; i < arr.length; i++){
-			if(arr[i].getName().equals("board")){
-				arr[i].setMaxAge(0); //쿠키 삭제
-				response.addCookie(arr[i]);				
-			}
-		}
+	//조회수: 새로고침 방지 
+	if(session.getAttribute("memId") != null){
+		Cookie cookie = new Cookie("memHit", "0");
+		cookie.setMaxAge(30*60);
+		response.addCookie(cookie);
+		
 	}
+	
 %>
 
 <!DOCTYPE html>

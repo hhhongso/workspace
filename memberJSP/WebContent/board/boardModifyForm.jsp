@@ -22,7 +22,9 @@ th{ width: 100px;}
 </head>
 <body>
 <%if(boardDTO != null){ %>
-	<form name="boardModifyForm" id="boardModifyForm" method="post" action="boardModify.jsp?seq=<%=boardDTO.getSeq()%>">
+	<form name="boardModifyForm" method="post" action="boardModify.jsp">
+	<input type="hidden" name="seq" value="<%=seq%>">
+	<input type="hidden" name="pg" value="<%=pg%>">
 		<h3> 글수정 </h3>
 		<table border="10">
 			<tr>
@@ -37,7 +39,7 @@ th{ width: 100px;}
 			
 			<tr>
 				<td colspan=2 align="center">
-					<input type="button" value="글쓰기" onclick="checkBoardWrite()">
+					<input type="button" value="글수정" onclick="checkBoard()">
 					<input type="reset" value="다시작성">
 				</td>
 			</tr>
