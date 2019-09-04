@@ -8,7 +8,7 @@
 //실제폴더위치 
 String realFolder = request.getServletContext().getRealPath("/storage");
 
-//업로드: 가상폴더로는 들어오지 않음					//받을 데이터,		주소,	최대용량(byte), 인코딩, 같은 이름의 파일에 rename
+//업로드: 가상폴더로는 들어오지 않음				//받을 데이터, 주소, 최대용량(byte), 인코딩, 같은 이름의 파일에 rename
 MultipartRequest multi = new MultipartRequest(request, realFolder, 5*1024*1024, "UTF-8", 
 											new DefaultFileRenamePolicy());  
 
