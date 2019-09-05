@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form name="loginForm" method="post" action="login.jsp">
+<form name="loginForm" method="post" action="/mvcMember/member/login.do">
 		<table class="tab" border=3>
 			<tr>
 				<th class="idtab">아이디</th>

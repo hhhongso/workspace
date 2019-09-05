@@ -2,7 +2,9 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="memberJSP.dao.MemberDAO"%>
-
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix= "c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -53,29 +55,25 @@ th, td, select {
 				<th>도로명</th>
 				<td colspan=3><input type="text" name="roadname" size=20>
 					<input type="submit" value="검색"></td>
-
 			</tr>
 
 			<tr>
 				<th>우편번호</th>
 				<td colspan=3 align="center">주소</td>
-
 			</tr>
-		<c:forEach></c:forEach>	
-			<%for(ZipcodeDTO zipcodeDTO : list) { 
-				String zipcode=zipcodeDTO.getZipcode();				
-				String address = zipcodeDTO.getSido() + " " + zipcodeDTO.getSigungu()+ " "
-						+ zipcodeDTO.getYubmyundong() + " " + zipcodeDTO.getRi()+ " "
-						+ zipcodeDTO.getRoadname() + " " + zipcodeDTO.getBuildingname();%>
+			
+		<c:if test="${requestScope.list !=null }">
+			<c:forEach var="zipcodeDTO" items="${requestScope.list }">
+				<c:set var="address" value="${zipcodeDTO.sido} ${zipcodeDTO.sigungu} ${zipcodeDTO.yubmyundong} ${zipcodeDTO.ri} ${zipcodeDTO.roadname} ${zipcodeDTO.buildingname}"/>
 				<tr>
-					<td align ="center"> <%=zipcode%></td>
+					<td align ="center"> ${zipcodeDTO.zipcode}</td>
 					<td colspan = 3> 
-					<a id="addressA" href = "#" onclick ="checkPostClose('<%=zipcode%>', '<%=address%>')"> 
-					<%=address%></a></td>
+					<a id="addressA" href = "#" onclick ="checkPostClose('${zipcodeDTO.zipcode}', '${address}')"> 
+					 ${address }</a></td>
 				</tr> 
+			</c:forEach>
+		</c:if>
 				
-			<% } %>
-		<% } %>
 		</table>
 	</form>
 </body>

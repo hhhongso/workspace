@@ -25,7 +25,7 @@ function checkId() {
 	if(sId == "") {
 		alert("아이디를 먼저 입력해주세요. ");
 	} else {
-		window.open("../member/checkId.jsp?id="+sId, 
+		window.open("/mvcMember/member/checkId.do?id="+sId, 
 				"이름 줄게 하나만 뜨렴", "width=350, height= 100 left=1200, top=500, location=no");
 		
 	}
@@ -41,7 +41,7 @@ function checkIdClose(id){
 }
 
 function checkPost() {
-	window.open("checkPost.jsp", "", "width=500, height=500 left=1200, top=500 scrollbars=yes");
+	window.open("/mvcMember/member/checkPost.do", "", "width=500, height=500 left=1200, top=500 scrollbars=yes");
 				//여기 인자를 주면	여기는 주면 안된다. (반대도 성립) 
 }
 
