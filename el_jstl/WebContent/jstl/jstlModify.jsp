@@ -7,9 +7,9 @@
 <fmt:requestEncoding value= "UTF-8"/>
 <sql:update var="cnt" dataSource="jdbc/oracle">
 	update usertable set name= ?, pwd= ? where id =?
-	<sql:param value="${param.name }"></sql:param>
-	<sql:param value="${param.pwd }"></sql:param>
-	<sql:param value="${param.id }"></sql:param>
+	<sql:param value="${param.name }"/>
+	<sql:param value="${param.pwd }"/>
+	<sql:param value="${param.id }"/>
 </sql:update>
 
 <!DOCTYPE html>

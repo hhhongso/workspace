@@ -17,6 +17,7 @@ select name from member where id = 'a' and pwd = '123';
 select *from member;
 commit;
 drop table member;
+select *from member;
 
 CREATE TABLE board(
 seq NUMBER NOT NULL, -- ±Û¹øÈ£

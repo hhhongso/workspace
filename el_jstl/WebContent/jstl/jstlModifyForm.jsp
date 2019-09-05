@@ -20,23 +20,23 @@
 
 <form name = "modifyForm" method = "post" action="jstlModify.jsp">
   <h2> 회원정보수정 </h2>
-  <c:forEach var="row" items="${rs.rowsByIndex}">
+  <c:forEach var="row" items="${rs.rows}">
   <table border = 3 cellspacing = "2" cellpadding = "2">
 	  <tr>
 	   <th width = 120> 이름  </th>
-	   <td> <input type = "text" name = "name" size = 20 value="${row[0]}"> </td>
+	   <td> <input type = "text" name = "name" size = 20 value="${row.name}"> </td>
 	  </tr>
 	  
 	  <tr>
 	   <th> 아이디 </th>
 	   <td> 
-	   	<input type = "text" name = "id" size = 25 value="${row[1]}" readonly>
+	   	<input type = "text" name = "id" size = 25 value="${row.id}" readonly>
 	   </td>
 	  </tr>
 	  
 	  <tr>
 	   <th> 비밀번호  </th>
-	   <td> <input type = "password" name = "pwd" size = 30> </td>
+	   <td> <input type = "password" name = "pwd" size = 30 value="${row.pwd}"> </td>
 	  </tr>
 	  
 	  <tr>

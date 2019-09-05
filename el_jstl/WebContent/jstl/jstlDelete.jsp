@@ -21,9 +21,8 @@
 </body>
 <script>
 window.onload = function(){
-	alert("삭제완료");
+	alert("삭제되었습니다. ");
 	location.href="jstlList.jsp";
 }
 </script>
-
 </html>
