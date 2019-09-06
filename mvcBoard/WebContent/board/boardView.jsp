@@ -3,20 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<%-- <%
-//조회수: 새로고침 방지 
-Cookie[] arr = request.getCookies();
-if(arr !=null) {	
-	for(int i =0; i < arr.length; i++){
-		if(arr[i].getName().equals("memHit")){
-			boardDAO.updateHit();
-			arr[i].setMaxAge(0);
-			response.addCookie(arr[i]);
-		}
-	}
-}
-
-%> --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,25 +29,20 @@ if(arr !=null) {
 			<tr>
 				<td>글번호: ${boardDTO.seq }</td>
 				<td>작성자: ${boardDTO.name }</td>
-				<td>조회수: ${boardDTO.hit }%></td>
+				<td>조회수: ${boardDTO.hit }</td>
 			</tr>
 			<tr>
-				<td class="content" colspan = 3 valign="top"> ${boardDTO.content }%>
+				<td class="content" colspan = 3 valign="top"> ${boardDTO.content }
 				</td>
 			</tr>		
 		</table>
 		<input type="button" value="글수정" onclick="location.href='/mvcBoard/board/boardModifyForm.do?seq=${boardDTO.seq }&pg=${pg }'">
-		<input type="button" value="글삭제" onclick="">
+		<input type="button" value="글삭제" onclick="delConfirm(${boardDTO.seq})">
 		<input type="button" value="목록으로" onclick="location.href='/mvcBoard/board/boardList.do?pg=${pg }'"> <br>
 		
 	</form>
 </c:if>
 </body>
-<script>
-window.onload = function(){
-
-	
-		
-}
+<script src="../js/board.js">
 </script>
 </html>

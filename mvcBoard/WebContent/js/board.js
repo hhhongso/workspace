@@ -12,3 +12,9 @@ function isLogin(id, seq, pg){
 		location.href="/mvcBoard/board/boardView.do?seq="+seq+"&pg="+pg;
 	}
 }
+
+function delConfirm(seq){
+	if(confirm("정말 삭제하시겠습니까?")) location.href="/mvcBoard/board/boardDelete.do?seq="+seq;
+	else location.href="javascript:void(0)";
+	
+}

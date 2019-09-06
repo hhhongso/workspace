@@ -5,12 +5,10 @@ import lombok.Data;
 @Data
 public class BoardPaging {
 	private int currentPage;
-	private int pageBlock; // pageBlock = 3 {[1][2][3]} 
-	private int pageSize; //1페이지 당 5개씩 
+	private int pageBlock; 
+	private int pageSize;
 	private int totalArticle;
 	private StringBuffer pagingHTML;
-	//String: 한 번 만들어진 문자열은 편집 불가.
-	//==>  StringBuffer.append() or StringBuilder 사용 !
 	
 	public void makePagingHTML() {
 		pagingHTML = new StringBuffer();
