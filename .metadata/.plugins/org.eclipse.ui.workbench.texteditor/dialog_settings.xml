@@ -2,59 +2,28 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-<<<<<<< HEAD
-		<item value="System." key="selection"/>
-=======
-		<item value="gender" key="selection"/>
->>>>>>> 0bc7921c9b22101a763c0d29fe492b24989a15e7
+		<item value="checkId" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-<<<<<<< HEAD
-			<item value="system."/>
-			<item value="coo"/>
+			<item value="checkid"/>
+			<item value="checkidf"/>
 			<item value="update"/>
-			<item value="modify"/>
-			<item value="getboa"/>
-			<item value="getboard"/>
-			<item value="get"/>
-			<item value="islog"/>
-			<item value="pre"/>
-			<item value="select"/>
-			<item value="islogin"/>
-			<item value="getinfo"/>
-			<item value="getmember"/>
-			<item value="src"/>
-			<item value="checkpost"/>
-=======
-			<item value="gender"/>
-			<item value="list"/>
-			<item value="confirm"/>
-			<item value="insert"/>
-			<item value="subseq"/>
-			<item value="_temp"/>
-			<item value="insert_t"/>
-			<item value="insert_t&apos;"/>
-			<item value="insert_sales"/>
-			<item value="delete"/>
-			<item value="inwert"/>
-			<item value="get_from"/>
-			<item value="status."/>
-			<item value="respon"/>
-			<item value="temp"/>
->>>>>>> 0bc7921c9b22101a763c0d29fe492b24989a15e7
+			<item value="action`"/>
+			<item value="action"/>
+			<item value="system."/>
+			<item value="sys"/>
 		</list>
 		<list key="replacehistory">
-			<item value="sex"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="288" key="DIALOG_WIDTH"/>
 		<item value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕" key="DIALOG_FONT_NAME"/>
 		<item value="391" key="DIALOG_HEIGHT"/>
-		<item value="1590" key="DIALOG_X_ORIGIN"/>
-		<item value="344" key="DIALOG_Y_ORIGIN"/>
+		<item value="1477" key="DIALOG_X_ORIGIN"/>
+		<item value="165" key="DIALOG_Y_ORIGIN"/>
 	</section>
 </section>

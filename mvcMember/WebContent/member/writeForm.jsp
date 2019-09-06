@@ -7,7 +7,7 @@
 <title> 회원가입 </title>
 </head>
 <body>
- <form name = "writeForm" method = "post" action = "write.jsp">
+ <form name = "writeForm" method = "post" action = "/mvcMember/member/write.do">
   <h2> 회원가입 </h2>
   <table border = 3 cellspacing = "2" cellpadding = "2">
 	  <tr>
@@ -91,7 +91,5 @@
 </body>
 <!-- <form> 안에 <form>을 중첩할 수 없다 ! -->
 
-<script src = "../js/member.js?ver2" type = "text/javascript"> </script>
- 				<!-- webcontent는 이클립스에서 제공하는 임시 폴더이므로 주소에 포함되지 않는다.  -->
- 
+<script src = "../js/member.js" type = "text/javascript"> </script>
 </html>

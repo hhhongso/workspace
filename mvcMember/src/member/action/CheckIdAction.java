@@ -19,8 +19,9 @@ public class CheckIdAction implements CommandProcess {
 		boolean isDup = MemberDAO.getinstance().isDuplicate(id);
 		
 		//응답
-		if(!isDup) return "/member/checkIdOk.jsp?id="+id;
-		else return "/member/checkIdFail.jsp?id="+id;
+		request.setAttribute("id", id);
+		if(!isDup) return "/member/checkIdOk.jsp";
+		else return "/member/checkIdFail.jsp";
 	}
 
 }

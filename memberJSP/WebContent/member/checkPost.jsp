@@ -75,7 +75,7 @@ th, td, select {
 				</tr> 
 				
 			<% } %>
-		<% } %>
+		
 		</table>
 	</form>
 </body>

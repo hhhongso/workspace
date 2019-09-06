@@ -2,7 +2,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="memberJSP.dao.MemberDAO"%>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix= "c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -62,11 +61,20 @@ th, td, select {
 				<td colspan=3 align="center">주소</td>
 			</tr>
 			
-		<c:if test="${requestScope.list !=null }">
-			<c:forEach var="zipcodeDTO" items="${requestScope.list }">
-				<c:set var="address" value="${zipcodeDTO.sido} ${zipcodeDTO.sigungu} ${zipcodeDTO.yubmyundong} ${zipcodeDTO.ri} ${zipcodeDTO.roadname} ${zipcodeDTO.buildingname}"/>
+		<c:if test="${list !=null }">
+			<c:forEach var="zipcodeDTO" items="${list }">
+				<c:set var="address" value=
+				"${zipcodeDTO.sido
+				} ${zipcodeDTO.sigungu
+				} ${zipcodeDTO.yubmyundong
+				} ${zipcodeDTO.ri
+				} ${zipcodeDTO.roadname
+				} ${zipcodeDTO.buildingname}"/>
 				<tr>
-					<td align ="center"> ${zipcodeDTO.zipcode}</td>
+					<td align ="center"> 
+					<c:if test="${zipcodeDTO.zipcode.length()==4}">0${zipcodeDTO.zipcode}</c:if>
+					<c:if test="${zipcodeDTO.zipcode.length()!=4}">${zipcodeDTO.zipcode}</c:if>
+					</td>
 					<td colspan = 3> 
 					<a id="addressA" href = "#" onclick ="checkPostClose('${zipcodeDTO.zipcode}', '${address}')"> 
 					 ${address }</a></td>

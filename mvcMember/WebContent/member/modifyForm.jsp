@@ -21,7 +21,7 @@
 	  <tr>
 	   <th> 아이디 </th>
 	   <td> 
-	   	<input type = "text" name = "id" size = 25 value ="${requestScope.memId }" readonly> 
+	   	<input type = "text" name = "id" size = 25 value ="${memId }" readonly> 
 	   </td>
 	  </tr>
 	  
@@ -46,7 +46,7 @@
 	  <tr>
 	   <th> 이메일  </th>
 	   <td> 
-	    <input type = "text" name = "email1" size = 15 value ="${requestScope.memEmail1 }"> @
+	    <input type = "text" name = "email1" size = 15 value ="${memEmail1 }"> @
 		<input name = email2 id = "email2" list = "mailaddr" size = 15">
 			<datalist id = "mailaddr">
 			 <option value = "gmail.com"> </option>
@@ -64,8 +64,8 @@
 	     <option value = "010"> 010 </option>
 	     <option value = "019"> 019 </option>
 	     <option value = "011"> 011 </option> </select>
-	    <input type = "text" name = "tel2" size = 5 value="${requestScope.memTel2 }">
-	    <input type = "text" name = "tel3" size = 5 value="${requestScope.memTel3 }">    
+	    <input type = "text" name = "tel2" size = 5 value="${memTel2 }">
+	    <input type = "text" name = "tel3" size = 5 value="${memTel3 }">    
 	   </td>   
 	  </tr>  
 	  
@@ -73,10 +73,10 @@
 	  <tr>
 	   <th> 주소  </th>
 	   <td> 
-	    <input type = "text" id = "daum_zipcode" name = "zipcode" size = 5 value="${requestScope.memZipcode }" readonly> 
+	    <input type = "text" id = "daum_zipcode" name = "zipcode" size = 5 value="${memZipcode }" readonly> 
 	    <input type = "button" value = "우편번호검색" onclick = "checkPost()"> <br>
-	    <input type = "text" id = "daum_addr1" name = "addr1" size = 40 value="${requestScope.memAddr1 }" readonly><br>
-	    <input type = "text" id = "daum_addr2" name = "addr2" size = 40 value="${requestScope.memAddr2 }">    
+	    <input type = "text" id = "daum_addr1" name = "addr1" size = 40 value="${memAddr1 }" readonly><br>
+	    <input type = "text" id = "daum_addr2" name = "addr2" size = 40 value="${memAddr2 }">    
 	   </td>   
 	  </tr>  
 	
@@ -94,9 +94,9 @@
 <script src = "../js/member.js"></script>
 <script>
 window.onload = function(){
-	document.modifyForm.gender['${requestScope.memGender}'].checked = true;
-	document.getElementById("email2").value = '${requestScope.memEmail2 }';
-	document.getElementById("tel1").value= '${requestScope.memTel1 }';
+	document.modifyForm.gender['${memGender}'].checked = true;
+	document.getElementById("email2").value = '${memEmail2 }';
+	document.getElementById("tel1").value= '${memTel1 }';
 }
 </script>
 </html>

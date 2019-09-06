@@ -16,7 +16,6 @@ public class CheckPostAction implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		//데이터 가져오기
-		request.setCharacterEncoding("UTF-8");
 		String sido = request.getParameter("sido");
 		String sigungu = request.getParameter("sigungu");
 		String roadname = request.getParameter("roadname");

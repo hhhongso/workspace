@@ -8,7 +8,7 @@
 </head>
 <body>
 <form name="checkIdForm" method= "get" action="/mvcMember/member/checkId.do">
-${param.id} 는 이미 사용 중입니다.
+${id} 는 이미 사용 중입니다.
 	<br><br>
 	아이디 <input type="text" name="id" size=10>
 	<input type = "submit" value = "중복체크">
