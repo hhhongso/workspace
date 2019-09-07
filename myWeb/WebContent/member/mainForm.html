@@ -14,27 +14,128 @@
 	border-radius: 1.5em;
 }
 
+#nav li {
+	float: left;
+	position: relative;
+	margin: 5px 10px; 
+	padding: 0; 
+	
+}
+
+#nav li a{
+	display: block;
+	font-family: "맑은 고딕";
+	font-weight: bold; 
+	font-size: 1em; 
+	padding: 10px 20px;
+	color: #e7e5e5;
+	text-decoration: none;
+	margin: 0; 
+/* 	border-radius: 1.4em;  */
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	
+}
+
+#nav li:hover a{
+	background: #ebebeb;
+	color: #444;
+	text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
+	border-radius: 1.4em;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+#nav ul{
+	margin: 0; 
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	left: 0; 
+	top: 45px; 
+	width: 150px; 
+	background: #ddd; 
+	border: 1px solid #b4b4b4;
+	/* border-radius: 8px;  */
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
+	opacity: 0;
+}
+
+#nav ul li{
+	float: none;
+	margin: 0; 
+	padding: 0; 
+	height: 0; 
+ 	overflow: hidden;
+
+}
+
+#nav ul a{
+	font-weight: normal; 
+	text-shadow: 0 1px 0 #fff;
+	color: #333; 
+}
+
+#nav ul li:hover a{
+	background: #0078ff;
+	color: #fff; 
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	border-radius: 0; 
+	
+}
+
+#nav ul li:first-child > a{
+	/* border-top-left-radius: 8px; 
+	border-top-right-radius: 8px; 	 */
+}
+
+#nav ul li:last-child > a{
+/* 	border-top-left-radius: 8px; 
+	border-top-right-radius: 8px; 	 */
+}
+
+#nav li:hover ul{
+	opacity: 1; 
+}
+
+#nav li:hover ul li{
+	height: 35px; 
+	overflow: visible;
+	padding:0; 
+}
 </style>
 <body>
-<form name="mainForm" method = "post" action="">
-	<h3> 환영합니다. </h3>
+	<form name="mainForm" method="post" action="">
+		<h3>환영합니다.</h3>
+		<ul id="nav">
+			<li><a href="javascript:void(0)">처음으로 </a></li>
+
+			<li><a href="javascript:void(0)"> 안내 </a>
+				<ul>
+					<li><a href="javascript:void(0)"> 회사소개</a></li>
+					<li><a href="javascript:void(0)"> 오시는 길</a></li>
+				</ul>
+			</li>
+
+			<li><a href="javascript:void(0)"> 이용방법</a>
+				<ul>
+					<li><a href="javascript:void(0)"> 상품 보기</a></li>
+					<li><a href="javascript:void(0)"> 요금 안내 </a></li>
+					<li><a href="javascript:void(0)"> 예약 방법</a></li>
+					<li><a href="javascript:void(0)"> 예약하기</a></li>
 	
-	<ul id="nav">
-		<li> 처음으로 </li>	
-		<li> 안내 </li>	
-		<li> 회사소개</li>	
-		<li> 오시는 길</li>	
-		<li> 이용방법</li>	
-		<li> 상품 보기</li>	
-		<li> 요금 안내 </li>	
-		<li> 예약 방법</li>	
-		<li> 예약하기</li>	
-		<li> 게시판</li>	
-		<li> 공지사항</li>	
-		<li> 글쓰기</li>	
-		<li> 내 정보 보기</li>	
-		<li> 예약 방법</li>
-	</ul>	
-</form>
+				</ul>
+			</li>
+
+			<li><a href="javascript:void(0)"> 게시판</a>
+				<ul>
+					<li><a href="javascript:void(0)"> 공지사항</a></li>
+					<li><a href="javascript:void(0)"> 글쓰기</a></li>
+	
+				</ul>
+			</li>
+
+			<li><a href="javascript:void(0)"> 내 정보 보기</a></li>
+		</ul>
+	</form>
 </body>
 </html>
