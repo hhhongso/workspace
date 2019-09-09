@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-a.subject{font-weight: normal;}
-a.subject:link{color: black; text-decoration:none;}
-a.subject:hover{
+.subject{font-weight: normal;}
+.subject a:link{color: black; text-decoration:none;}
+.subject a:hover{
  	cursor:pointer; 
 	color:green;
 	text-decoration: underline;

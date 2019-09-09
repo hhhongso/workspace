@@ -4,108 +4,14 @@
 <meta charset="UTF-8">
 <title>Main Page</title>
 </head>
-<style>
-#nav{
-	list-style-type:none;
-	height: 45px; 
-	padding: 6px 7px; 
-	margin: 0;
-	background: #7d7d7d;
-	border-radius: 1.5em;
-}
-
-#nav li {
-	float: left;
-	position: relative;
-	margin: 5px 10px; 
-	padding: 0; 
-	
-}
-
-#nav li a{
-	display: block;
-	font-family: "맑은 고딕";
-	font-weight: bold; 
-	font-size: 1em; 
-	padding: 10px 20px;
-	color: #e7e5e5;
-	text-decoration: none;
-	margin: 0; 
-/* 	border-radius: 1.4em;  */
-	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
-	
-}
-
-#nav li:hover a{
-	background: #ebebeb;
-	color: #444;
-	text-shadow: 0 1px 1px rgba(255, 255, 255, 1);
-	border-radius: 1.4em;
-	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
-	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.2);
-}
-
-#nav ul{
-	margin: 0; 
-	padding: 0;
-	list-style: none;
-	position: absolute;
-	left: 0; 
-	top: 45px; 
-	width: 150px; 
-	background: #ddd; 
-	border: 1px solid #b4b4b4;
-	/* border-radius: 8px;  */
-	box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
-	opacity: 0;
-}
-
-#nav ul li{
-	float: none;
-	margin: 0; 
-	padding: 0; 
-	height: 0; 
- 	overflow: hidden;
-
-}
-
-#nav ul a{
-	font-weight: normal; 
-	text-shadow: 0 1px 0 #fff;
-	color: #333; 
-}
-
-#nav ul li:hover a{
-	background: #0078ff;
-	color: #fff; 
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-	border-radius: 0; 
-	
-}
-
-#nav ul li:first-child > a{
-	/* border-top-left-radius: 8px; 
-	border-top-right-radius: 8px; 	 */
-}
-
-#nav ul li:last-child > a{
-/* 	border-top-left-radius: 8px; 
-	border-top-right-radius: 8px; 	 */
-}
-
-#nav li:hover ul{
-	opacity: 1; 
-}
-
-#nav li:hover ul li{
-	height: 35px; 
-	overflow: visible;
-	padding:0; 
-}
-</style>
+<link rel="stylesheet" href="../css/mainStyle.css">
 <body>
 	<form name="mainForm" method="post" action="">
-		<h3>환영합니다.</h3>
+		<div class="sign">
+			<a href="signInForm.html">로그인</a>
+			<a href="signUpForm.html">회원가입</a>			
+		</div>
+		<div><img src="../img/image.png" onclick="location.href='mainForm.html'"></div>
 		<ul id="nav">
 			<li><a href="javascript:void(0)">처음으로 </a></li>
 

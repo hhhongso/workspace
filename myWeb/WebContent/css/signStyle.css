@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+h2 {
+	text-align: center;	
+}
+
+table{
+	align: center;
+}
+
+
+input[type=button], input[type=reset] {
+	border: 0; 
+	color: white;
+	background-color: #48d4d1;
+	-webkit-appearance: none;	
+}

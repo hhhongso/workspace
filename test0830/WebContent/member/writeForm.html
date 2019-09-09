@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="../css/stylesheet.css">
+</head>
+<body>
+<form name="writeForm" method="post" action="write.html">
+<h2> 회원가입 </h2>
+<table border=5>
+	<tr>
+		<th> 이름 </th>
+		<td>
+			<input type="text" name="name" id="name" placeholder="이름을 입력하세요">
+		</td>
+	</tr>
+	
+	<tr>
+		<th> 아이디 </th>
+		<td>
+			<input type="text" name="id" id="id" placeholder="아이디를 입력하세요">
+		</td>
+	</tr>
+	
+	<tr>
+		<th> 비밀번호 </th>
+		<td>
+			<input type="password" name="pwd" id="pwd" size=20px>
+		</td>
+	</tr>
+	
+	<tr>
+		<th> 비밀번호 확인 </th>
+		<td>
+			<input type="password" name="repwd" id="repwd" size=20px>
+		</td>
+	</tr>
+	
+	<tr>
+		<th> 연락처 </th>
+		<td>
+			<select name="tel1">
+				<option value= "010"> 010</option>
+				<option value= "019"> 019</option>
+				<option value= "011"> 011</option>
+			</select>
+			- <input type="text" size="5" name="tel2"> -
+			<input type="text" size="5" name="tel1">
+		</td>
+	</tr>
+	
+	<tr>
+		<td colspan=2 align="center">
+			<input type="button" value="회원가입" onclick="check();">
+			<input type="reset" value="다시 작성">
+		</td>
+	</tr>
+</table>
+</form>
+</body>
+<script src="../js/function.js"></script>
+</html>
