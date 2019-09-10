@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+.subject{font-weight: normal;}
+.subject a:link{color: black; text-decoration:none;}
+.subject a:hover{
+ 	cursor:pointer; 
+	color:green;
+	text-decoration: underline;
+	font-weight:bold;
+}
+#paging{ color: black; text-decoration:none;}
+#currPaging{
+	font-weight:bold;
+	color:red;
+	text-decoration:underline;
+}
+table{
+	width: 100%;
+/* 	border-top: 1px solid;
+	border-collapse: collapse; */
+	text-align: center;
+}
+
+th, td{
+	border-bottom:1px solid;
+	padding: 10px;
+}
+
+td.subject{
+	text-align:left;
+}

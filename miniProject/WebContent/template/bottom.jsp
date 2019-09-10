@@ -24,17 +24,17 @@ div a {
 	</pre>
 </div> 
 
-<div class="info"><pre><font size=5px>
-	<b>고객센터: 1588-0000</b></font><font size=3px color=grey>
+<div class="info">
+	<pre><font size=5px><b>고객센터: 1588-0000</b></font><font size=3px color=grey>
 	고객센터 운영시간: 오전 9시~ 오후 6시</font>
 	</pre>
 </div>
 </div>
 
 <div align="center">
-	<a href="">회사 소개</a>
-	<a href="">인재 채용</a>
-	<a href="">이용 약관</a>
-	<a href="">개인정보 처리방침</a>
+	<a href="">회사 소개</a> |
+	<a href="">인재 채용</a> |
+	<a href="">이용 약관</a> |
+	<a href="">개인정보 처리방침</a> |
 	<a href="">이용 안내</a>
 </div>

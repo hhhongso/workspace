@@ -1,5 +1,5 @@
 <%@page import="board.bean.BoardPaging"%>
-<%@page import="memberJSP.bean.MemberDTO"%>
+<%@page import="member.bean.MemberDTO"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="board.bean.BoardDTO"%>

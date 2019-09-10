@@ -18,7 +18,7 @@
 </nav>
 
 <section>
-<jsp:include page="../template/body.jsp"/>
+<jsp:include page="${display }"/>
 </section>
 
 <footer>
