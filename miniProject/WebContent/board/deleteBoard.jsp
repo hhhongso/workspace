@@ -10,7 +10,7 @@
 <script>
 window.onload = function(){
 	alert("삭제되었습니다. ");
-	location.href="/mvcBoard/board/boardList.do?pg=1";
+	location.href="/miniProject/board/boardList.do?pg=1";
 }
 
 </script>

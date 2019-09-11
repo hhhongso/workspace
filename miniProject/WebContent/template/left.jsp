@@ -22,4 +22,4 @@ a:hover{
 	<a href="/miniProject/member/loginForm.do">로그인</a><br>
 </c:if>
 
-<a href="/miniProject/board/boardList.do">게시판 글목록</a><br>
+<a href="/miniProject/board/boardList.do?pg=1">게시판 글목록</a><br>

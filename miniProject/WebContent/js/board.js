@@ -9,6 +9,14 @@ function isLogin(id, seq, pg){
 	if(id == 'null') {
 		alert("먼저 로그인 해주세요! ");
 	} else {
-		location.href="../board/boardView.jsp?seq="+seq+"&pg="+pg;
+		location.href="/miniProject/board/boardView.do?seq="+seq+"&pg="+pg;
+	}
+}
+
+function delConfirm(seq){
+	if(confirm("정말 삭제하시겠습니까?")){
+		location.href="/miniProject/board/boardDelete.do?seq="+seq;
+	} else {
+		location.href="/miniProject/board/boardView.do?seq="+seq+"&pg="+pg;
 	}
 }

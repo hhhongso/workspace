@@ -20,8 +20,9 @@ public class BoardModifyFormAction implements CommandProcess {
 		
 		request.setAttribute("pg", pg);
 		request.setAttribute("boardDTO", boardDTO);
+		request.setAttribute("display", "/board/boardModifyForm.jsp");
 		
-		return "/board/boardModifyForm.jsp";
+		return "/main/index.jsp";
 	}
 
 }

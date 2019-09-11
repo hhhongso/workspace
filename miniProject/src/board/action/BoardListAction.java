@@ -1,7 +1,10 @@
 package board.action;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,10 +33,19 @@ public class BoardListAction implements CommandProcess {
 		
 		//db
 		List<BoardDTO> list = BoardDAO.getInstance().getList(startNum, endNum); //list.size() == 5
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-mm-dd");
+		
 		request.setAttribute("boardPaging", boardPaging);
 		request.setAttribute("list", list);
+		request.setAttribute("display", "/board/boardList.jsp");
+		
+		//쿠키
+		Cookie cookie = new Cookie("memHit", "hit");
+		cookie.setMaxAge(30*60);
+		response.addCookie(cookie);
+		
 		//응답
-		return "/board/boardList.jsp";
+		return "/main/index.jsp";
 	}
 
 }

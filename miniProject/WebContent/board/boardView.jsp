@@ -3,11 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <style type="">
 .content{
 /* 	width: 400px;
@@ -18,8 +14,7 @@
 	overflow:auto;
 }
 </style>
-</head>
-<body>
+
 <c:if test="${boardDTO != null }">
 	<form action="">
 		<table frame="hsides" rules="rows" style="width:400px; height:200px;">
@@ -37,14 +32,12 @@
 			</tr>		
 		</table>
 		<c:if test="${memId == boardDTO.id }">		
-			<input type="button" value="글수정" onclick="location.href='/mvcBoard/board/boardModifyForm.do?seq=${boardDTO.seq }&pg=${pg }'">
+			<input type="button" value="글수정" onclick="location.href='/miniProject/board/boardModifyForm.do?seq=${boardDTO.seq }&pg=${pg }'">
 			<input type="button" value="글삭제" onclick="delConfirm(${boardDTO.seq})">
 		</c:if>
-		<input type="button" value="목록으로" onclick="location.href='/mvcBoard/board/boardList.do?pg=${pg }'"> <br>
+		<input type="button" value="목록으로" onclick="location.href='/miniProject/board/boardList.do?pg=${pg }'"> <br>
 		
 	</form>
 </c:if>
-</body>
-<script src="../js/board.js">
-</script>
-</html>
+
+<script src="../js/board.js"></script>

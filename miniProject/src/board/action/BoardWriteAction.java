@@ -2,8 +2,7 @@ package board.action;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.catalina.Session;
+import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
@@ -15,10 +14,10 @@ public class BoardWriteAction implements CommandProcess {
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		//데이터 받기
-		Session session = (Session)request.getSession();
-		String id = "";
-		String name = "홍길동";
-		String email = "hong@gmail.com";
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("memId");
+		String name = (String) session.getAttribute("memName");
+		String email = (String) session.getAttribute("memEmail");
 		
 		String subject = request.getParameter("subject");
 		String content = request.getParameter("content");
@@ -33,8 +32,10 @@ public class BoardWriteAction implements CommandProcess {
 		//db
 		BoardDAO.getInstance().write(boardDTO);
 		
+		request.setAttribute("display", "/board/boardWrite.jsp");
+		
 		//응답
-		return "/board/boardWrite.jsp";
+		return "/main/index.jsp";
 	}
 
 }

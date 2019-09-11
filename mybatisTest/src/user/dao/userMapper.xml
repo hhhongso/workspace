@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
+<!-- namespace (이름 구분자!!): 중복불가 
+DTO의 필드명 / Input tag의 name 속성 / SQL query의 column명은 모두 동일하여야 자동 매핑됨. 
+아닐 경우, 아래와 같이 property(DTO 필드) : column(oracle column)으로 강제 매핑 시켜주어야 하며, 
+이 경우 리턴 타입은 resultType(같은 이름으로 찾아간다) 이 아닌 resultMap="resultMap의 id 값"으로 설정하여야.   -->
 <mapper namespace="userSQL">
-	<insert id="write" parameterType="user.bean.UserDTO">
+	<!-- <resultMap type="user" id="userResult">
+		<result property="name" column="NAME"/>
+		<result property="id" column="ID"/>
+		<result property="pwd" column="pwd"/>
+	</resultMap> -->
+
+	<insert id="write" parameterType="user">
 		insert into usertable values (#{name}, #{id}, #{pwd})
 	</insert>
 	
@@ -10,15 +19,37 @@
 		delete from usertable where id = #{id}
 	</delete>
 	
-	<select id="getList" resultType="user.bean.UserDTO">
+	<select id="getList" resultType="user">
 		select * from usertable
 	</select>
 	
-	<update id="update" parameterType="user.bean.UserDTO">
+	<update id="update" parameterType="java.util.Map">
 		update usertable set name= #{name}, pwd=#{pwd} where id = #{id}
 	</update>
 	
-	<select id="select" parameterType="java.lang.String" resultType="user.bean.UserDTO">
+	<select id="getUser" parameterType="String" resultType="user">
 		select * from usertable where id = #{id}
 	</select>
+	
+	<!-- <select id="search" parameterType="java.util.Map" resultType="user">
+		select * from usertable where ${key} like '%'||#{value}||'%'
+	</select> -->
+	
+	<!-- <select id="search" parameterType="java.util.Map" resultType="user">
+		select * from usertable
+		<if test="key == 'name'"> where name like '%'||#{value}||'%'</if>
+		<if test="key == 'id'"> where id like '%'||#{value}||'%'</if>		
+	</select> -->
+	
+	 <select id="search" parameterType="java.util.Map" resultType="user">
+		select * from usertable
+		<choose>
+			<when test="key == 'name'"> where name like '%'||#{value}||'%'</when>
+			<otherwise> where id like '%'||#{value}||'%'</otherwise>
+		</choose>
+	</select>
+	
+	<!-- %와 #은 함께 사용할 수 없음 -> 문자화하여 연결기호 || 필요 
+	$: 리터럴 데이터
+	#: 상수화 (?)-->
 </mapper>

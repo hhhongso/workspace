@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import user.action.UserAction;
 import user.action.UserDeleteAction;
 import user.action.UserInsertAction;
+import user.action.UserSearchAction;
 import user.action.UserSelectAction;
 import user.action.UserUpdateAction;
 
@@ -22,7 +23,8 @@ public class UserMain {
 			System.out.println("2. 출력");
 			System.out.println("3. 수정");
 			System.out.println("4. 삭제");
-			System.out.println("5. 끝");
+			System.out.println("5. 검색");
+			System.out.println("6. 끝");
 			System.out.println("*****************");
 			System.out.print("번호 입력: ");
 
@@ -33,7 +35,6 @@ public class UserMain {
 				int choice = Integer.parseInt(br.readLine());
 				if(choice == 1) {
 					userAction = new UserInsertAction();
-					
 				} else if (choice == 2) {
 					userAction = new UserSelectAction();
 				} else if (choice == 3) {
@@ -41,9 +42,11 @@ public class UserMain {
 				} else if (choice == 4) {
 					userAction = new UserDeleteAction();
 				} else if (choice == 5) {
+					userAction = new UserSearchAction();
+				} else if (choice == 6) {
 					break;
 				} else {
-					System.out.println("1~5 사이의 번호를 입력해주세요. ");
+					System.out.println("1~6 사이의 번호를 입력해주세요. ");
 					continue;
 				}	
 				

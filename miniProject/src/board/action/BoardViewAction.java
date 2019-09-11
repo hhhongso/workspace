@@ -1,5 +1,6 @@
 package board.action;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -15,15 +16,27 @@ public class BoardViewAction implements CommandProcess {
 		// 데이터 받기
 		int seq = Integer.parseInt(request.getParameter("seq"));
 		int pg = Integer.parseInt(request.getParameter("pg"));
+		
+		//쿠키
+		Cookie[] ckarr = request.getCookies();
+		if(ckarr != null) {
+			for (int i = 0; i < ckarr.length; i++) {
+				if(ckarr[i].getName().equals("memHit")) {
+					BoardDAO.getInstance().updateHit(seq);					
+					ckarr[i].setMaxAge(0);
+					response.addCookie(ckarr[i]);
+				}
+			}
+		}
 
 		// db
-		BoardDAO.getInstance().updateHit(seq);
 		BoardDTO boardDTO = BoardDAO.getInstance().getBoardView(seq);
-
 		request.setAttribute("pg", pg);
 		request.setAttribute("boardDTO", boardDTO);
+		request.setAttribute("display", "/board/boardView.jsp");
+		
 		// 응답
-		return "/board/boardView.jsp";
+		return "/main/index.jsp";
 	}
 
 }

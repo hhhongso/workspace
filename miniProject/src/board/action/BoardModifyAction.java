@@ -30,8 +30,9 @@ public class BoardModifyAction implements CommandProcess {
 		//db 업데이트
 		BoardDAO.getInstance().updateBoard(map);
 		request.setAttribute("pg", pg);
+		request.setAttribute("display", "/board/boardModify.jsp");
 		//응답
-		return "/board/boardModify.jsp";
+		return "/main/index.jsp";
 	}
 
 }

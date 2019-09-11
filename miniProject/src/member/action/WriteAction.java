@@ -29,7 +29,6 @@ public class WriteAction implements CommandProcess {
 		
 		//db
 		MemberDAO.getinstance().insert(memberDTO);
-		
 		request.setAttribute("display", "/member/write.jsp");
 		//응답 
 		return "/main/index.jsp";

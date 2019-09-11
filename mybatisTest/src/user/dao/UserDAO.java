@@ -2,7 +2,9 @@ package user.dao;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -15,6 +17,10 @@ public class UserDAO {
 	private static UserDAO instance;
 	private SqlSessionFactory sqlSessionFactory;
 	
+	
+//	static {
+//	 한번만 생성 -> 생성자 or static{} 구역	
+//	}
 	public UserDAO() {
 		try {
 			Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
@@ -49,6 +55,7 @@ public class UserDAO {
 	}
 
 	public List<UserDTO> getList() { 
+//		List<> list = new ArrayList<E>(); 를 안해줘도 됨: .selectList() 가 자동으로 생성 후 리턴 값을 resultType 에 담음 
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		List<UserDTO> list = sqlSession.selectList("userSQL.getList");
 		sqlSession.close();
@@ -56,19 +63,28 @@ public class UserDAO {
 		return list;
 	}
 
-	public int update(UserDTO userDTO) {
+	public void update(Map<String, String> map) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		int cnt= sqlSession.update("userSQL.update", userDTO);
+		sqlSession.update("userSQL.update", map);
 		sqlSession.commit();
 		sqlSession.close();
-		return cnt;
 	}
 
-	public UserDTO select(String id) {
+	public UserDTO getUser(String id) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
-		UserDTO userDTO = sqlSession.selectOne("userSQL.select", id);
-		sqlSession.close();
+		UserDTO userDTO = sqlSession.selectOne("userSQL.getUser", id);
+		//generic <T>: class type		// classType Element Key Value
+ 		sqlSession.close();
 		return userDTO;
 	}
+
+	public List<UserDTO> search(Map<String, String> map) {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		List<UserDTO> list = sqlSession.selectList("userSQL.search", map);
+		sqlSession.close();	
+		return list;
+	}
+
+	
 
 }
