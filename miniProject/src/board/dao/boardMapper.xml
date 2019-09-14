@@ -32,4 +32,19 @@
 	<delete id="deleteBoard" parameterType="Integer">
 		delete from board where seq = #{seq}
 	</delete>
+
+<!-- 검색 -->	
+	<select id="getSearchTotArticle" parameterType="java.util.Map" resultType="Integer">
+		select count(*) as count from board where ${searchOp} like '%'||#{searchWord}||'%'
+	</select>
+	
+	<select id="getSearchList" parameterType="java.util.Map" resultType="board">
+		select * from 
+		(select rownum rn, temp.* from (select *from board where ${searchOp} like '%'||#{searchWord}||'%' order by ref desc, step asc) temp) 
+		where rn between #{startNum} and #{endNum}
+	</select>
+
+	<select id="searchBoard" parameterType="java.util.Map" resultType="board">
+		select * from board where ${searchOp} like '%'||#{searchWord}||'%'
+	</select>
 </mapper>

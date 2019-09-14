@@ -7,7 +7,7 @@
   	
   	<init-param>
   		<param-name>config</param-name>
-  		<param-value>C:/java_ee/workspace/miniProject/WebContent/WEB-INF/command.properties</param-value>
+  		<param-value>C:/Users/user/Desktop/soyeon/eclipse/workspace_bit/workspace/miniProject/WebContent/WEB-INF/command.properties</param-value>
   	</init-param>
   </servlet>
   

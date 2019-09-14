@@ -90,4 +90,28 @@ public class BoardDAO {
 		session.commit();
 		session.close();
 	}
+
+	public List<BoardDTO> searchBoard(Map<String, String> map) {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<BoardDTO> list = session.selectList("boardSQL.searchBoard", map);
+		session.close();
+		
+		return list;
+	}
+
+	public int getSearchTotArticle(Map<String, String> map) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.selectOne("boardSQL.getSearchTotArticle", map);
+		session.close();
+		return cnt;
+	}
+
+	public List<BoardDTO> getSearchList(Map<String, String> map) {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<BoardDTO> list = session.selectList("boardSQL.getSearchList", map);
+		session.close();
+		return list;
+	}
+
+	
 }

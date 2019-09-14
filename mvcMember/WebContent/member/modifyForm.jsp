@@ -1,7 +1,7 @@
-<%@page import="memberJSP.bean.MemberDTO"%>
+<%@page import="member.bean.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
-    import = "memberJSP.dao.MemberDAO"%>
+    import = "member.dao.MemberDAO"%>
     
 <!DOCTYPE html>
 <html>

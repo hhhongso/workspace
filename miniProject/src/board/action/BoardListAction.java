@@ -29,7 +29,7 @@ public class BoardListAction implements CommandProcess {
 		boardPaging.setPageBlock(5);
 		boardPaging.setPageSize(5);
 		boardPaging.setTotalArticle(totalArticle);
-		boardPaging.makePagingHTML();
+		boardPaging.makePagingHTML("boardList");
 		
 		//db
 		List<BoardDTO> list = BoardDAO.getInstance().getList(startNum, endNum); //list.size() == 5
