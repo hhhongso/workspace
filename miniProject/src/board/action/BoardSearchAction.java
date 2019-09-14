@@ -1,6 +1,5 @@
 package board.action;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,7 +17,7 @@ public class BoardSearchAction implements CommandProcess {
 	private String searchOp; 
 	private String searchWord;
 	private int sw;
-	private List<BoardDTO> list = new ArrayList<BoardDTO>();
+	
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		// 데이터 받기
