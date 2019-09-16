@@ -22,16 +22,13 @@ function delConfirm(seq){
 }
 
 function searchBoard(){
-	var searchWord = document.forms[0].searchWord.value;
-	var option = document.querySelector("#option");
-	var searchOp;
+	var searchWord = document.boardListForm.searchWord.value;
 	if(searchWord == "") alert("검색어를 입력하세요");
-	else {
-		document.forms[0].submit();
+	else document.boardListForm.submit();
+
+//		var option = document.querySelector("#option");
+//		var searchOp;
 //		for (var i = 0; i < option.length; i++) {
 //			if(option[i].selected) searchOp = option[i].value;
 //		}
-//		
-//		location.href = "/miniProject/board/boardSearch.do?pg=1&searchOp="+searchOp+"&searchWord="+searchWord;
-	}
 }

@@ -5,8 +5,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.control.CommandProcess;
 
-import memberJSP.bean.MemberDTO;
-import memberJSP.dao.MemberDAO;
+import member.bean.MemberDTO;
+import member.dao.MemberDAO;
 
 public class WriteAction implements CommandProcess {
 

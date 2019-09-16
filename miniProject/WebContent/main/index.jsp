@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +12,12 @@
 <body>
 
 <header>
-<jsp:include page="../template/top.jsp"/>
+<jsp:include page="../template/top.jsp"/> <br>
+<jsp:include page="../template/topMenu.jsp"/>
 </header>
 
 <nav>
-<jsp:include page="../template/left.jsp"/>
+<jsp:include page="../template/leftLogin.jsp"/>
 </nav>
 
 <section>

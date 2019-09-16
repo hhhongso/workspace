@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
-import memberJSP.dao.MemberDAO;
+import member.dao.MemberDAO;
 
 public class CheckIdAction implements CommandProcess {
 

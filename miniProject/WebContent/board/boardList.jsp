@@ -4,8 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 	<form name ="boardListForm" method="post" action="/miniProject/board/boardSearch.do?pg=1">
-	<input type="hidden">
-	<input type="hidden">
+	<input type="hidden" name="sw2" value="0">
 	<h3>글목록</h3>
 	<c:if test="${list !=null }">
 	

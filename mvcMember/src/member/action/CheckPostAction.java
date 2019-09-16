@@ -8,8 +8,8 @@ import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
-import memberJSP.bean.ZipcodeDTO;
-import memberJSP.dao.MemberDAO;
+import member.bean.ZipcodeDTO;
+import member.dao.MemberDAO;
 
 public class CheckPostAction implements CommandProcess {
 

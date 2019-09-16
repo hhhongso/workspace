@@ -30,11 +30,11 @@
 	</c:if>	
 	<div style="text-align:center;">${boardPaging.pagingHTML}</div>
 	<div align="center">
-		<select id="option">
-			<option id="subject" value="subject"> 제목으로 검색</option>
+		<select id="option" name="searchOp">
+			<option id="subject" value="subject" selected> 제목으로 검색</option>
 			<option id="id" value="id"> 아이디로 검색</option>
 		</select>
-		<input type="text" name="search" size="10">
+		<input type="text" name="searchWord" size="10">
 		<input type="button" value="검색" onclick="searchBoard()">
 	</div>
 	</form>

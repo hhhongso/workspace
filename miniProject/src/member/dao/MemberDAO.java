@@ -49,25 +49,22 @@ public class MemberDAO {
 		SqlSession session = sqlSessionFactory.openSession();
 		MemberDTO memberDTO = session.selectOne("memberSQL.isDupGetInfo", id);
 		if(memberDTO != null) isDup = true;
-		session.close();
-		
-		//cf) 상관커리 exist로 boolean 받을 수 있음.  
+		session.close();		
+		//cf) 상관쿼리 exist로 boolean 받을 수 있음.  
 		return isDup;
 	}
 	
 	public MemberDTO isLogin(Map<String, String> map) {
 		SqlSession session = sqlSessionFactory.openSession();
 		MemberDTO memberDTO = session.selectOne("memberSQL.isLogin", map);
-		session.close();
-		
+		session.close();		
 		return memberDTO;
 	}
 
 	public MemberDTO getInfo(String id) {
 		SqlSession session = sqlSessionFactory.openSession();
 		MemberDTO memberDTO = session.selectOne("memberSQL.isDupGetInfo", id);
-		session.close();	
-		
+		session.close();		
 		return memberDTO;
 		
 	}
@@ -75,18 +72,14 @@ public class MemberDAO {
 	public List<ZipcodeDTO> getZipcodeList(Map<String, String> map){
 		SqlSession session = sqlSessionFactory.openSession();
 		List<ZipcodeDTO> list = session.selectList("memberSQL.getZipcodeList", map);
-		System.out.println(map.get("sido"));
-		System.out.println(list.size() + "리스트 담았나욤?");
 		session.close();
-		
 //		 for (ZipcodeDTO zipcodeDTO : list) {
 //			 zipcodeDTO.setSigungu(zipcodeDTO.getSigungu() == null ? "" : zipcodeDTO.getSigungu()); 
 //			 zipcodeDTO.setRi(zipcodeDTO.getRi() == null ? "" : zipcodeDTO.getRi()); 
 //			 zipcodeDTO.setBuildingname(zipcodeDTO.getBuildingname() == null ? "" : zipcodeDTO.getBuildingname());
 //			 
 //			 list.add(zipcodeDTO); 
-//		 }
-		 
+//		 }		 
 		return list;
 	}
 	

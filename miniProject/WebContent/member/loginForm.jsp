@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 
 <form name="loginForm" method="post" action="/miniProject/member/login.do">
-  <h2> 로그인 </h2>
 		<table class="tab" border=3>
 			<tr>
 				<th class="idtab">아이디</th>
@@ -17,6 +16,7 @@
 			<tr>
 				<td colspan=2 align="center">
 					<input type="button" value="로그인" onclick="checkLogin()"> 
+					<input type="button" value="회원가입" onclick="location.href='/miniProject/member/writeForm.do'">
 				</td>
 			</tr>
 		</table>

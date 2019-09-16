@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../css/mainStyle.css">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/signStyle.css">
-</head>
-<body>
-<form name = "signUpForm" method = "post" action="/myWeb/SignUpServlet">
-<div><img src="../img/image.png" onclick="location.href='mainForm.html'"></div>
-  <h2> 회원가입 </h2>
+<form name="signUpForm" method="post" action="/miniProject/member/signUp.do">
+	 <h2> 회원가입 </h2>
   <table border = 3 cellspacing = "2" cellpadding = "2">
+	  <tr>
+	   <th width = 120> 이름  </th>
+	   <td> <input type = "text" id = "irum" name = "name" size = 20 placeholder = "이름 입력"> </td>
+	  </tr>
 	  
 	  <tr>
 	   <th> 아이디 </th>
 	   <td> 
-	   	<input type = "text" name = "id" size = 25 placeholder = "아이디 입력">
-	   	<input type = "button" value="중복체크" onclick="checkDuplicate()"> 
-	   	<input type = "hidden" name="idsw"> 
+	   	<input type = "text" name = "id" size = 25 placeholder = "아이디 입력"> 
+	   	<input type = "button"  value = "중복체크" onclick = "checkId();"> 
+	   	<input type = "hidden" name = "sw" value = "">
 	   </td>
 	  </tr>
 	  
@@ -32,16 +29,10 @@
 	  </tr>
 	  
 	  <tr>
-	   <th width = 120> 이름  </th>
-	   <td> <input type = "text" id = "irum" name = "name" size = 20 placeholder = "이름 입력"> </td>
-	  </tr>
-
-	  <tr>
 	   <th> 성별  </th>
 	   <td> 
 	    <input type = "radio" name = "gender" value = "0" checked = "checked"> 여성
 	    <input type = "radio" name = "gender" value = "1"> 남성
-	    <input type = "radio" name = "gender" value = "2"> 선택안함
 	   </td>   
 	  </tr>
 	
@@ -55,10 +46,8 @@
 			 <option value = "naver.com"> </option>
 			 <option value = "hotmail.com"> </option>
 			</datalist>
-		<br>
-		인증번호 입력: <input type = 'text' size = 5> 
-		<input type = 'button' value = '인증번호받기'>
-	   </td>  
+
+	   </td>   
 	  </tr>  
 	
 	  <tr>
@@ -72,15 +61,6 @@
 	    <input type = "text" name = "tel3" size = 5>    
 	   </td>   
 	  </tr>  
-	  
-	  <tr>
-	  <th> 생년월일 </th>
-	  	<td>
-	  		<input type="text" placeholder="YYYY" size="5px">
-	  		/<input type="text" placeholder="MM" size="5px">/
-	  		<input type="text" placeholder="DD" size="5px">
-	  	</td>
-	  </tr>
 	  
 	
 	  <tr>
@@ -96,19 +76,11 @@
 	  <tr>
 	   
 	   <td colspan = 2 align = "center"> 
-	    <input type = "button" value = "회원가입" onclick = "checkWrite()">
+	    <input type = "button" name ="sign" value = "회원가입" onclick = "checkWrite()">
 	    <input type = "reset" value = "다시작성">     
 	   </td>   
 	  </tr>    
   </table>
- </form>
-</body>
-<!-- <form> 안에 <form>을 중첩할 수 없다 ! -->
-
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src = "../js/member.js" type = "text/javascript"> </script>
- 				<!-- webcontent는 이클립스에서 제공하는 임시 폴더이므로 주소에 포함되지 않는다.  -->
-
 </form>
-</body>
-</html>
+
+<script src = "../js/member.js"></script>

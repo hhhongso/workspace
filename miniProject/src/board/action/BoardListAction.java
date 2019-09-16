@@ -16,6 +16,7 @@ import board.dao.BoardDAO;
 
 public class BoardListAction implements CommandProcess {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		//데이터 받기
@@ -33,8 +34,8 @@ public class BoardListAction implements CommandProcess {
 		
 		//db
 		List<BoardDTO> list = BoardDAO.getInstance().getList(startNum, endNum); //list.size() == 5
-		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-mm-dd");
-		
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-dd");
+	
 		request.setAttribute("boardPaging", boardPaging);
 		request.setAttribute("list", list);
 		request.setAttribute("display", "/board/boardList.jsp");

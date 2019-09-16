@@ -6,8 +6,8 @@ import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
-import memberJSP.bean.MemberDTO;
-import memberJSP.dao.MemberDAO;
+import member.bean.MemberDTO;
+import member.dao.MemberDAO;
 
 public class ModifyFormAction implements CommandProcess {
 

@@ -19,6 +19,6 @@ public class BoardDTO {
 	private int reply;
 	
 	private int hit;
-	private Date logtime;
+	private String logtime;
 	
 }

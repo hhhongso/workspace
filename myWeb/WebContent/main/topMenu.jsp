@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Main Page</title>
-</head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/mainStyle.css">
-<body>
-	<form name="mainForm" method="post" action="">
+    <form name="mainForm" method="post" action="">
 		<div class="sign">
 			<a href="signInForm.html">로그인</a>
 			<a href="signUpForm.html">회원가입</a>			
 		</div>
-		<div><img src="../img/image.png" onclick="location.href='mainForm.html'"></div>
 		<ul id="nav">
 			<li><a href="javascript:void(0)">처음으로 </a></li>
 
@@ -43,5 +37,3 @@
 			<li><a href="javascript:void(0)"> 내 정보 보기</a></li>
 		</ul>
 	</form>
-</body>
-</html>

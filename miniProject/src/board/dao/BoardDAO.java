@@ -47,10 +47,10 @@ public class BoardDAO {
 	public int getTotArticle() {
 		SqlSession session = sqlSessionFactory.openSession();
 		int totArticle = session.selectOne("boardSQL.getTotArticle");
-		session.close();
-		
+		session.close();		
 		return totArticle;
 	}
+	
 	public List<BoardDTO> getList(int startNum, int endNum){
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		map.put("startNum", startNum);
@@ -65,8 +65,7 @@ public class BoardDAO {
 	public BoardDTO getBoardView(int seq) {
 		SqlSession session = sqlSessionFactory.openSession();
 		BoardDTO boardDTO = session.selectOne("boardSQL.getBoardView", seq);
-		session.close();
-		
+		session.close();		
 		return boardDTO;
 	}
 	
@@ -95,7 +94,6 @@ public class BoardDAO {
 		SqlSession session = sqlSessionFactory.openSession();
 		List<BoardDTO> list = session.selectList("boardSQL.searchBoard", map);
 		session.close();
-		
 		return list;
 	}
 
