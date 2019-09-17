@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+/* 회원가입 */
 h2 {
 	text-align: center;	
 }
@@ -10,8 +10,17 @@ table{
 
 
 input[type=button], input[type=reset] {
+	padding: 5px;
 	border: 0; 
 	color: white;
 	background-color: #48d4d1;
 	-webkit-appearance: none;	
+}
+
+/*로그인*/
+table.loginForm{
+	margin: 10px;
+	background-color:#eeffd9;
+	-moz-box-shadow: 1px 1px 0 orange, 2px 2px 0 orange, 3px 3px 0 orange;
+    -webkit-box-shadow: 1px 1px 0 orange, 2px 2px 0 orange, 3px 3px 0 orange;
 }

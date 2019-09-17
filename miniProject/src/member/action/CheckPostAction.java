@@ -30,6 +30,15 @@ public class CheckPostAction implements CommandProcess {
 			map.put("sigungu", sigungu);
 			map.put("roadname", roadname);
 			list = MemberDAO.getinstance().getZipcodeList(map);
+			
+//			for (ZipcodeDTO zipcodeDTO : list) {
+//				zipcodeDTO.setSigungu(zipcodeDTO.getSigungu() == null ? "" : zipcodeDTO.getSigungu()); 
+//				zipcodeDTO.setRi(zipcodeDTO.getRi() == null ? "" : zipcodeDTO.getRi()); 
+//				zipcodeDTO.setBuildingname(zipcodeDTO.getBuildingname() == null ? "" : zipcodeDTO.getBuildingname());
+//				
+//				list.add(zipcodeDTO);				
+//			}
+			
 			request.setAttribute("list", list);			
 		}
 		

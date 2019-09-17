@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${memId == null }">
-로그인 창 
+<jsp:include page="../member/loginForm.jsp"/>
 </c:if>
 
 <c:if test="${memId != null }">

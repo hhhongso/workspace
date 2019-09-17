@@ -2,7 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<style>
+div a#currPaging {
+	text-decoration: underline;
+	color: red;
+	font-weight: bold;
+}
+</style>
 	<form name ="boardListForm" method="post" action="/miniProject/board/boardSearch.do?pg=1">
 	<input type="hidden" name="sw2" value="0">
 	<h3>글목록</h3>

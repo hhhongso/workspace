@@ -2,8 +2,26 @@
 <!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="imageboardSQL">
-	<insert id="writeImage" parameterType="imageboard">
+<!-- 이미지 등록 -->	
+	<insert id="writeImageboard" parameterType="imageboard">
 		insert into imageboard values 
 		(seq_imageboard.nextval, #{imageId}, #{imageName}, #{imagePrice}, #{imageQty}, #{imageContent}, #{image1}, sysdate)
 	</insert>
+
+<!-- 이미지 목록 -->	
+	<select id="getImageboardList" parameterType="java.util.Map" resultType="imageboard">
+		select * from 
+		(select rownum rn, temp.* from 
+		(select seq, imageName, imagePrice, imageQty, imageContent, image1 from imageboard order by seq desc) temp) 
+		where rn between #{startNum} and #{endNum}
+		
+	</select>
+<!-- 총 글수 -->	
+	<select id="getTotArticle" resultType="int">
+		select count(*) as count from imageboard	
+	</select>
+	
+	<select id="getImageboardView" parameterType="int" resultType="imageboard">
+		select * from imageboard where seq= #{seq}
+	</select>
 </mapper>

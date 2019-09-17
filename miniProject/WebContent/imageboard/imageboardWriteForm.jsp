@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<form name="imageboardWriteForm" method="post" action="/miniProject/imageboard/imageboardWrite.do">
+   
+<!-- 파일 업로드: 
+1) method= 반드시 post 타입
+2) enctype = multipart/form-data (multipart형식으로 읽어올 수 있도록 함) 
+
+이클립스 상의 가상폴더 생성 (storage)
+
+-->
+    
+<form name="imageboardWriteForm" method="post" enctype="multipart/form-data" action="/miniProject/imageboard/imageboardWrite.do">
 	<table border=3>
 		<tr>
 			<th>상품코드</th>
@@ -28,7 +37,7 @@
 		</tr>
 		
 		<tr>
-			<td colspan=2><input type="file" name="image1"></td>
+			<td colspan=2><input type="file" name="image1" size="50"></td>
 		</tr>
 		
 		<tr>

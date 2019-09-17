@@ -3,19 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <style type="">
 th{ width: 100px;}
 .text{
 	width:400px;
 	}
 </style>
-</head>
-<body>
+
 <c:if test="${boardDTO != null }">
 	<form name="boardModifyForm" method="post" action="/miniProject/board/boardModify.do">
 	<input type="hidden" name="seq" value="${boardDTO.seq }">
@@ -41,6 +35,4 @@ th{ width: 100px;}
 		</table>
 	</form>
 </c:if>
-</body>
 <script src="../js/board.js"></script>
-</html>

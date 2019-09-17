@@ -2,7 +2,7 @@ package member.dao;
 
 import java.io.IOException;
 import java.io.Reader;
-
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -73,13 +73,7 @@ public class MemberDAO {
 		SqlSession session = sqlSessionFactory.openSession();
 		List<ZipcodeDTO> list = session.selectList("memberSQL.getZipcodeList", map);
 		session.close();
-//		 for (ZipcodeDTO zipcodeDTO : list) {
-//			 zipcodeDTO.setSigungu(zipcodeDTO.getSigungu() == null ? "" : zipcodeDTO.getSigungu()); 
-//			 zipcodeDTO.setRi(zipcodeDTO.getRi() == null ? "" : zipcodeDTO.getRi()); 
-//			 zipcodeDTO.setBuildingname(zipcodeDTO.getBuildingname() == null ? "" : zipcodeDTO.getBuildingname());
-//			 
-//			 list.add(zipcodeDTO); 
-//		 }		 
+	
 		return list;
 	}
 	

@@ -24,7 +24,6 @@ public class BoardSearchAction implements CommandProcess {
 		// 데이터 받기
 		int pg = Integer.parseInt(request.getParameter("pg"));
 		if (pg == 1 && sw == 0) {
-			System.out.println("들어오나요?");
 			searchOp = request.getParameter("searchOp");
 			searchWord = request.getParameter("searchWord");
 			sw = 1;
@@ -32,7 +31,6 @@ public class BoardSearchAction implements CommandProcess {
 		
 		if(request.getParameter("searchOp")!=null && request.getParameter("searchWord")!=null) {
 			if(!searchOp.equals(request.getParameter("searchOp")) || !searchWord.equals(request.getParameter("searchWord"))) {
-				System.out.println("다시 들어오나요?"); 
 				searchOp = request.getParameter("searchOp");
 				searchWord = request.getParameter("searchWord"); 
 				sw = 1; 

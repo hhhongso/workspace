@@ -3,8 +3,8 @@
 <link rel="stylesheet" href="../css/mainStyle.css">
     <form name="mainForm" method="post" action="">
 		<div class="sign">
-			<a href="signInForm.html">로그인</a>
-			<a href="signUpForm.html">회원가입</a>			
+			<a href="location.href='/miniProject/member/loginForm.do'">로그인</a>
+			<a href="location.href='/miniProject/member/signUpForm.do'">회원가입</a>			
 		</div>
 		<ul id="nav">
 			<li><a href="javascript:void(0)">처음으로 </a></li>

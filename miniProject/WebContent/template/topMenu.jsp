@@ -13,6 +13,7 @@ a:hover{
 </style>
 <c:if test="${memId != null }">
 	<a href="/miniProject/board/boardWriteForm.do">게시판 글쓰기</a> &emsp;
+	<a href="/miniProject/imageboard/imageboardList.do?pg=1">이미지(상품) 목록보기</a> &emsp;
 </c:if>
 
 <c:if test="${memId == 'admin' }">

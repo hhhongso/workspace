@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.control.CommandProcess;
 
@@ -41,10 +42,12 @@ public class BoardListAction implements CommandProcess {
 		request.setAttribute("display", "/board/boardList.jsp");
 		
 		//쿠키
-		Cookie cookie = new Cookie("memHit", "hit");
-		cookie.setMaxAge(30*60);
-		response.addCookie(cookie);
-		
+		HttpSession session = request.getSession();
+		if(session.getAttribute("memId") != null) {
+			Cookie cookie = new Cookie("memHit", "hit");
+			cookie.setMaxAge(30*60);
+			response.addCookie(cookie);				
+		}
 		//응답
 		return "/main/index.jsp";
 	}

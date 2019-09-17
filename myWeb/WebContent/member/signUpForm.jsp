@@ -13,7 +13,7 @@
 	   <th> 아이디 </th>
 	   <td> 
 	   	<input type = "text" name = "id" size = 25 placeholder = "아이디 입력"> 
-	   	<input type = "button"  value = "중복체크" onclick = "checkId();"> 
+	   	<input type = "button"  value = "중복체크" onclick = "checkIdDup();"> 
 	   	<input type = "hidden" name = "sw" value = "">
 	   </td>
 	  </tr>

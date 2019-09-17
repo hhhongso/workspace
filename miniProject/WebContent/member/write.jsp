@@ -3,5 +3,9 @@
 <%@ page import="member.bean.MemberDTO"%>
 <%@ page import="member.dao.MemberDAO"%>
 
-	 회원 가입 완료 <br><br>
-	<input type = "button"  value = "로그인" onclick ="location.href = '/miniProject/member/loginForm.do'"> 
+<script>
+window.onload = function(){
+	alert("회원가입 완료");
+	location.href='/miniProject/main/index.do';
+}
+</script>
