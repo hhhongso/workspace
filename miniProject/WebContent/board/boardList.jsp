@@ -8,6 +8,8 @@ div a#currPaging {
 	color: red;
 	font-weight: bold;
 }
+td{ text-align: center;}
+td.subject { text-align: left;}
 </style>
 	<form name ="boardListForm" method="post" action="/miniProject/board/boardSearch.do?pg=1">
 	<input type="hidden" name="sw2" value="0">
@@ -24,9 +26,26 @@ div a#currPaging {
 			</tr>
 			<c:forEach var="boardDTO" items="${list }">
 			<tr>
-				<td width=100px>${boardDTO.seq }</td>	
-				<td width=200px class= subject>
-					<a href="javascript:void(0)" onclick="isLogin('${sessionScope.memDTO}', ${boardDTO.seq}, ${boardPaging.currentPage })"> ${boardDTO.subject }</a> </td>
+			<td width=100px>
+				<c:if test="${boardDTO.pseq ==0 }">	${boardDTO.seq }</c:if>			 
+			</td>
+				<td class="subject" width=200px class= subject>
+				 	<c:if test="${boardDTO.pseq !=0 }">
+					 	<c:forEach var="i" begin="1" end="${boardDTO.lev }" step="1">&emsp;</c:forEach>
+					 	<img src="../image/reply.gif">
+				 	</c:if>
+					<a href="javascript:void(0)" onclick="isLogin('${sessionScope.memDTO}', ${boardDTO.seq}, ${boardPaging.currentPage })"> 
+					
+					<c:set var="subject" value="${boardDTO.subject }"/>
+					<c:if test='${subject.contains("[원글이 삭제된 답글]") }'>					
+						<font size="2" color="blue">${subject.substring(0, 12)}</font> 
+						${subject.substring(12)}
+					</c:if>				
+					<c:if test='${!subject.contains("[원글이 삭제된 답글]") }'>
+						${boardDTO.subject }
+					</c:if>
+					</a> 
+				</td>
 				<td width=100px>${boardDTO.id }</td>
 				<td width=100px>${boardDTO.logtime } </td>
 				<td width=100px>${boardDTO.hit } </td>

@@ -35,7 +35,8 @@
 			<input type="button" value="글수정" onclick="location.href='/miniProject/board/boardModifyForm.do?seq=${boardDTO.seq }&pg=${pg }'">
 			<input type="button" value="글삭제" onclick="delConfirm(${boardDTO.seq})">
 		</c:if>
-		<input type="button" value="목록으로" onclick="location.href='/miniProject/board/boardList.do?pg=${pg }'"> <br>
+		<input type="button" value="목록" onclick="location.href='/miniProject/board/boardList.do?pg=${pg }'">
+		<input type="button" value="답글쓰기" onclick="location.href='/miniProject/board/boardReplyForm.do?pg=${pg }&pseq=${boardDTO.seq}'"> <br>
 		
 	</form>
 </c:if>

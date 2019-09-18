@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
 <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
 <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
 <fullyQualifiedTypeName name="lombok.NonNull"/>
@@ -31,8 +30,6 @@
 <fullyQualifiedTypeName name="user.action.UserDeleteAction"/>
 <fullyQualifiedTypeName name="user.dao.UserDAO"/>
 <fullyQualifiedTypeName name="user.bean.UserDTO"/>
-<fullyQualifiedTypeName name="board.dao.BoardDAO"/>
-<fullyQualifiedTypeName name="board.bean.BoardDTO"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.Throwable"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
@@ -43,13 +40,10 @@
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="lombok.Data"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="board.bean.BoardPaging"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.ha.HaInfo"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="imageboard.dao.ImageBoardDAO"/>
 <fullyQualifiedTypeName name="imageboard.bean.ImageboardDTO"/>
 <fullyQualifiedTypeName name="java.lang.Iterable"/>
@@ -60,4 +54,10 @@
 <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
 <fullyQualifiedTypeName name="java.io.Reader"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+<fullyQualifiedTypeName name="board.dao.BoardDAO"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+<fullyQualifiedTypeName name="board.action.BoardReplyAction"/>
+<fullyQualifiedTypeName name="board.bean.BoardDTO"/>
 </qualifiedTypeNameHistroy>

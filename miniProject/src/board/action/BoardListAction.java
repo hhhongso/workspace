@@ -22,14 +22,14 @@ public class BoardListAction implements CommandProcess {
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
 		//데이터 받기
 		int pg = Integer.parseInt(request.getParameter("pg"));
-		int endNum = pg * 5; 
-		int startNum = endNum -4;
+		int endNum = pg * 10; 
+		int startNum = endNum -9;
 		int totalArticle = BoardDAO.getInstance().getTotArticle();
 		
 		BoardPaging boardPaging = new BoardPaging();
 		boardPaging.setCurrentPage(pg);
 		boardPaging.setPageBlock(5);
-		boardPaging.setPageSize(5);
+		boardPaging.setPageSize(10);
 		boardPaging.setTotalArticle(totalArticle);
 		boardPaging.makePagingHTML("boardList");
 		

@@ -1,20 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <style type="">
 th{ width: 100px;}
 .text{
 	width:400px;
 	}
 </style>
-</head>
-<body>
+
 	<form name="boardWriteForm" method="post" action="/miniProject/board/boardWrite.do">
 		<h3> 글쓰기 </h3>
 		<table border="10">
@@ -36,6 +29,5 @@ th{ width: 100px;}
 			</tr>
 		</table>
 	</form>
-</body>
+
 <script src="../js/board.js"></script>
-</html>

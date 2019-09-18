@@ -83,13 +83,6 @@ public class BoardDAO {
 		session.close();
 	}
 
-	public void deleteBoard(int seq) {
-		SqlSession session = sqlSessionFactory.openSession();
-		session.delete("boardSQL.deleteBoard", seq);
-		session.commit();
-		session.close();
-	}
-
 	public List<BoardDTO> searchBoard(Map<String, String> map) {
 		SqlSession session = sqlSessionFactory.openSession();
 		List<BoardDTO> list = session.selectList("boardSQL.searchBoard", map);
@@ -111,5 +104,32 @@ public class BoardDAO {
 		return list;
 	}
 
+	public void replyBoard(BoardDTO boardDTO) {
+		BoardDTO pDTO = getBoardView(boardDTO.getPseq()); //0. 원글 먼저 가져오기 
+
+		SqlSession session = sqlSessionFactory.openSession();
+		session.update("boardSQL.replyBoard1", pDTO); // 1. 먼저 달려있는 답글의 글순서(step) 밀어내기(업데이트) 
+		
+		 //insert ~ values( ref=원글ref, lev+1, step+1) 을 위해 원글의 ref, lev, step을 boardDTO에 set한다. 
+		boardDTO.setRef(pDTO.getRef());
+		boardDTO.setLev(pDTO.getLev()+1);
+		boardDTO.setStep(pDTO.getStep()+1);
+		
+		session.insert("boardSQL.replyBoard2", boardDTO); //2. insert 답글쓰기
+		session.update("boardSQL.replyBoard3", boardDTO.getPseq());//3. 원글의 답글 수 증가
+		
+		session.commit();
+		session.close();
+	}
+
+	public void deleteBoard(int seq) {
+		SqlSession session = sqlSessionFactory.openSession();		
+		session.update("boardSQL.deleteBoard1", seq); //1. 삭제하고자 하는 글의 원글을 찾아 답글 수 1 감소
+		session.update("boardSQL.deleteBoard2", seq); //2. 삭제하고자 하는 글의 답글을 찾아 제목에 [원글이 삭제된 답글] 추가
+		session.delete("boardSQL.deleteBoard3", seq);//3. 글 삭제
+		
+		session.commit();
+		session.close();
+	}
 	
 }

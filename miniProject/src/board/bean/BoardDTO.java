@@ -1,6 +1,5 @@
 package board.bean;
 
-import java.util.Date;
 import lombok.Data;
 
 @Data
