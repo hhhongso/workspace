@@ -3,15 +3,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style>
-div a#currPaging {
+#currPaging {
 	text-decoration: underline;
 	color: red;
 	font-weight: bold;
 }
+span {cursor:pointer;}
 td{ text-align: center;}
 td.subject { text-align: left;}
 </style>
-	<form name ="boardListForm" method="post" action="/miniProject/board/boardSearch.do?pg=1">
+
 	<input type="hidden" name="sw2" value="0">
 	<h3>글목록</h3>
 	<c:if test="${list !=null }">
@@ -27,9 +28,9 @@ td.subject { text-align: left;}
 			<c:forEach var="boardDTO" items="${list }">
 			<tr>
 			<td width=100px>
-				<c:if test="${boardDTO.pseq ==0 }">	${boardDTO.seq }</c:if>			 
+				<c:if test="${boardDTO.pseq ==0 }">	${boardDTO.seq }</c:if>	 
 			</td>
-				<td class="subject" width=200px class= subject>
+				<td class="subject" width=400px class= subject>
 				 	<c:if test="${boardDTO.pseq !=0 }">
 					 	<c:forEach var="i" begin="1" end="${boardDTO.lev }" step="1">&emsp;</c:forEach>
 					 	<img src="../image/reply.gif">
@@ -53,15 +54,29 @@ td.subject { text-align: left;}
 			</c:forEach>
 		</table>
 	</c:if>	
-	<div style="text-align:center;">${boardPaging.pagingHTML}</div>
+	<div style="text-align:center;">${boardPaging.pagingHTML}</div><br>
+	<form name ="boardListForm" method="post" action="/miniProject/board/boardSearchIns.do?pg=1">
+<!-- 	<form name ="boardListForm" method="post" action="/miniProject/board/boardSearch.do?pg=1"> -->
 	<div align="center">
-		<select id="option" name="searchOp">
+		<select id="searchOp" name="searchOp">
 			<option id="subject" value="subject"> 제목으로 검색</option>
 			<option id="id" value="id"> 아이디로 검색</option>
 		</select>
-		<input type="text" name="searchWord" size="10">
+		<input type="text" name="searchWord" size="10" value="${searchWord }">
 		<input type="button" value="검색" onclick="searchBoard()">
 	</div>
 	</form>
 
 <script src = "../js/board.js"></script>
+<script>
+window.onload = function(){
+	if('${searchOp}' == 'subject' || '${searchOp}' == 'id')
+		document.getElementById("searchOp").value = '${searchOp}';
+}
+
+function boardSearch(pg){
+	//자바스크립트는 get방식으로 데이터를 보냄. ${searchWord}의 한글이 깨진다 -> Error:400 => encode시켜주어야함 
+	
+	location.href="/miniProject/board/boardSearchIns.do?pg="+pg+"&searchOp=${searchOp}&searchWord="+encodeURIComponent("${searchWord}");
+}
+</script>

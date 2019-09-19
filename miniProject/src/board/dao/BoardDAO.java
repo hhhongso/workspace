@@ -92,9 +92,9 @@ public class BoardDAO {
 
 	public int getSearchTotArticle(Map<String, String> map) {
 		SqlSession session = sqlSessionFactory.openSession();
-		int cnt = session.selectOne("boardSQL.getSearchTotArticle", map);
+		int totalArticle = session.selectOne("boardSQL.getSearchTotArticle", map);
 		session.close();
-		return cnt;
+		return totalArticle;
 	}
 
 	public List<BoardDTO> getSearchList(Map<String, String> map) {
@@ -115,7 +115,7 @@ public class BoardDAO {
 		boardDTO.setLev(pDTO.getLev()+1);
 		boardDTO.setStep(pDTO.getStep()+1);
 		
-		session.insert("boardSQL.replyBoard2", boardDTO); //2. insert 답글쓰기
+		session.insert("boardSQL.replyBoard2", boardDTO); //2. 답글쓰기
 		session.update("boardSQL.replyBoard3", boardDTO.getPseq());//3. 원글의 답글 수 증가
 		
 		session.commit();
@@ -123,10 +123,13 @@ public class BoardDAO {
 	}
 
 	public void deleteBoard(int seq) {
-		SqlSession session = sqlSessionFactory.openSession();		
-		session.update("boardSQL.deleteBoard1", seq); //1. 삭제하고자 하는 글의 원글을 찾아 답글 수 1 감소
-		session.update("boardSQL.deleteBoard2", seq); //2. 삭제하고자 하는 글의 답글을 찾아 제목에 [원글이 삭제된 답글] 추가
-		session.delete("boardSQL.deleteBoard3", seq);//3. 글 삭제
+		SqlSession session = sqlSessionFactory.openSession();
+//		session.update("boardSQL.deleteBoard1", seq); //1. 삭제하고자 하는 글의 원글을 찾아 답글 수 1 감소
+//		session.update("boardSQL.deleteBoard2", seq); //2. 삭제하고자 하는 글의 답글을 찾아 제목에 [원글이 삭제된 답글] 추가
+//		session.delete("boardSQL.deleteBoard3", seq); //3. 글 삭제
+		
+		//상기 세 가지 쿼리문을 한번에 
+		session.delete("boardSQL.deleteBoard", seq);
 		
 		session.commit();
 		session.close();

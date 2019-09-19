@@ -15,9 +15,9 @@ img{
     <c:if test="${imageboard != null }">
 		<img src="../storage/${imageboard.image1 }" align="left">
 		<li> 상품명: ${imageboard.imageName } <br></li>
-		<li> 단가: ${String.format("%,3d",imageboard.imagePrice) } <br></li>
-		<li> 개수: ${String.format("%,3d",imageboard.imageQty) } <br></li>
-		<li> 합계: ${String.format("%,3d", imageboard.imagePrice * imageboard.imageQty) } <br></li>
+		<li> 단가: ${String.format("%,d",imageboard.imagePrice) } <br></li>
+		<li> 개수: ${String.format("%,d",imageboard.imageQty) } <br></li>
+		<li> 합계: ${String.format("%,d", imageboard.imagePrice * imageboard.imageQty) } <br></li>
 		<li> 내용: <br>
 		<pre>${imageboard.imageContent}</pre></li> 
 		<br><br>

@@ -61,6 +61,14 @@ public class ImageBoardDAO {
 		session.close();
 		return imageboardDTO;
 	}
+
+	public void deleteImageBoard(String seq) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.delete("imageboardSQL.deleteImageBoard", seq);
+		session.commit();
+		session.close();
+		
+	}
 	
 
 }

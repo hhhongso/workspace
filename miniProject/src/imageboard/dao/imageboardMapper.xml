@@ -24,4 +24,9 @@
 	<select id="getImageboardView" parameterType="int" resultType="imageboard">
 		select * from imageboard where seq= #{seq}
 	</select>
+	
+<!-- 삭제 -->
+	<delete id="deleteImageBoard" parameterType="String">
+		delete from imageboard where seq in (${seq})
+	</delete>
 </mapper>

@@ -37,23 +37,27 @@
 		update board set subject = #{subject}, content = #{content}, logtime = sysdate where seq = #{seq}
 	</update>
 
-<!-- 검색 -->	
+<!-- 검색 ==================================================================================================================== -->	
 	<select id="getSearchTotArticle" parameterType="java.util.Map" resultType="Integer">
-		select count(*) as count from board where ${searchOp} like '%'||#{searchWord}||'%'
+		select count(*) from board where ${searchOp} like '%'||#{searchWord}||'%'
 	</select>
 	
 	<select id="getSearchList" parameterType="java.util.Map" resultType="board">
 		select * from 
-		(select rownum rn, temp.* from (select seq,id,name,email,subject,content,ref,lev,step,pseq,reply,hit,to_char(logtime,'YYYY.MM.DD') as logtime from board where ${searchOp} like '%'||#{searchWord}||'%' order by ref desc, step asc) temp) 
+		(select rownum rn, temp.* from 
+		(select seq, id, name, email, subject, content, ref, lev, step, pseq, reply, hit, to_char(logtime,'YYYY.MM.DD') as logtime from board 
+		where ${searchOp} like '%'||#{searchWord}||'%' order by ref desc, step asc) temp) 
 		where rn between #{startNum} and #{endNum}
 	</select>
+	<!-- #{} = 상수 리터럴 값('?')으로 읽어온다.
+		 ${} = 글자 그대로 읽어온다.   -->
 
 	<select id="searchBoard" parameterType="java.util.Map" resultType="board">
 		select * from board where ${searchOp} like '%'||#{searchWord}||'%'
 	</select>
 	
 	
-<!-- 답글쓰기 -->
+<!-- 답글쓰기 ==================================================================================================================== -->
 	<update id="replyBoard1" parameterType="board">
 		update board set step=step+1 where ref=#{ref} and step> #{step}
 	</update>
@@ -67,10 +71,9 @@
 		update board set reply= reply+1 where seq=#{pseq}
 	</update>
 	
-<!-- 삭제 -->
+<!-- 삭제 ==================================================================================================================== -->
 	<update id="deleteBoard1" parameterType="int">
-		update board set reply=reply-1 where seq=
-		(select pseq from board where seq=#{seq});
+		update board set reply=reply-1 where seq=(select pseq from board where seq=#{seq})
 	</update>
 
 	<update id="deleteBoard2" parameterType="int">
@@ -79,5 +82,14 @@
 	
 	<delete id="deleteBoard3" parameterType="Integer">
 		delete from board where seq = #{seq}
+	</delete>
+	
+	<!-- 여러개의 문장을 한번에 처리([XML문법] begin ~ end): ;을 찍어 한 문장이 종료됨을 알려준다.  -->
+	<delete id="deleteBoard" parameterType="int">
+		begin
+			update board set reply=reply-1 where seq=(select pseq from board where seq=#{seq});
+			update board set subject='[원글이 삭제된 답글]'||subject where pseq=#{seq};
+			delete from board where seq = #{seq};
+		end;
 	</delete>
 </mapper>
