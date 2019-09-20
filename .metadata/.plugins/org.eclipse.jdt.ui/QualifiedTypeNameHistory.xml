@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
 <fullyQualifiedTypeName name="lombok.NonNull"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.fastinfoset.sax.Properties"/>
 <fullyQualifiedTypeName name="memberJSP.bean.MemberDTO"/>
@@ -31,21 +30,15 @@
 <fullyQualifiedTypeName name="user.bean.UserDTO"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.Throwable"/>
-<fullyQualifiedTypeName name="java.util.Properties"/>
-<fullyQualifiedTypeName name="java.io.FileInputStream"/>
 <fullyQualifiedTypeName name="java.lang.Class"/>
 <fullyQualifiedTypeName name="com.control.CommandProcess"/>
-<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
-<fullyQualifiedTypeName name="lombok.Data"/>
 <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="board.bean.BoardPaging"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.api.ha.HaInfo"/>
-<fullyQualifiedTypeName name="imageboard.bean.ImageboardDTO"/>
 <fullyQualifiedTypeName name="java.lang.Iterable"/>
-<fullyQualifiedTypeName name="java.util.Iterator"/>
 <fullyQualifiedTypeName name="member.dao.MemberDAO"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
@@ -53,11 +46,18 @@
 <fullyQualifiedTypeName name="java.io.Reader"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
 <fullyQualifiedTypeName name="board.dao.BoardDAO"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
-<fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="board.action.BoardReplyAction"/>
 <fullyQualifiedTypeName name="board.bean.BoardDTO"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="imageboard.dao.ImageBoardDAO"/>
+<fullyQualifiedTypeName name="imageboard.bean.ImageboardDTO"/>
+<fullyQualifiedTypeName name="imageboard.bean.ImageboardPaging"/>
+<fullyQualifiedTypeName name="lombok.Data"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="java.io.FileInputStream"/>
+<fullyQualifiedTypeName name="java.util.Iterator"/>
+<fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="testAppForm" method="get" action="">
+<div>이름
+	<input type="text" name="name" placeholder="이름입력">
+</div>
+
+<div>생년월일
+	<input type="text" name="birthday" placeholder="ex)1991/01/01">
+</div>
+
+<div>
+	<input type="button" value="보내기" onclick="testToServer()">
+</div>
+</form>
+</body>
+
+<script>
+var xhr;
+function testToServer(){
+	xhr = new XMLHttpRequest();
+	var name = document.testAppForm.name.value;
+	var birthday = document.testAppForm.birthday.value;
+
+
+	xhr.onreadystatechange = testFromServer;
+	xhr.open("GET", "test.jsp?name="+name+"&birthday="+birthday, true);
+	xhr.send(null);
+}
+
+function testFromServer(){
+	if(xhr.readyState == 4) {
+		if(xhr.status == 200) {
+			alert(xhr.responseText);
+		}
+	}
+	
+}
+</script>
+</html>

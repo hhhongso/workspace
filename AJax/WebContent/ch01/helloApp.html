@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form name="inputForm" method="post" action="">
+	<input type="text" name="name">
+	<input type="button" value="입력" onclick="helloToServer()">
+</form>
+</body>
+<script>
+var xhr;
+function helloToServer(){
+	var name = encodeURIComponent(document.inputForm.name.value);
+	xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = helloFromServer;
+	xhr.open("POST", "hello.jsp", true);
+	xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); //www기반 어플리케이션의 모든 encode값을 utf-8로 맞춘다.
+	xhr.send("name="+name);
+}
+
+function helloFromServer(){
+	if(xhr.readyState == 4) {
+		if(xhr.status == 200) {
+			alert(xhr.responseText);
+		}
+	}
+}
+
+</script>
+</html>
+
+
+<!-- '비동기 javascript & XML' 
+
+비동기 - AKKA (java) - 기다리지 않아욥
+동기 - ex 소켓(요청하면 반드시 응답이 와야 한다. 요청올 때까지 무한 대기)
+
+
+비동기 => 화면 이동하지 않는다. (ex) 지도)
+웹 표준 X
+ -->

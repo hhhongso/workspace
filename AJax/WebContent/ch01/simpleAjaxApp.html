@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<input type="button" value="simple.jsp" onclick="load('simple.jsp')">
+</body>
+<script>
+var xhr;
+function load(url){
+	xhr = new XMLHttpRequest(); //XMLHttpRequest 객체 생성
+	xhr.onreadystatechange = viewMessage; // 변경사항이 있으면(=응답이 온다면) -> viewMessage(); 함수 실행
+	xhr.open("GET", url, true); // "(대문자) GET/POST" 방식으로 "url"을 요청한다, "true" 비동기 방식으로
+	xhr.send(null);
+}
+
+function viewMessage(){
+	if(xhr.readyState == 4){ //4 = completed
+		if(xhr.status == 200) { // 200 = ok
+			console.log(xhr.responseText);
+		}
+	} 
+	
+}
+</script>
+
+</html>

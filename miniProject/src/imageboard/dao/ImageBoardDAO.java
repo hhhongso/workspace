@@ -48,9 +48,9 @@ public class ImageBoardDAO {
 		return list;
 	}
 
-	public int getTotArticle() {
+	public int getImageboardTotArticle() {
 		SqlSession session = sqlSessionFactory.openSession();
-		int totalArticle = session.selectOne("imageboardSQL.getTotArticle");
+		int totalArticle = session.selectOne("imageboardSQL.getImageboardTotArticle");
 		session.close();
 		return totalArticle;
 	}

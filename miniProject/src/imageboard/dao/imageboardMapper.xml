@@ -17,7 +17,7 @@
 		
 	</select>
 <!-- 총 글수 -->	
-	<select id="getTotArticle" resultType="int">
+	<select id="getImageboardTotArticle" resultType="int">
 		select count(*) as count from imageboard	
 	</select>
 	
@@ -28,5 +28,14 @@
 <!-- 삭제 -->
 	<delete id="deleteImageBoard" parameterType="String">
 		delete from imageboard where seq in (${seq})
+
+		<!--  map으로 보내어 foreach 를 사용할 경우
+			delete from imageboard where seq in
+		
+		<foreach collection="seqMap" item="seq" index="i" open="(" close=")" separator=",">
+			#{seqArr[i]} 또는 #{seq}
+		</foreach>
+		
+		-->
 	</delete>
 </mapper>
