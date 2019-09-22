@@ -8,7 +8,7 @@ import com.control.CommandProcess;
 import board.bean.BoardDTO;
 import board.dao.BoardDAO;
 
-public class BoardViewAction implements CommandProcess {
+public class boardViewAction implements CommandProcess {
 
 	@Override
 	public String requestPro(HttpServletRequest request, HttpServletResponse response) throws Throwable {
