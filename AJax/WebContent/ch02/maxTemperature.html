@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+최근 4일 간 최고 기온: <span id="maxTemp"></span> 이며, <br>
+		최저 기온은: <span id="minTemp"></span> 입니다. 
+</body>
+
+<script>
+window.onload = function(){
+	loadList();
+}
+
+var xhr = null;
+function loadList(){
+	xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = loadedList;
+	xhr.open("GET", "getMaxTemperature.jsp", true);
+	xhr.send(null);
+}
+
+function loadedList(){
+	if(xhr.readyState == 4) {
+		if(xhr.status == 200) {
+			var csvStr = xhr.responseText; //Text 문자열로 받아온다. => split 
+			var tempStrs = csvStr.split(","); //배열 
+			
+			var temps = new Array(tempStrs.length); // 숫자로 변환하여 담을 배열 생성
+			for(var i = 0; i < temps.length; i++) {
+				temps[i] = parseFloat(tempStrs[i]);
+			}
+			
+			var max = temps[0];
+			var min = temps[0];
+			for (var i = 0; i < temps.length; i++) {
+				if(max < temps[i]) max = temps[i];
+				if(min > temps[i]) min = temps[i];
+			}
+			
+			var maxTemp = document.getElementById("maxTemp");
+			var minTemp = document.getElementById("minTemp");
+			maxTemp.innerHTML = "<font color=red><strong>"+ max +"</strong></font>";
+			minTemp.innerHTML = "<strong>"+ min +"</strong>";
+		}
+	}
+	
+}
+</script>
+</html>

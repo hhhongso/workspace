@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+.backColor {
+	background-color: teal;
+}
+</style>
+<body>
+<h1 class="back">Hello jQuery!</h1>
+<button id="hellobtn"> 헬로 제이쿼리 </button>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	//~에 클래스 속성을 부여
+	$('.back').addClass('backColor'); 
+	
+	//chrome 에서는 실행 안됨
+/*	$('#hellobtn').click(function(){
+		$(this).hide(); //this == #hellobtn
+		alert("jQuery 연습");
+		$(this).show();
+	}); */
+	
+	// 두 개의 이벤트 하나로 연결 - chrome에서도 가능
+	$('#hellobtn').click(function(){
+		/* $(this).hide(function(){
+			alert("jQuery 연습~!");
+		}).show(function(){}); */
+		
+		$(this).hide(100, function(){
+			alert("jQuery 연습~!");
+		}).show(function(){});
+	});
+	
+});
+</script>
+</html>

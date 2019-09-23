@@ -7,8 +7,7 @@
 <fmt:requestEncoding value="UTF-8"/>
 
 <jsp:useBean id="now" class="java.util.Date"/>
-<c:set var="birthday" value="${param.birthday }"/>
-<c:set var="birthArr" value="${fn:split(birthday, '/') }"/>
+<c:set var="birthArr" value="${fn:split(param.birthday, '/') }"/>
 <fmt:formatDate var="year" value="${now }" pattern="yyyy"/>
 ${param.name }님의 생일은 
 ${birthArr[0] }년  ${birthArr[1] }월 ${birthArr[2] }일 입니다.

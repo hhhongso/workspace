@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<input type="button" id="btn1" value="commit_1" onclick="process()">
+	<input type="button" id="btn2" value="commit_2">
+	<input type="button" id="btn3" value="commit_3">
+</body>
+<script src="../js/jquery-3.4.1.min.js"></script>
+<script>
+//jQuery: Ajax에서 자주 사용하는 것들을 library로 묶어놓은 것.( JavaScript library)  *.js 
+
+function process(){
+	alert("commit_1 호출");
+}
+
+//jquery() == $().		여기	;는 필수
+$(document).ready(function(){ 
+	//이벤트 발생: 선택자selector.event(함수)
+	$('#btn2').click(function(){
+		alert("commit_2 호출");
+	});
+	
+	//bind, on: bind- 비동적: 초기 이벤트 - 수행 가능. 이후 이벤트 추가 시, 추가된 것에 대하여 이벤트 수행 불가 => on 추천
+	$('#btn3').bind('click', function(){
+		alert("commit_3 호출");
+	});
+	
+}); //window.onload= function(){명령어코드}와 같은 의미
+
+
+</script>
+</html>

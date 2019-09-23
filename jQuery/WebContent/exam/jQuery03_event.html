@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button id="btn1">slideUp</button>
+	<button id="btn2">slideDown</button>&nbsp;&nbsp;&nbsp;
+	
+	<button id="btn3">fadeIn</button>
+	<button id="btn4">fadeOut</button>&nbsp;&nbsp;&nbsp;
+	
+	<button id="btn5">slide Toggle</button>
+	<button id="btn6">fade toggle</button>
+	<button id="btn7">toggle</button>
+	
+	<p>이미지</p>
+	<img src="../image/totoro.gif" width="500px" height="500px">
+</body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	//slideUp(speed): spped값을 지정하여 슬라이드 업 효과를 줄 수 있다. 
+	//speed: "slow" / "fast" / milliseconds(1/1000초)
+	//슬라이드는 크기, 높이가 있어야만 적용된다. 그렇지 않으면 토글처럼 한 쪽 모서리로 fade 됨. 
+	$('#btn1').click(function(){
+		$('img').slideUp(2000);
+	});
+	
+	$('#btn2').click(function(){
+		$('img').slideDown(100);
+	});
+	
+	$('#btn3').bind('click', function(){
+		$('img').fadeIn(3000);
+	});
+	
+	$('#btn4').bind('click', function(){
+		$('img').fadeOut("fast");
+	});
+	
+	//토글: 두 가지 기능이 <=> ex) caps Lock 누를 때마다 대 / 소문자로 두 가지 기능을 왔다갔다 함
+	
+	$('#btn5').bind('click', function(){
+		//slideUp, slideDown 번갈아
+		$('img').slideToggle(1000);
+	});
+
+	$('#btn6').bind('click', function(){
+		//fadeIn, fadeOut 번갈아
+		$('img').fadeToggle(1000);
+	});
+	
+	$('#btn7').bind('click', function(){
+		//slideUp, slideDown,fadeIn, fadeOut 섞여잇음(색깔이 흐려지면서 slideUp, slideDown)
+		$('img').toggle(1000);
+	});
+	
+});
+</script>
+
+</html>

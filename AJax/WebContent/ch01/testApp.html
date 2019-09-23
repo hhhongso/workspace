@@ -31,6 +31,7 @@ function testToServer(){
 	xhr.onreadystatechange = testFromServer;
 	xhr.open("GET", "test.jsp?name="+name+"&birthday="+birthday, true);
 	xhr.send(null);
+	//post 방식의 경우, xhr.send("name="+name+ "&birthday="+birthday);
 }
 
 function testFromServer(){
