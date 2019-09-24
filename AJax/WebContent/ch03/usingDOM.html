@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<span id="a" style="border: 1px solid maroon;"> a span</span>
+		<p> test
+			<span id="b" name="B" style="border: 1px solid maroon;"> b span</span>
+		</p>
+		
+		<div>
+			<p> p </p>
+			<span id="c" style="border: 1px solid maroon;"> c span</span>
+		</div>
+		
+		<div id="debugConsole" style="border: 1px solid olive;"/>
+</body>
+<script src="log.js"></script>
+<script>
+window.onload = function(){
+	 var rootNode = document.documentElement; 
+	log("root 태그: " + rootNode.nodeName); //nodeName, tagName 모두 property: String type 으로 받아온다. 
+	
+	var bodyNode = document.getElementsByTagName("body").item(0);
+	log("body 태그: " + bodyNode);
+	
+	var spanList = document.getElementsByTagName("span");
+	log("span 태그의 갯수: " + spanList.length);
+	
+	for (var i = 0; i < spanList.length; i++) {
+		log((i+1)+"번째 span id: " + spanList.item(i).getAttribute("id"));
+	}
+	
+	var debugconsoleDiv = document.getElementById("debugConsole");
+	log("debugconsole 요소: "+ debugconsoleDiv.tagName);
+	
+	var bodyLastChild = document.getElementsByTagName("body").item(0).lastChild;
+	log("bodyLastChild 마지막 자식 노드: " + bodyLastChild.tagName);
+}
+</script>
+</html>

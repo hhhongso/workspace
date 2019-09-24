@@ -11,21 +11,27 @@
 	href="https://fonts.googleapis.com/css?family=Oswald:400,500,600,700"
 	rel="stylesheet">
 
+<!-- jQuery 는 앞에 추가해주어야 읽을 수 있다 -->
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+
+<!-- 부가적인 테마 -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <header class="indexHeader">
 	<jsp:include page="/template/headerMenu.jsp" />
-	<div class="visual">
-		이벤트 창이나 슬라이더를 넣고 싶다
-	</div>
+	<jsp:include page="/template/headerSlide.jsp" />
 </header>
-
 <nav class="indexNav">
 nav
 </nav>
 
 <section class="indexSection">
-	<jsp:include page="/template/body.jsp"/>
+	<jsp:include page="${display }"/>
 </section>
 
 <aside class="indexAside">

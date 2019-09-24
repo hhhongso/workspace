@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+책 정보를 alert 으로 출력 <br>
+<div id="msg"></div>
+
+</body>
+<script>
+window.onload = function(){
+	loadBooks();
+}
+
+var xhr = null; 
+function loadBooks(){
+	xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = loadedBooks; 
+	xhr.open("GET", "books.jsp", true); 
+	xhr.send();
+	
+}
+
+function loadedBooks(){
+	if(xhr.status == 200 && xhr.readyState == 4) {
+		var xmlDoc = xhr.responseXML;
+		var bookList = xmlDoc.getElementsByTagName("book");
+		var msg = "책 개수: " + bookList.length + "권 <br>";
+		
+		for (var i = 0; i < bookList.length; i++) {
+			var book = bookList.item(i);
+			var title = book.getElementsByTagName("title").item(0).firstChild.nodeValue;
+			var author = book.getElementsByTagName("author").item(0).firstChild.nodeValue;
+//			var title = book.firstChild; =><book> <title> 사이의 빈칸을 first로 받아옴 
+//			var author = book.lastChild.nodeValue; 
+			
+			msg += title + " / 지은이: " + author +"<br>";
+			
+		}
+		
+		document.getElementById("msg").innerHTML = msg;
+	}
+	
+}
+</script>
+</html>

@@ -1,0 +1,9 @@
+@charset "UTF-8";
+div#dispArea{
+	width:200px; 
+	height:200px; 
+	border-color:#aafaaf;
+	border-style: dotted; 
+	background-color: orange;
+	
+}

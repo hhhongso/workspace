@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/index.css">   
     
-<div class="footer_wrap">
+<div class="footer_wrap" align="center">
 	<div class="footer_holder">
 		<div class="con">
 
@@ -57,14 +57,12 @@
 				<div class="sqs-block ">
 					<div class="sns_bottom">
 						<h2 class="foot_title">follow</h2>
-
-
 						<ul>
-							  <li><a href="#" target="_blank">Face</a></li>
-                    <li><a href="#" target="_blank">Twitter</a></li>
-                    <li><a href="#" target="_blank">Instagram</a></li>
-                    <li><a href="#" target="_blank">Blog</a></li>
-                    <li><a href="#" target="_blank">Kakao</a></li>
+							<li><a href="#" target="_blank">Face</a></li>
+		                    <li><a href="#" target="_blank">Twitter</a></li>
+		                    <li><a href="#" target="_blank">Instagram</a></li>
+		                    <li><a href="#" target="_blank">Blog</a></li>
+		                    <li><a href="#" target="_blank">Kakao</a></li>
 						</ul>
 						<p style="margin-top: 10px;"
 							class="xans-element- xans-layout xans-layout-footer copyright ">

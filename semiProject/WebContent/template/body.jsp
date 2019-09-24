@@ -18,6 +18,7 @@ li[id^='anchorBoxId'] {
 }
 
 li .work-item {
+	width: 30%;	
 	display: inline-block;
 	float: left;
 }
