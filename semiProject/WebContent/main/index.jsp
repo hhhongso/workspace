@@ -36,7 +36,7 @@ nav
 </section>
 
 <aside class="indexAside">
-aside
+	<jsp:include page="/template/asideBar.jsp"/>
 </aside>
 
 <footer class="indexFooter">

@@ -15,9 +15,7 @@
 <div class="header1" style="width:100%">
 		<div style="display:inline-block; position: relative; margin: 0 auto;">
 			<h1 class="xans-element- xans-layout xans-layout-logotop ">
-				<a href="../main/index.do"><img class="headImg"
-					src="/web/upload/category/logo/2cace9fc9027550a66bb092a1361775b_6_top.jpg"
-					alt="FUSE SEOUL"></a>
+				<a class="headLogo" href="../main/index.do" style="text-decoration: none;"><strong>FUSE SEOUL</strong></a>
 			</h1>
 		</div>
 
@@ -44,7 +42,7 @@
 
 					<li class="sub-menu-parent"><a href="#">Community</a>
 						<ul class="sub-menu" style="left: -2px;">
-							<li><a href="/board/free/list.html?board_no=1">Notice</a></li>
+							<li><a href="../notice/noticeBoardList.do">Notice</a></li>
 							<li><a href="/board/product/list.html?board_no=6">Q / A</a></li>
 							<li><a href="/board/smartreview/list.html">Review</a></li>
 						</ul></li>
@@ -53,7 +51,7 @@
 							class="xans-element- xans-layout xans-layout-statelogoff sub-menu ">
 							<c:if test="${sessionScope.memId == null }">
 								<li><a href="../member/loginForm.do" class="log">Login</a></li>
-								<li><a href="/member/join.html">Join us</a></li>
+								<li><a href="../member/signupForm.do">Join us</a></li>
 							</c:if>
 
 							<c:if test="${sessionScope.memId != null }">
@@ -97,10 +95,8 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $().ready(function(){
-	var hoffset = $('.headImg').offset();
-	console.log(hoffset);
+	var hoffset = $('.headLogo').offset();
 	$(window).scroll(function(){
-	console.log($(document).scrollTop());
 		if($(document).scrollTop() > hoffset.top) $('.indexHeader').addClass('headerFixed');
 		else $('.indexHeader').removeClass('headerFixed');
 	});
