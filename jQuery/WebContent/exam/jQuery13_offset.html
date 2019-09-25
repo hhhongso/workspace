@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+/* *{position: absolute; margin: 0; padding: 0; }
+.d1{width:50px; height:50px; background: red;}
+.d2{width:50px; height:50px; background: green; top:100px; left:100px;}
+.d3{width:50px; height:50px; background: blue; top:200px; left: 200px;}
+
+ */
+*{margin: 0; padding: 0; }
+.d1{width:50px; height:50px; background: red;}
+.d2{width:50px; height:50px; background: green; margin-top:100px; margin-left:100px;}
+.d3{width:50px; height:50px; background: blue; margin-top:200px; margin-left: 200px;}
+</style>
+<body>
+	<div class="d1"></div>
+	<div class="d2"></div>
+	<div class="d3"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$().ready(function(){
+	$('div').click(function(){
+		var divOffset = $(this).offset();
+		alert("x, y : "+ divOffset.left + " , " + divOffset.top);
+	});
+});
+</script>
+</html>

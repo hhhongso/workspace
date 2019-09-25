@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+.jbBox{ height: 2000px;}
+.jbColor{ background-color: orange;}
+</style>
+<body>
+	<div class="jbBox"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	$(window).scroll(function(){
+		$('.jbBox').addClass('jbColor');
+	});
+	
+});
+</script>
+</html>
+
+<!-- .scroll(): 선택한 객체가 스크롤 이벤트가 발생되었을 때 감지하여 작업을 수행 --> 

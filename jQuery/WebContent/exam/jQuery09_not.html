@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+body * {
+	color: blue; 
+}
+
+body *:not(a) {
+	color: red;
+}
+
+</style>
+<body>
+	<div id="container">
+		<ul class="tab">
+			<li><a href="#tab1" class="selected">Javascript</a></li>
+			<li><a href="#tab2">CSS</a></li>
+			<li><a href="#tab3">HTML</a></li>
+			<li><a href="#tab4">jQuery</a></li>
+			<li><a href="#tab5">XHTML</a></li>
+		</ul>
+		
+		<ul class="panel">
+			<li id="tab1">Javascript를 선택하셨네요~!</li>
+			<li id="tab2">CSS를 선택하셨네요~!</li>
+			<li id="tab3">HTML를 선택하셨네요~!</li>
+			<li id="tab4">jQuery를 선택하셨네요~!</li>
+			<li id="tab5">XHTML를 선택하셨네요~!</li>
+		</ul>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$(document).ready(function(){
+	//alert($('ul.tab li a.selected').attr('href'));
+	//$('ul.panel li#tab1').hide();
+	$('ul.panel li:not(' + $('ul.tab li a.selected').attr('href') +')').hide();
+	
+	$('ul.tab li a').click(function(){
+		$('ul.tab li a').removeClass('selected'); //a tag의 클래스='selected' 삭제
+	//	$('ul.tab li a').removeAttr('class'); //a tag의 모든 클래스 속성 삭제
+		$(this).addClass('selected');	// 선택한 요소에 class=selected 추가
+		$('ul.panel li').hide(); // panel li를 모두 hide
+		$($(this).attr('href')).show(); // 선택한 href 값의 id 를 찾아 show
+		
+	});
+});
+</script>
+</html>
+<!-- 
+CSS에는 없고, CSS3는 특정 요소에 스타일을 적용시키지 않는: not 이 존재 
+ex1) body의 모든 태그에 스타일 적용
+body * {
+	color: red; 
+}
+
+ex2) a태그를 제외하고 body의 모든 태그에 스타일 적용 
+body *:not(a) {
+	color: red;
+}
+-->

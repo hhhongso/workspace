@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form name="form1">
+		<input type="checkbox" name="chk" value="1" class="cb"> 농구
+		<input type="checkbox" name="chk" value="2" class="cb"> 낚시
+		<input type="checkbox" name="chk" value="3" class="cb"> 여행
+		<input type="checkbox" name="chk" value="4" class="cb"> 바둑
+		<input type="checkbox" name="chk" value="5" class="cb"> 게임
+		<input type="button" value="선택된 취미의 개수-javascript" onclick="go()">
+		<input type="button" id="go2" value="선택된 취미의 개수-jQuery " >
+	</form>
+	<br>
+	
+	<div id="result1" style="border: 1px solid red;"></div>
+	<div id="result2"></div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<!-- 선택된 취미의 개수-jQuery으로 처리하기 -->
+<script>
+$(document).ready(function(){
+	$('#go2').click(function(){
+		$('#result2').html($('.cb:checked').length+'개 선택').css('color', 'blue');
+	});
+	
+});
+</script>
+
+<!-- 선택된 취미의 개수-javascript으로 처리하기 -->
+<script>
+function go(){
+	var chk = document.querySelectorAll(".cb"); // var chk = document.form1.chk.length;
+	var cnt = 0; 
+
+	/* var chk = document.getElementsByName("chk");
+	for (var i = 0; i < chk.length; i++) {
+		if(chk[i].checked) cnt++; 
+	} */
+	
+	chk.forEach(o =>{ 
+		if(o.checked) cnt++; // document.form1.chk[i].checked;
+	});
+	
+	result1.innerText = cnt + "개 선택"; //아이디 속성으로는 document.getElementById("result1") 없이 id 속성만으로도 접근 가능  
+}
+</script>
+</html>

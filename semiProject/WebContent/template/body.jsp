@@ -29,7 +29,7 @@ li .work-item img {
 }
 </style>
 
-
+<jsp:include page="/template/headerSlide.jsp" />
 <!-- 이 부분에 슬라이더를 넣었으면 좋겠읍니다
 <div class="main_layout" style="width: 93.3%; padding-top: 50px">
 	<div class="blocks blocks-home" style="width: 96.3%; margin: 0 auto">

@@ -12,6 +12,7 @@
 	rel="stylesheet">
 
 <!-- jQuery 는 앞에 추가해주어야 읽을 수 있다 -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -22,9 +23,9 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+
 <header class="indexHeader">
 	<jsp:include page="/template/headerMenu.jsp" />
-	<jsp:include page="/template/headerSlide.jsp" />
 </header>
 <nav class="indexNav">
 nav
@@ -53,3 +54,4 @@ aside
 			class="xans-element- xans-layout xans-layout-shortcut ">바로가기 </a>
 	</div>
 </div>
+

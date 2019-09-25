@@ -4,7 +4,7 @@
 
 .indexHeader{
 	width: 100%;
-	height: 400px; 
+	height: 60px; 
 }
 
 .indexNav{
@@ -81,6 +81,7 @@
 }
 
 #nav .sub-menu{
+	z-index: 100;
 	margin: 0; 
 	padding: 0;
 	list-style: none;

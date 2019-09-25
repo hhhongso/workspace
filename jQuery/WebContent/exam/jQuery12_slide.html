@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<style>
+#button{
+	margin: 0;
+	background: #ccc;
+	padding: 10px; 
+	cursor: pointer;
+	border-radius: 1.2em;
+}
+
+#info{
+	background: orange;
+	overflow: auto;
+	padding: 0; 
+	margin: 0;
+	/* height: 150px; 
+	슬라이드에는 크기가 반드시 있어야 한다....? */
+}
+
+#info p {
+	font-size: 15px; 
+	color: green;
+}
+</style>
+<body>
+	<h1 id="button"> button</h1>
+	<div id="info">
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+		<p> button을 클릭하면 info 부분을 [slideToggle()] 방식으로 보여줍니다.</p>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$().ready(function(){
+	$('#info').hide();
+	$('#button').click(function(){ 
+		$('#info').slideToggle();
+	});
+});
+</script>
+</html>
