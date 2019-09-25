@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item value="526" key="DIALOG_X_ORIGIN"/>
+		<item value="403" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="border:" key="selection"/>
+		<item value="span" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="span"/>
+			<item value="button"/>
+			<item value="console"/>
+			<item value="console."/>
+			<item value="z-index"/>
+			<item value="z"/>
+			<item value="background"/>
+			<item value="counter"/>
+			<item value=".btns"/>
+			<item value="#counter"/>
 			<item value="border:"/>
 			<item value="border"/>
 			<item value="top"/>
 			<item value="btn"/>
 			<item value="basic"/>
-			<item value="줄지"/>
-			<item value="anchorBoxName"/>
-			<item value="list-style"/>
-			<item value="sear"/>
-			<item value="li"/>
-			<item value="form"/>
-			<item value="paging"/>
-			<item value="getSearchList"/>
-			<item value="cnt"/>
-			<item value="getpass"/>
 		</list>
 		<list key="replacehistory">
 		</list>
