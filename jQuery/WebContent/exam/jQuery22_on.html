@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="demo1">
+		<button>ADD</button> <span id="result"></span>
+		<div>원래있던것</div>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$().ready(function(){
+	$('#demo1 button').on('click', function(){
+		$('#demo1 div').append('<div>추가</div>');
+	});
+	
+	//비동적 처리
+/* 	$('#demo1 div').on({
+		click : function(){
+			$('#demo1 #result').html('<span style="color:red;"> click event </span>');
+		},
+		mouseover : function(){
+			$('#demo1 #result').html('<span style="color:red;"> mouseover event </span>');
+		},
+		mouseout : function(){
+			$('#demo1 #result').html('<span style="color:red;"> mouseout event </span>');
+		}
+	}); */
+	//동적 처리
+	
+	$('#demo1').on({
+		click : function(){
+			$('#demo1 #result').html('<span style="color:red;"> click event </span>');
+		},
+		mouseover : function(){
+			$('#demo1 #result').html('<span style="color:red;"> mouseover event </span>');
+		},
+		mouseout : function(){
+			$('#demo1 #result').html('<span style="color:red;"> mouseout event </span>');
+		}
+	}, 'div');
+	
+});
+</script>
+</html>
+<!-- 
+.on(events-map [,selector] [,data])
+events-map: 공백으로 구분된 하나 이상의 이벤트 타입과 선택적인 네임 스페이스로 기성된 키들과 값들의 문자열
+on() 메서드의 파라미터인 events-map 은 공백으로 구분되는 문자열 , 혹은 JSON, map 이 올 수 있다. 
+여기서 map 은 생략한다. 
+
+JSON: 각기 다른 핸들러를 전달할 수 있다.  -->

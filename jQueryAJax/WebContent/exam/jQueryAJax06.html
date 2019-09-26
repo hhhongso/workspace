@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button id="btn">데이터 불러오기</button>
+	<br>
+	<div id="disp"></div>
+	
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$().ready(function(){
+	$('#btn').click(function(){
+		$.getJSON('jQueryAJax05_jsonData.txt', function(data){
+			$('#disp').empty();
+			
+			var table = "<table><tr>"
+						+"<th width=80px>인덱스</th>"
+						+"<th width=80px>이름</th>"
+						+"<th width=80px>주소</th>"
+						+"</tr>";
+						
+			$.each(data, function(index, value){
+				table += "<tr><td align=center>" + index +" </td><td>" 
+							+ value.name +"</td><td>"
+							+ value.addr+"</td></tr>";
+
+			});
+			
+			table += "</table>";
+			
+			$('#disp').append(table);
+		});
+	});
+});
+</script>
+</html>

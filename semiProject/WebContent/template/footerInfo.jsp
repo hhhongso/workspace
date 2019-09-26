@@ -5,7 +5,6 @@
 <div class="footer_wrap" align="center">
 	<div class="footer_holder">
 		<div class="con">
-
 			<div class="span-3">
 				<div id="span-company" class="sqs-block">
 					<div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button id="testBtn">클릭하시오</button>
+	<br>
+	<div id="disp">
+		<table id="table">
+			<thead>
+			<tr>
+				<th width= 80px>이름</th>
+				<th>주소</th>
+			</tr>
+			</thead>
+			
+			<tbody></tbody>
+		</table>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$().ready(function(){
+	$('#table').hide();
+	$('#testBtn').click(function(){
+		$.getJSON('jQueryAJax05_jsonData.txt', function(data){
+			$('#table').show();
+			/* $.each(data, function(index, value){
+				$.each(value, function(key, value){
+					console.log(index + " " + key + " " + value);
+				});
+			}); */
+			
+			$('#table tr:gt(0)').remove();
+			/* $.each(data, function(index, value){
+				$('#disp tbody').append('<tr><td>' + value.name + '</td><td>' + value.addr + '</td></tr>');
+			}); */
+			
+			for(index in data){
+				$('#disp tbody').append('<tr><td>' +data[index].name+ '</td><td>' +data[index].addr+ '</tr></td>')
+			}
+		}); //ajax, jquery 는 utf-8을 지원 - get 해올 때 반드시 utf-8이어야
+	});
+});
+</script>
+</html>

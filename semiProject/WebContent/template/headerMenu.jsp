@@ -1,11 +1,11 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/index.css">    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+
 <style>
 .headerFixed{
-	background-color:#ecf0f1;
+	background-color:white;
 	z-index:100;
 	position: sticky;
 	top: 0px;
@@ -13,59 +13,54 @@
 </style>
 <!-- 메인 메뉴 -->
 <div class="header1" style="width:100%">
-		<div style="display:inline-block; position: relative; margin: 0 auto;">
-			<h1 class="xans-element- xans-layout xans-layout-logotop ">
-				<a class="headLogo" href="../main/index.do" style="text-decoration: none;"><strong>FUSE SEOUL</strong></a>
-			</h1>
-		</div>
+	<div style="display: inline-block; position: absolute; left: 0px;">
+		<h1>
+			<a class="headLogo" href="../main/index.do"
+				style="text-decoration: none;"><strong>FUSE SEOUL</strong></a>
+		</h1>
+	</div>
 
-	<div style="display: inline-block; position: relative; width:70%; top: 0px; text-align: center; clear: both;">
+	<div style="display: inline-block; text-align: center; position: absolute; right: 0px; top: 15px;">
 		<div id="nav" class=" menu_left">
 				<ul>
 					<li class="sub-menu-parent"><a href="#">Shop</a>
-						<ul style="left: -12px"
-							class="xans-element- xans-layout xans-layout-category sub-menu">
-							<li class="xans-record-"><a
-								href="/product/list.html?cate_no=59">TOP</a></li>
-							<li class="xans-record-"><a
-								href="/product/list.html?cate_no=60">BOTTOM</a></li>
-							<li class="xans-record-"><a
-								href="/product/list.html?cate_no=89">SUIT</a></li>
-							<li class="xans-record-"><a
-								href="/product/list.html?cate_no=62">OUTER</a></li>
-							<li class="xans-record-"><a
-								href="/product/list.html?cate_no=63">ACC&amp;ETC</a></li>
-							<li class="xans-record-"><a
-								href="/product/list.html?cate_no=83">SALE</a></li>
-						</ul></li>
-
+						<ul class="sub-menu" style="left: -12px">
+							<li><a href="#">TOP</a></li>
+							<li><a href="#">BOTTOM</a></li>
+							<li><a href="#">SUIT</a></li>
+							<li><a href="#">OUTER</a></li>
+							<li><a href="#">ACC&amp;ETC</a></li>
+							<li><a href="#">SALE</a></li>
+						</ul>
+					</li>
 
 					<li class="sub-menu-parent"><a href="#">Community</a>
 						<ul class="sub-menu" style="left: -2px;">
 							<li><a href="../notice/noticeBoardList.do">Notice</a></li>
 							<li><a href="/board/product/list.html?board_no=6">Q / A</a></li>
-							<li><a href="/board/smartreview/list.html">Review</a></li>
-						</ul></li>
+							<li><a href="#">Review</a></li>
+						</ul>
+					</li>
+					
 					<li class="sub-menu-parent"><a href="#">Account</a>
-						<ul style="left: -7px"
-							class="xans-element- xans-layout xans-layout-statelogoff sub-menu ">
+						<ul class="sub-menu" style="left: -7px">
 							<c:if test="${sessionScope.memId == null }">
 								<li><a href="../member/loginForm.do" class="log">Login</a></li>
 								<li><a href="../member/signupForm.do">Join us</a></li>
 							</c:if>
 
 							<c:if test="${sessionScope.memId != null }">
-								<li><a href="/order/basket.html">Cart<span
-										class="count displaynone"><span>()</span></span></a></li>
-								<li><a href="/myshop/index.html">Myshop</a></li>
-								<li><a href="/myshop/wish_list.html">Wish list <strong></strong></a>
-								</li>
-								<li><a href="/myshop/order/list.html">Order list</a></li>
+								<li><a href="#">Cart</a></li>
+								<li><a href="#">Myshop</a></li>
+								<li><a href="#">Wish list</a></li>
+								<li><a href="#">Order list</a></li>
 							</c:if>
-						</ul></li>
-					<li class="sub-menu-parent" id="search-label"><a href="#none"
-						style="padding-right: 0px"><label for="keyword"
-							id="search-label">Search </label></a></li>
+						</ul>
+					</li>
+					
+					<li class="sub-menu-parent" id="search-label"><a href="#">Search</a>
+					</li>	
+					
 				</ul>
 		</div>
 	</div>	

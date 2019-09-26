@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<img src="../image/clap.gif" width="200" height="200">
+
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$().ready(function(){
+	$('img').mouseover(function(){
+		$(this).attr('src', '../image/fail.gif');
+	}).mouseout(function(){
+		$(this).attr('src', '../image/main.gif');
+	});	
+	
+});
+</script>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form id="loginForm">
+	<table>
+		<tr>
+			<th width="70px"> 아이디 </th>
+			<td> <input type="text" id="id" name="id" placeholder="아이디를 입력하세요" required autofocus>
+				<div id="idDiv"></div>
+			</td>		
+		</tr>
+		
+		<tr>
+			<th> 비밀번호 </th>
+			<td> <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력하세요" required>
+				<div id="pwdDiv"></div>
+			</td>		
+		</tr>
+		
+		<tr>
+			<td colspan=2 align="center"> 
+			<input type="button" value="로그인" id="loginBtn">
+			<div id="loginResult"></div>
+			</td>		
+		</tr>
+	</table>
+</form>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$().ready(function(){
+	$('#id').keyup(function(){
+		$('#loginResult').empty();
+	});
+	
+	$('#loginBtn').click(function(){
+		$('#id').empty();
+		$('#pwd').empty();
+		
+		var id = $('#id').val();
+		var pwd = $('#pwd').val();
+		if(id.length < 5 || id.length > 12) $('#idDiv').text('아이디는 5자리 이상 12자리 이하로 작성 가능합니다. ').css('color', 'red').css('font-size', '3pt');
+//		else if(id.length >= 5 || id.length <= 12) $('#idDiv').text('올바른 아이디 형태입니다. ').css('color', 'blue').css('font-size', '3pt');
+		else if (pwd.length == 0) $('#pwdDiv').text('비밀번호를 입력해주세요. ').css('color', 'red').css('font-size', '3pt');
+		else /* $.getJSON('jQueryAJax08_json.jsp', $('#loginForm').serialize(), function(data){
+					console.log(data.result);
+					if(data.result == 'ok') $('#loginResult').text('로그인 성공').css('color', 'blue').css('font-size', '5pt');
+					else {
+						$('#loginResult').text('로그인 실패').css('color', 'red').css('font-size', '5pt');
+						$('#loginForm')[0].reset();
+						$('#id').focus();
+					}
+			}); */
+		
+			{
+				
+				$.ajax({
+				type: 'post',
+				url: 'jQueryAJax08_json.jsp',
+				data: $('#loginForm').serialize(),
+				dataType: 'text',
+				success: function(data){
+					
+					if(data.trim() == 'ok') $('#loginResult').text('로그인 성공').css('color', 'blue').css('font-size', '5pt');
+					else $('#loginResult').text('로그인 실패').css('color', 'red').css('font-size', '5pt');
+				},
+				error: function(data){}
+			});
+	});
+	}
+});
+</script>
+
+</html>

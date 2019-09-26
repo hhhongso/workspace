@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="demo2">
+		<button>add</button>
+		<ul>
+			<li>test1</li>
+			<li>test2</li>
+			<li>test3</li>
+		</ul>
+	</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+$().ready(function(){
+	$('#demo2 li').bind('click', function(){
+		alert($(this).text());
+	});
+	
+	//비동적 처리 : 추가된 li 들에게는 click이벤트가 처리되지 않는다. 
+	/* $('#demo2 button').bind('click', function(){
+		var leng = $('#demo2 li').length+1;
+		$('#demo2 ul').append('<li>' + 'test'+leng + '</li>');
+	}); */
+	
+	//동적 처리
+	$('#demo2 button').bind('click', function(){
+		var leng = $('#demo2 li').length+1;
+		$('#demo2 li').unbind('click');
+		$('#demo2 ul').append('<li>' + 'test'+leng + '</li>').find().click(function(){
+			alert($(this).text());
+		});
+	});
+	
+});
+</script>
+</html>
