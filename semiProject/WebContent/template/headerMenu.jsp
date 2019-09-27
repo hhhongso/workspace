@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/index.css">    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-
 <style>
 .headerFixed{
 	background-color:white;
@@ -13,14 +12,20 @@
 </style>
 <!-- 메인 메뉴 -->
 <div class="header1" style="width:100%">
-	<div style="display: inline-block; position: absolute; left: 0px;">
+	<div style="text-align: right; padding: 5px;">
+	<c:if test="${memDTO.name != null }">
+	${memDTO.name} 님 로그인
+	</c:if>	
+	</div> 
+
+	<div style="display: inline-block; position: inherit; left: 0px;">
 		<h1>
 			<a class="headLogo" href="../main/index.do"
 				style="text-decoration: none;"><strong>FUSE SEOUL</strong></a>
 		</h1>
 	</div>
 
-	<div style="display: inline-block; text-align: center; position: absolute; right: 0px; top: 15px;">
+	<div style="display: inline-block; float:right; text-align: center; position: inherit; right: 0px; top: 15px;">
 		<div id="nav" class=" menu_left">
 				<ul>
 					<li class="sub-menu-parent"><a href="#">Shop</a>
@@ -44,16 +49,17 @@
 					
 					<li class="sub-menu-parent"><a href="#">Account</a>
 						<ul class="sub-menu" style="left: -7px">
-							<c:if test="${sessionScope.memId == null }">
+							<c:if test="${memDTO == null }">
 								<li><a href="../member/loginForm.do" class="log">Login</a></li>
 								<li><a href="../member/signupForm.do">Join us</a></li>
 							</c:if>
 
-							<c:if test="${sessionScope.memId != null }">
+							<c:if test="${memDTO != null }">
 								<li><a href="#">Cart</a></li>
 								<li><a href="#">Myshop</a></li>
 								<li><a href="#">Wish list</a></li>
 								<li><a href="#">Order list</a></li>
+								<li><a href="#">Log Out</a></li>
 							</c:if>
 						</ul>
 					</li>

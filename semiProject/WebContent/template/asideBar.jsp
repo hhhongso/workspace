@@ -10,7 +10,7 @@
 }
 </style>
 <div id="topBar">
-<img src="../image/logo.jpg" style="width: 50px; height:50px;">
+<img src="../image/topBar.png" style="width: 50px; height:50px;">
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>

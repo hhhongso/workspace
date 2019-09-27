@@ -78,7 +78,7 @@ public class ControlServlet extends HttpServlet {
 		
 		System.out.println(category);
 		System.out.println(cp);
-		
+		System.out.println(view);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
