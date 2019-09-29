@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+div.product-top .thumbnail img{
+	width: 100%;
+	height:auto;
+}
+
+.product-top >ul {
+	border :3px dotted red;
+	
+}
+
+.product-top ul, li[id^='anchorBoxId'] {
+	list-style-type: none;
+}
+
+.product-top ul > li[id^='anchorBoxId'] {
+	border: 1px solid black; 
+	width: 32%; 
+	height: 80%; 
+	display: inline-block;
+	float: left;	
+}
+
+.product-top ul > li.hideme{
+	display: none;
+}

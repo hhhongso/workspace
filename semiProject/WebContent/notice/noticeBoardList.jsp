@@ -60,8 +60,8 @@
 	
 <script>
 	$().ready(function(){
-		$('.writeNotice').click(){
+		$('.writeNotice').click(function(){
 			location.href='/semiProject/notice/noticeBoardWrite.do';
-		}
+		});
 	});
 </script>

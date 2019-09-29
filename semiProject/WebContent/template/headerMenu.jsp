@@ -30,7 +30,7 @@
 				<ul>
 					<li class="sub-menu-parent"><a href="#">Shop</a>
 						<ul class="sub-menu" style="left: -12px">
-							<li><a href="#">TOP</a></li>
+							<li><a href="../shop/productTop.do">TOP</a></li>
 							<li><a href="#">BOTTOM</a></li>
 							<li><a href="#">SUIT</a></li>
 							<li><a href="#">OUTER</a></li>
