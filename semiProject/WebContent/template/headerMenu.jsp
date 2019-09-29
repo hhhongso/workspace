@@ -59,7 +59,7 @@
 								<li><a href="#">Myshop</a></li>
 								<li><a href="#">Wish list</a></li>
 								<li><a href="#">Order list</a></li>
-								<li><a href="#">Log Out</a></li>
+								<li><a class="logout">Log Out</a></li>
 							</c:if>
 						</ul>
 					</li>
@@ -102,5 +102,23 @@ $().ready(function(){
 		else $('.indexHeader').removeClass('headerFixed');
 	});
 	
+	
+	$('.logout').click(function(){
+		$.ajax({
+			type: 'get',
+			url: '/semiProject/member/logout.do',
+			data: '',
+			dataType: 'html',
+			success: function(data){
+				console.log('성공');
+				console.log(data);
+				$('.indexSection').html(data);
+			},
+			error: function(){
+				console.log('실패');
+			}
+			
+		});
+	});
 });
 </script>

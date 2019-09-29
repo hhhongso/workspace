@@ -43,8 +43,7 @@
 		</table>
 	</c:if>	
 	<div style="text-align:center;">${boardPaging.pagingHTML}</div><br>
-	<form name ="boardListForm" method="post" action="/miniProject/board/boardSearchIns.do?pg=1">
-<!-- 	<form name ="boardListForm" method="post" action="/miniProject/board/boardSearch.do?pg=1"> -->
+
 	<div align="center">
 		<select id="searchOp" name="searchOp">
 			<option id="subject" value="subject"> 제목으로 검색</option>
@@ -54,5 +53,15 @@
 		<input type="button" value="검색" onclick="searchBoard()">
 	</div>
 	
-	<input type="submit" value="글쓰기" >
-	</form>
+	<c:if test="${memId == 'admin' }">
+		<input type="submit" class="writeNotice" value="글쓰기">
+	</c:if>
+
+	
+<script>
+	$().ready(function(){
+		$('.writeNotice').click(){
+			location.href='/semiProject/notice/noticeBoardWrite.do';
+		}
+	});
+</script>

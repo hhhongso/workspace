@@ -129,7 +129,7 @@ div[class$='Div']{
 <div class="signupModal">
 	<div class="signupModalContent">
 		  <p class="msg" style="text-align: center;"></p>
-		  <input type="button" class="btnClose" value="메인 화면으로">
+		  <input type="button" class="btnClose" value="로그인 화면으로">
 	</div>
 </div>
 
@@ -223,7 +223,7 @@ $().ready(function(){
 	
 	$('.btnClose').click(function(){
 		$('.signupModal').hide();
-		location.href='/semiProject/main/index.do';
+		location.href='/semiProject/main/login.do';
 	});
 	
 });

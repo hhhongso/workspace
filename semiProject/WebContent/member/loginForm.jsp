@@ -50,7 +50,7 @@ div[class$='Div']{
 			</td>		
 		</tr>
 		
-		<tr><td colspan=2><input type="checkbox" value="remember-me"> 로그인 유지</td> 	</tr>
+		<tr><td colspan=2><input type="checkbox" class="rememberMe" value="1"> 로그인 유지</td> 	</tr>
 		<tr>
 			<td colspan=2 align="center"> 
 			<label>아이디/비밀번호 찾기</label> <br>
@@ -67,8 +67,7 @@ div[class$='Div']{
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $().ready(function(){
-	$('.btnLogin').click(function(){
-		
+	$('.btnLogin').click(function(){		
 		if($('.id').val() == ""){
 			$('.idDiv').empty();
 			$('.idDiv').append('아이디를 입력하세요.');
@@ -82,7 +81,9 @@ $().ready(function(){
 			$.ajax({
 				type: 'post',
 				url: '/semiProject/member/login.do',
-				data: {'id': $('.id').val(), 'pwd': $('.pwd').val()},
+				data: {'id': $('.id').val(), 
+					'pwd': $('.pwd').val(), 
+					'rememberMe' : $('.rememberMe').prop('checked')},
 				dataType: 'json',
 				success: function(data){
 					if(data.result == 'ok'){
