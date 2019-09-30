@@ -51,9 +51,24 @@ public class MemberDAO {
 		return isExisted;
 	}
 
-	public MemberDTO isLogin(Map<String, String> map) {
+	public MemberDTO isLogin(Map<String, Object> map) {
 		SqlSession session = sqlSessionFactory.openSession();
 		MemberDTO memberDTO = session.selectOne("memberSQL.isLogin", map);
+		session.close();		
+		return memberDTO;
+	}
+
+	public void keepLogin(Map<String, Object> map) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.update("memberSQL.keepLogin", map);
+		session.commit();
+		session.close();
+		
+	}
+
+	public MemberDTO checkUserWithSessionId(String sessionId) {
+		SqlSession session = sqlSessionFactory.openSession();
+		MemberDTO memberDTO = session.selectOne("memberSQL.checkUserWithSessionId", sessionId);
 		session.close();		
 		return memberDTO;
 	}

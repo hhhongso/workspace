@@ -13,4 +13,12 @@
 	<select id="isLogin" parameterType="java.util.Map" resultType="memberDTO">
 		select * from member where id = #{id} and pwd = #{pwd}
 	</select>
+	
+	<update id="keepLogin" parameterType="java.util.Map">
+		update member set sessionId = #{sessionId}, sessionLimit= #{sessionLimit} where id=#{id}
+	</update>
+	
+	<select id="checkUserWithSessionId" parameterType="String" resultType="memberDTO">
+		select * from member where sessionId = #{sessionId} and sessionLimit > sysdate
+	</select>
 </mapper>

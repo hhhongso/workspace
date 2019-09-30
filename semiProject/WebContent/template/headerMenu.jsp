@@ -11,21 +11,22 @@
 }
 </style>
 <!-- 메인 메뉴 -->
-<div class="header1" style="width:100%">
-	<div style="text-align: right; padding: 5px;">
+<div class="header1" style="width:100%;">
+	<div style="display: inline-block; left: 0px;">
+		<h1 style="margin: 0; padding: 0;">
+			<a class="headLogo" href="../main/index.do"
+				style="text-decoration: none;"><strong>FUSE SEOUL</strong></a>
+		</h1>
+	</div>
+	
+	<div style="display: inline-block; float:right; ">
+	<div style=" text-align: right; padding: 5px;">
 	<c:if test="${memDTO.name != null }">
 	${memDTO.name} 님 로그인
 	</c:if>	
 	</div> 
 
-	<div style="display: inline-block; position: inherit; left: 0px;">
-		<h1>
-			<a class="headLogo" href="../main/index.do"
-				style="text-decoration: none;"><strong>FUSE SEOUL</strong></a>
-		</h1>
-	</div>
-
-	<div style="display: inline-block; float:right; text-align: center; position: inherit; right: 0px; top: 15px;">
+	<div style=" text-align: center; right: 0px;">
 		<div id="nav" class=" menu_left">
 				<ul>
 					<li class="sub-menu-parent"><a href="#">Shop</a>
@@ -42,7 +43,7 @@
 					<li class="sub-menu-parent"><a href="#">Community</a>
 						<ul class="sub-menu" style="left: -2px;">
 							<li><a href="../notice/noticeBoardList.do">Notice</a></li>
-							<li><a href="/board/product/list.html?board_no=6">Q / A</a></li>
+							<li><a href="../qna/qnaBoardList.do">Q / A</a></li>
 							<li><a href="#">Review</a></li>
 						</ul>
 					</li>
@@ -70,6 +71,7 @@
 				</ul>
 		</div>
 	</div>	
+	</div>
 </div>	
 
 <!-- 검색

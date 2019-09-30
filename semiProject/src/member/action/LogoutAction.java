@@ -15,14 +15,16 @@ public class LogoutAction implements CommandProcess {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		Cookie[] cookie = request.getCookies();
-		for (int i = 0; i < cookie.length; i++) {
-			if(cookie[i].getName().equals("memId")){
-				cookie[i].setMaxAge(0);
-				response.addCookie(cookie[i]);
+		Cookie[] cookies = request.getCookies();
+		if(cookies != null) {
+			for (Cookie cookie : cookies) {	
+				cookie.setMaxAge(0);
+				cookie.setPath("/");
+				response.addCookie(cookie);
 				System.out.println("쿠키 죽이기");
 			}
 		}
+	
 		
 		//request.setAttribute("display", "/member/logout.jsp");
 		

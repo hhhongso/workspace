@@ -4,6 +4,8 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="memberDTO" type="member.bean.MemberDTO"/>
+		<typeAlias alias="noticeDTO" type="notice.bean.NoticeDTO"/>
+		<typeAlias alias="qnaDTO" type="qna.bean.QnADTO"/>
 	</typeAliases>
 
 	<environments default="development">
@@ -20,6 +22,7 @@
 	
 	<mappers>
 		<mapper resource="member/dao/memberMapper.xml"/>
+		<mapper resource="qna/dao/qnaMapper.xml"/>
 	</mappers>	
 </configuration>
 

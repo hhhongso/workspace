@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="qnaSQL">
+	<insert id="writeQNA" parameterType="qnaDTO">
+		insert into QNABoard (seq, id, name, subject, content, ref) 
+		values (QNAseq.nextVal, #{id}, #{name}, #{subject}, #{content}, QNAseq.currVal)
+	</insert>
+	
+	<select id="getQnAList" resultType="qnaDTO">
+		select seq, subject, content, id, to_char(logtime, 'yyyy-mm-dd') as logtime, hit from QNABoard
+	</select>
+	
+	<select id="getQnAView" parameterType="int" resultType="qnaDTO">
+		select * from QNABoard where seq= #{seq}
+	</select>
+</mapper>

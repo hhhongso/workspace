@@ -61,7 +61,7 @@
 <script>
 	$().ready(function(){
 		$('.writeNotice').click(function(){
-			location.href='/semiProject/notice/noticeBoardWrite.do';
+			location.href='/semiProject/notice/noticeBoardWriteForm.do';
 		});
 	});
 </script>

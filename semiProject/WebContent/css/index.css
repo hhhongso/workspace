@@ -49,13 +49,18 @@ html, body{
 /*headerMenu.jsp*/
 #nav{
 	display: inline-block;
-	height: 45px; /* 
-	padding: 6px 7px; 
+	height: 45px;
+/*	padding: 6px 7px; 
 	margin: 0;
 	background: #7d7d7d;
 	border-radius: 1.5em; */
 }
 
+#nav > ul {
+	padding: 0; 
+	margin: 0; 
+	
+}
 #nav .sub-menu-parent {
 	list-style-type:none;
 	float: left;

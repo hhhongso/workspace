@@ -509,7 +509,7 @@
 	
 	<div align="center">
 	<input type="button" class="btnWideView" value="펼쳐보기" 
-	style="position: relative; bottom: 0px; width: 100%; background-color:grey; opacity: 0.5; padding: 10px 0;">
+	style="position: relative; bottom: 0px; width: 100%; background-color:grey; color:white; padding: 10px 0;">
 	</div>
 </div>
 
