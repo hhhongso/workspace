@@ -58,6 +58,6 @@
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="java.util.List"/>
-<fullyQualifiedTypeName name="qna.dao.QnADAO"/>
 <fullyQualifiedTypeName name="qna.bean.QnADTO"/>
+<fullyQualifiedTypeName name="qna.dao.QnADAO"/>
 </qualifiedTypeNameHistroy>

@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="../css/index.css">    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
-<style>
-.headerFixed{
-	background-color:white;
-	z-index:100;
-	position: sticky;
-	top: 0px;
-}
-</style>
+
+<link rel="stylesheet" href="../css/index.css">    
+<style> .logout{ cursor: pointer;}</style>
 <!-- 메인 메뉴 -->
-<div class="header1" style="width:100%;">
+<div class="header_wrap">
+<div class="header_holder">
 	<div style="display: inline-block; left: 0px;">
 		<h1 style="margin: 0; padding: 0;">
 			<a class="headLogo" href="../main/index.do"
@@ -73,7 +68,7 @@
 	</div>	
 	</div>
 </div>	
-
+</div>
 <!-- 검색
 <form id="searchBarForm" name="" action="/product/search.html"
 	method="get" target="_self" enctype="multipart/form-data">
@@ -95,32 +90,3 @@
 	</div>
 </form> -->
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-$().ready(function(){
-	var hoffset = $('.headLogo').offset();
-	$(window).scroll(function(){
-		if($(document).scrollTop() > hoffset.top) $('.indexHeader').addClass('headerFixed');
-		else $('.indexHeader').removeClass('headerFixed');
-	});
-	
-	
-	$('.logout').click(function(){
-		$.ajax({
-			type: 'get',
-			url: '/semiProject/member/logout.do',
-			data: '',
-			dataType: 'html',
-			success: function(data){
-				console.log('성공');
-				console.log(data);
-				$('.indexSection').html(data);
-			},
-			error: function(){
-				console.log('실패');
-			}
-			
-		});
-	});
-});
-</script>

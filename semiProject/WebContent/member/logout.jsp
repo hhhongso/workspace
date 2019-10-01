@@ -18,7 +18,7 @@
 .signupModalContent{
 	border-radius: 1.2em;
 	background-color: #fefefe;
-	margin: 15% auto; /* 15% from the top and centered */
+	margin: 15% auto; /* 15% from the top and centered */ 
 	padding: 20px;
 	border: 1px solid #888;
 	width: 50%;
@@ -31,7 +31,7 @@
 <div class="signupModal">
 	<div class="signupModalContent">
 		  <p class="msg" style="text-align: center;"> 로그아웃 되었습니다. </p>
-		  <input type="button" class="btnClose" value="메인 화면으로">
+		  <input type="button" class="btnClose btn btn-default" value="메인 화면으로">
 	</div>
 </div>
 </div>

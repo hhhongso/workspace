@@ -23,7 +23,9 @@ public class SignupAction implements CommandProcess {
 		int birthDay = Integer.parseInt(request.getParameter("birthDay"));
 		
 		MemberDTO memberDTO = new MemberDTO(name, id, pwd, email1, email2, birthYear, birthMonth, birthDay);
-		
+		System.out.println(memberDTO.getName()+ memberDTO.getId() + memberDTO.getPwd() + memberDTO.getEmail1() + memberDTO.getEmail2()+
+				memberDTO.getBirthYear()+ memberDTO.getBirthMonth()+memberDTO.getBirthDay());
+
 		//DB
 		MemberDAO.getInstance().insertMember(memberDTO);
 		//응답

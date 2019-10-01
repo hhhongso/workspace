@@ -3,7 +3,8 @@
 
 <mapper namespace="memberSQL">
 	<insert id="insertMember" parameterType="memberDTO">
-		insert into member values (#{name}, #{id}, #{pwd}, #{email1}, #{email2}, #{birthYear}, #{birthMonth}, #{birthDay}, sysdate)
+		insert into member (name, id, pwd, email1, email2, birthYear, birthMonth, birthDay, logtime) 
+		values (#{name}, #{id}, #{pwd}, #{email1}, #{email2}, #{birthYear}, #{birthMonth}, #{birthDay}, sysdate)
 	</insert>
 	
 	<select id="isExistedId" parameterType="String" resultType="memberDTO">

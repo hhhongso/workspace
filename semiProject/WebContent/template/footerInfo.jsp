@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/index.css">   
-    
-<div class="footer_wrap" align="center">
+
+<div class="footer_wrap" align="center"> 
 	<div class="footer_holder">
 		<div class="con">
 			<div class="span-3">

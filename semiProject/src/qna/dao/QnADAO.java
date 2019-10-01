@@ -55,4 +55,23 @@ public class QnADAO {
 		session.close();
 		return qnaDTO;
 	}
+
+	public void replyQNA(QnADTO qnaDTO) {
+		QnADTO pDTO = getQnAView(qnaDTO.getPseq());
+		
+		SqlSession session = sqlSessionFactory.openSession();
+		session.update("qnaSQL.replyQNA1", pDTO); // 1. 먼저 달려있는 답글의 글순서(step) 밀어내기
+
+		qnaDTO.setRef(pDTO.getRef());
+		qnaDTO.setLev(pDTO.getLev()+1);
+		qnaDTO.setStep(pDTO.getStep()+1);
+		session.insert("qnaSQL.replyQNA2", qnaDTO); //답글 달기
+		
+		session.update("qnaSQL.replyQNA3", qnaDTO.getPseq());//3. 원글의 답글 수 증가
+		
+		session.commit();
+		session.close();
+	}
+
+
 }

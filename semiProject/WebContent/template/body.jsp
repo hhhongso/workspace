@@ -2,56 +2,10 @@
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="../css/index.css">
 
-<style type="text/css">
-a[href^='/product/detail.html']:hover>img {
-	opacity: 0.1;
-	filter: alpha(opacity = 10) !important;
-}
-
-a[name^='anchorBoxName']:hover>img {
-	opacity: 0.1;
-	filter: alpha(opacity = 10) !important;
-}
- 
-li[id^='anchorBoxId'] {
-	list-style-type: none;
-}
-
-.indexSection table {
-	/* width: 100%; */
-}
-
-table td.work-item {
- 	width: 30%;
-	height: 30%; 
-}
-
-table td.work-item img {
-	border-radius: 1.4em;
- 	width: 100%;
-	height: 60%;
-}
-
-
-.hideme {
-	display: none;
-}
-
-.btnWideViewClose{
-	bottom:150px;
-	display: none; 
-	padding: 10px 0; 
-	width: 100%; 
-	background-color: darkGrey; 
-	opacity: 0.5;
-}
-</style>
-
 <jsp:include page="/template/headerSlide.jsp" />
 
-
-<table>
-	<tr>
+<table class="mainBody" style="width:100%;">
+	<tr align="center">
 		<td class="work-item"><a href="#" class="project-excerpt-link"
 			name="anchorBoxName_220"> <img
 				src="//fuseseoul.com/web/product/big/201908/7a8315b436feb7983f3e27eb52323a03.jpg"
@@ -108,7 +62,7 @@ table td.work-item img {
 	</tr>
 
 
-	<tr>
+	<tr align="center">
 		<td class="work-item"><a
 			href="/product/사전예약-basic-y-shirt-black-9월27일이후발송/555/category/1/display/4/"
 			class="project-excerpt-link" name="anchorBoxName_555"> <img
@@ -173,7 +127,7 @@ table td.work-item img {
 		</a></td>
 	</tr>
 
-	<tr>
+	<tr align="center">
 		<td class="work-item"><a
 			href="/product/사전예약-two-button-setup-jk-navy-9월27일이후발송/225/category/1/display/4/"
 			class="project-excerpt-link" name="anchorBoxName_225"> <img
@@ -230,22 +184,3 @@ table td.work-item img {
 		</a></td>
 	</tr>
 </table>
-
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script>
-$().ready(function(){
-	$('.btnWideView').click(function(){
-		$('.hideme').show();
-		$(this).hide();
-		$('.btnWideViewClose').show();
-	});
-
-	
-	$('.btnWideViewClose').click(function(){
-		$('.hideme').hide();
-		$(this).hide();
-		$('.btnWideView').show();
-	});
-});
-</script>

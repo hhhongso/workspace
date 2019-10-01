@@ -2,20 +2,11 @@
     pageEncoding="UTF-8"%>
 
 <link rel="stylesheet" href="../css/shop.css">
-    
-<div class="xans-element- xans-product xans-product-normalpackage ">
-	<div style="display:none" class="xans-element- xans-product xans-product-normalmenu ">
-		<!-- <div class="function">
-		   <p class="prdCount">items : <strong>30</strong></p>
-		   	<ul id="type" class="xans-element- xans-product xans-product-orderby">
-		    	<li class="xans-record-"><a href="?cate_no=64&amp;sort_method=5#Product_ListMenu">신상품</a></li>
-				<li class="xans-record-"><a href="?cate_no=64&amp;sort_method=1#Product_ListMenu">상품명</a></li>
-				<li class="xans-record-"><a href="?cate_no=64&amp;sort_method=3#Product_ListMenu">낮은가격</a></li>
-				<li class="xans-record-"><a href="?cate_no=64&amp;sort_method=4#Product_ListMenu">높은가격</a></li>
-				<li class="xans-record-"><a href="?cate_no=64&amp;sort_method=6#Product_ListMenu">인기상품</a></li>
-			</ul>
-		</div>
+<style> div .product-top { align: center;}</style>    
 
+<div class="top_wrap">
+	<div style="display:none" class="top_holder">
+		<!-- <div class="function">
 		<fieldset class="condition displaynone">
 		<legend>조건별 검색</legend>
 			 <p>
@@ -42,7 +33,7 @@
 	        -->
 		<ul class="prdList grid2 show_scroll">
 			<li id="anchorBoxId_567" class="showme" value="567">
-				<div style="position:relative; height: auto; border: 3px solid teal;">	
+				<div style="position:relative; height: auto;">	
 				<div class="thumbnail" style="margin: 0 auto 2.5%; width: 95%">
 					<a href="#">
 						<img onload="this.style.opacity='1';"
@@ -276,7 +267,7 @@
 			</li>
 		
 			
-	<!--  숨기기 -->
+<!--  숨기기 -->
 			<li id="anchorBoxId_522" class="hideme">
 				<div class="thumbnail" style="margin: 0 auto 2.5%; width: 95%">
 					<a href="/product/여남공용-워싱-헤비코튼-긴팔티셔츠-3color/522/category/64/display/1/"
@@ -508,16 +499,16 @@
 	</div>
 	
 	<div align="center">
-	<input type="button" class="btnWideView" value="펼쳐보기" 
-	style="position: relative; bottom: 0px; width: 100%; background-color:grey; color:white; padding: 10px 0;">
+	<input type="button" class="btnWideView btn btn-default" value="펼쳐보기" 
+	style="width: 100%; padding: 10px 0;">
 	</div>
 </div>
-
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script>
 $().ready(function(){
 	$('.btnWideView').click(function(){
 		$('.hideme').slideToggle();		
 	});
-	
 });
+
 </script>
