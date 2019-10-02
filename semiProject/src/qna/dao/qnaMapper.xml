@@ -8,7 +8,7 @@
 	</insert>
 	
 	<select id="getQnAList" resultType="qnaDTO">
-		select seq, id, name, subject, content, ref, lev, step, pseq, reply, hit, to_char(logtime, 'yyyy-mm-dd') as logtime from QNABoard order by ref desc, step asc
+		select seq, id, name, subject, content, ref, lev, step, pseq, reply, hit, commentCount, to_char(logtime, 'yyyy-mm-dd') as logtime from QNABoard order by ref desc, step asc
 	</select>
 	
 	<!-- select * from 
@@ -30,4 +30,25 @@
 	<update id="replyQNA3" parameterType="int">
 		update QNABoard set reply=reply+1 where seq=#{pseq}
 	</update>	
+
+<!-- 댓글 -->
+	<insert id="writeComment1" parameterType="commentDTO">
+		insert into commentBoard (bseq, seq, id, name, content, ref) 
+		values (#{bseq}, Commentseq.nextVal, #{id}, #{name}, #{content}, Commentseq.currVal)
+	</insert>
+	
+	<update id="writeComment2" parameterType="int">
+		update QNABoard set commentCount = commentCount+1 where seq = ${bseq}
+	</update>
+	
+	<select id="getCommentList" parameterType="int" resultType="commentDTO">
+		select seq, id, name, content, ref, lev, step, pseq, reply, to_char(logtime, 'yyyy-mm-dd HH:mi') as logtime 
+		from commentBoard where bseq=#{seq} order by ref asc, step asc 
+	</select>
+	
+	<update id="updateComment" parameterType="java.util.Map">
+		update commentBoard set content=#{content}, logtime=sysdate where seq=#{seq}
+	</update>
 </mapper>
+
+

@@ -6,6 +6,7 @@
 		<typeAlias alias="memberDTO" type="member.bean.MemberDTO"/>
 		<typeAlias alias="noticeDTO" type="notice.bean.NoticeDTO"/>
 		<typeAlias alias="qnaDTO" type="qna.bean.QnADTO"/>
+		<typeAlias alias="commentDTO" type="qna.bean.CommentDTO"/>
 	</typeAliases>
 
 	<environments default="development">

@@ -17,5 +17,6 @@ public class QnADTO {
 	private int reply; 
 	
 	private int hit; 
+	private int commentCount;
 	private String logtime; 
 }

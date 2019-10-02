@@ -507,7 +507,9 @@
 <script>
 $().ready(function(){
 	$('.btnWideView').click(function(){
-		$('.hideme').slideToggle();		
+		$('.hideme').slideToggle();	
+		if($('.btnWideView').val() == '펼쳐보기') $('.btnWideView').val('닫기');
+		else if($('.btnWideView').val() == '닫기') $('.btnWideView').val('펼쳐보기');
 	});
 });
 

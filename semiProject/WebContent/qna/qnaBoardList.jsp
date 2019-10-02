@@ -34,6 +34,7 @@ a[id^="viewQNA_"]:hover { cursor: pointer;}
 				 	
 <!--  a tag가 들어가야 하는 자리=============================================== -->
 					<a id="viewQNA_${qnaDTO.seq }" style="text-decoration: none;">${qnaDTO.subject } </a> 
+					<c:if test="${qnaDTO.commentCount != 0}"> <font color="blue">(${qnaDTO.commentCount })</font></c:if>
 					<%--
 					<c:set var="subject" value="${qnaDTO.subject }"/>
 					<c:if test='${subject.contains("[원글이 삭제된 답글]") }'>					

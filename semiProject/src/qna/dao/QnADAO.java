@@ -3,12 +3,14 @@ package qna.dao;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import qna.bean.CommentDTO;
 import qna.bean.QnADTO;
 
 public class QnADAO {
@@ -56,6 +58,7 @@ public class QnADAO {
 		return qnaDTO;
 	}
 
+//답글
 	public void replyQNA(QnADTO qnaDTO) {
 		QnADTO pDTO = getQnAView(qnaDTO.getPseq());
 		
@@ -71,6 +74,33 @@ public class QnADAO {
 		
 		session.commit();
 		session.close();
+	}
+
+	
+//댓글
+	public void writeComment(CommentDTO commentDTO) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.insert("qnaSQL.writeComment1", commentDTO);
+		session.update("qnaSQL.writeComment2", commentDTO.getBseq());
+		session.commit();
+		session.close();
+		
+	}
+
+	public List<CommentDTO> getCommentList(int seq) {
+		SqlSession session = sqlSessionFactory.openSession();
+		List<CommentDTO> list = session.selectList("qnaSQL.getCommentList", seq);
+		session.close();
+		return list; 
+		
+	}
+
+	public void updateComment(Map<String, Object> map) {
+		SqlSession session = sqlSessionFactory.openSession();
+		session.update("qnaSQL.updateComment", map);
+		session.commit();
+		session.close();
+		
 	}
 
 
